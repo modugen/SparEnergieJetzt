@@ -6,16 +6,17 @@ import Grid2 from '@mui/material/Unstable_Grid2'
 import { red } from '@mui/material/colors'
 import { SelectButton } from '../../components/SelectButton'
 import { LandingPageSection } from './components/LandingPageSection'
-import  chartImg from '../../images/chart_placeholder.png'
+import chartImg from '../../images/chart_placeholder.png'
 
 export function LandingPage(): ReactElement {
   const [weight, setWeight] = useState(0)
 
   return (
-    <Stack direction='column' 
+    <Stack
+      direction='column'
       // This is needed as the grid gets somehow a bit bigger than the screen
       // width
-      style={{overflowX: 'hidden'}}
+      style={{ overflowX: 'hidden' }}
     >
       <LandingPageSection>
         <Typography variant='h3' textAlign='center'>
@@ -37,7 +38,7 @@ export function LandingPage(): ReactElement {
           size='small'
         />
 
-        <Grid2 container spacing={8} justifyContent='center' >
+        <Grid2 container spacing={8} justifyContent='center'>
           <Grid2>
             <SelectButton text='hello' />
           </Grid2>
@@ -105,9 +106,7 @@ export function LandingPage(): ReactElement {
         <Typography variant='h3' textAlign='center'>
           Warum jetzt?
         </Typography>
-        <img
-          src={chartImg}
-        />
+        <img src={chartImg} />
       </LandingPageSection>
 
       <LandingPageSection>

@@ -1,21 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import {Button, Container} from '@mui/material'
-import { Route, Routes } from 'react-router-dom';
-import { LandingPage } from './pages/LandingPage';
-import { ConfiguratorPage } from './pages/ConfiguratorPage';
-import { ResultPage } from './pages/ResultPage';
+import React from 'react'
+import logo from './logo.svg'
+import './App.css'
+import { Button, Container } from '@mui/material'
+import { Route, Routes } from 'react-router-dom'
+import { LandingPage } from './pages/LandingPage'
+import { ConfiguratorPage } from './pages/ConfiguratorPage'
+import { ResultPage } from './pages/ResultPage'
 
 function App() {
   return (
-
     <Routes>
-      <Route path="/" element={<LandingPage />} />
-      <Route path="configurator" element={<ConfiguratorPage />} />
-      <Route path="results" element={<ResultPage />} />
+      <Route path='/' element={<LandingPage />} />
+      <Route path='configurator' element={<ConfiguratorPage />} />
+      <Route path='results' element={<ResultPage />} />
     </Routes>
-  );
+  )
 }
 
-export default App;
+export default App

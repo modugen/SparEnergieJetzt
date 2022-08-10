@@ -5,9 +5,9 @@ interface Props {
   children: ReactNode
 }
 
-export function Center({children}: Props){
+export function Center({ children }: Props) {
   return (
-    <Grid2 container justifyContent="center">
+    <Grid2 container justifyContent='center'>
       {children}
     </Grid2>
   )

@@ -40,7 +40,7 @@ export function LandingPage(): ReactElement {
                 'aria-label': 'weight',
               }}
               size='small'
-              style={{alignSelf: 'center'}}
+              style={{ alignSelf: 'center' }}
             />
           </Center>
         </div>

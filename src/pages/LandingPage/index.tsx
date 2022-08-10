@@ -1,6 +1,6 @@
 import { Stack } from '@mui/system'
 import { Button, InputAdornment, OutlinedInput, Typography } from '@mui/material'
-import React, { ReactElement, useState } from 'react'
+import React, { ReactElement } from 'react'
 import { Link } from 'react-router-dom'
 import Grid2 from '@mui/material/Unstable_Grid2'
 import { red } from '@mui/material/colors'
@@ -14,9 +14,17 @@ import jacqelineBrettImg from '../../images/jacqueline-brett.png'
 import altbauImg from '../../images/building_type/altbau.png'
 import altbauSaniertImg from '../../images/building_type/altbau_saniert.png'
 import neubauImg from '../../images/building_type/neubau.png'
+import { useConfiguratorStore } from '../../stores/configuratorStore'
 
 export function LandingPage(): ReactElement {
-  const [weight, setWeight] = useState(0)
+  const {
+    squareMeters,
+    setSquareMeters
+  } = useConfiguratorStore()
+
+  // TODO: calculate
+  const currentSavings = 100
+  const futureSavings = 200
 
   return (
     <Stack
@@ -36,9 +44,9 @@ export function LandingPage(): ReactElement {
           </Typography>
           <Center>
             <OutlinedInput
-              value={weight}
+              value={squareMeters}
               type='number'
-              onChange={(e) => setWeight(parseFloat(e.target.value))}
+              onChange={(e) => setSquareMeters(parseFloat(e.target.value))}
               endAdornment={<InputAdornment position='end'>m²</InputAdornment>}
               aria-describedby='outlined-weight-helper-text'
               inputProps={{
@@ -69,9 +77,8 @@ export function LandingPage(): ReactElement {
             </Typography>
             <Center>
               <OutlinedInput
-                value={weight}
+                value={currentSavings}
                 type='number'
-                onChange={(e) => setWeight(parseFloat(e.target.value))}
                 endAdornment={<InputAdornment position='end'>m²</InputAdornment>}
                 aria-describedby='outlined-weight-helper-text'
                 inputProps={{
@@ -91,9 +98,8 @@ export function LandingPage(): ReactElement {
             </Typography>
             <Center>
               <OutlinedInput
-                value={weight}
+                value={futureSavings}
                 type='number'
-                onChange={(e) => setWeight(parseFloat(e.target.value))}
                 endAdornment={<InputAdornment position='end'>m²</InputAdornment>}
                 aria-describedby='outlined-weight-helper-text'
                 inputProps={{

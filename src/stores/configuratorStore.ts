@@ -20,34 +20,34 @@ interface ConfiguratorStoreState {
 }
 
 const initialState: ConfiguratorStoreState = {
-  squareMeters: 0, 
+  squareMeters: 0,
   buildingType: undefined,
-  storeyHeight: 0, 
-  apartmentPosition: 'innenliegend', 
+  storeyHeight: 0,
+  apartmentPosition: 'innenliegend',
 
-  bigWindows: 0, 
-  mediumWindows: 0, 
-  smallWindows: 0, 
-  
-  heatingType: 'gas'
+  bigWindows: 0,
+  mediumWindows: 0,
+  smallWindows: 0,
+
+  heatingType: 'gas',
 }
 
 export const useConfiguratorStore = create(
   persist(
-    combine(cloneDeep(initialState), set => ({
+    combine(cloneDeep(initialState), (set) => ({
       clear: () => set(cloneDeep(initialState)),
-  
-      setSquareMeters: (squareMeters: number) => set({squareMeters}),
-      setStoreyHeight: (storeyHeight: number) => set({storeyHeight}),
-      setBuildingType: (buildingType: BuildingType) => set({buildingType}),
-      setApartmentPosition: (apartmentPosition: ApartmentPosition) => set({apartmentPosition}),
-      setBigWindows: (bigWindows: number) => set({bigWindows}),
-      setMediumWindows: (mediumWindows: number) => set({mediumWindows}),
-      setSmallWindows: (smallWindows: number) => set({smallWindows}),
-      setHeatingType: (heatingType: HeatingType) => set({heatingType})
+
+      setSquareMeters: (squareMeters: number) => set({ squareMeters }),
+      setStoreyHeight: (storeyHeight: number) => set({ storeyHeight }),
+      setBuildingType: (buildingType: BuildingType) => set({ buildingType }),
+      setApartmentPosition: (apartmentPosition: ApartmentPosition) => set({ apartmentPosition }),
+      setBigWindows: (bigWindows: number) => set({ bigWindows }),
+      setMediumWindows: (mediumWindows: number) => set({ mediumWindows }),
+      setSmallWindows: (smallWindows: number) => set({ smallWindows }),
+      setHeatingType: (heatingType: HeatingType) => set({ heatingType }),
     })),
     {
       name: 'configurator-storage',
-    }
-  )
+    },
+  ),
 )

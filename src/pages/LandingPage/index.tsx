@@ -17,7 +17,7 @@ import neubauImg from '../../images/building_type/neubau.png'
 import { useConfiguratorStore } from '../../stores/configuratorStore'
 
 export function LandingPage(): ReactElement {
-  const { squareMeters, setSquareMeters } = useConfiguratorStore()
+  const { squareMeters, setSquareMeters, buildingType, setBuildingType } = useConfiguratorStore()
 
   // TODO: calculate
   const currentSavings = 100
@@ -57,13 +57,13 @@ export function LandingPage(): ReactElement {
 
         <Grid2 container spacing={4} justifyContent='center'>
           <Grid2>
-            <SelectButton text='Altbau' img={altbauImg} />
+            <SelectButton text='Altbau' img={altbauImg} selected={buildingType === 'altbau'} onClick={() => setBuildingType('altbau')} />
           </Grid2>
           <Grid2>
-            <SelectButton text='Altbau saniert' img={altbauSaniertImg} />
+            <SelectButton text='Altbau saniert' img={altbauSaniertImg} selected={buildingType === 'altbau-saniert'} onClick={() => setBuildingType('altbau-saniert')}  />
           </Grid2>
           <Grid2>
-            <SelectButton text='Neubau' img={neubauImg} />
+            <SelectButton text='Neubau' img={neubauImg} selected={buildingType === 'neubau'} onClick={() => setBuildingType('neubau')}  />
           </Grid2>
         </Grid2>
 

@@ -8,7 +8,7 @@ type HeatingType = 'gas' | 'electricity' | 'pellet' | 'fern'
 
 interface ConfiguratorStoreState {
   squareMeters: number
-  buildingType?: BuildingType
+  buildingType: BuildingType
   storeyHeight: number
   apartmentPosition: ApartmentPosition
 
@@ -20,9 +20,9 @@ interface ConfiguratorStoreState {
 }
 
 const initialState: ConfiguratorStoreState = {
-  squareMeters: 0,
-  buildingType: undefined,
-  storeyHeight: 0,
+  squareMeters: 100,
+  buildingType: 'altbau',
+  storeyHeight: 2.8,
   apartmentPosition: 'innenliegend',
 
   bigWindows: 0,

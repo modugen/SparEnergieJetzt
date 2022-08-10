@@ -16,7 +16,7 @@ export function SelectButton({ text, onClick, img, selected = false }: Props): R
   return (
     <Box
       style={{
-        backgroundColor: selected ? green[100] : undefined, 
+        backgroundColor: selected ? green[100] : undefined,
         display: 'inline-block',
         boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25',
         padding: theme.spacing(4),

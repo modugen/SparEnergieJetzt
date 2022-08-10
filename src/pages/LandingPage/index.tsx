@@ -57,13 +57,28 @@ export function LandingPage(): ReactElement {
 
         <Grid2 container spacing={4} justifyContent='center'>
           <Grid2>
-            <SelectButton text='Altbau' img={altbauImg} selected={buildingType === 'altbau'} onClick={() => setBuildingType('altbau')} />
+            <SelectButton
+              text='Altbau'
+              img={altbauImg}
+              selected={buildingType === 'altbau'}
+              onClick={() => setBuildingType('altbau')}
+            />
           </Grid2>
           <Grid2>
-            <SelectButton text='Altbau saniert' img={altbauSaniertImg} selected={buildingType === 'altbau-saniert'} onClick={() => setBuildingType('altbau-saniert')}  />
+            <SelectButton
+              text='Altbau saniert'
+              img={altbauSaniertImg}
+              selected={buildingType === 'altbau-saniert'}
+              onClick={() => setBuildingType('altbau-saniert')}
+            />
           </Grid2>
           <Grid2>
-            <SelectButton text='Neubau' img={neubauImg} selected={buildingType === 'neubau'} onClick={() => setBuildingType('neubau')}  />
+            <SelectButton
+              text='Neubau'
+              img={neubauImg}
+              selected={buildingType === 'neubau'}
+              onClick={() => setBuildingType('neubau')}
+            />
           </Grid2>
         </Grid2>
 

@@ -78,6 +78,7 @@ export function LandingPage(): ReactElement {
                   'aria-label': 'weight',
                 }}
                 size='small'
+                disabled
               />
             </Center>
             <Typography variant='subtitle1'>
@@ -99,6 +100,7 @@ export function LandingPage(): ReactElement {
                   'aria-label': 'weight',
                 }}
                 size='small'
+                disabled
               />
             </Center>
             <Typography variant='subtitle1'>

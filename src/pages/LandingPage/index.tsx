@@ -6,9 +6,14 @@ import Grid2 from '@mui/material/Unstable_Grid2'
 import { red } from '@mui/material/colors'
 import { SelectButton } from '../../components/SelectButton'
 import { LandingPageSection } from './components/LandingPageSection'
+import { Center } from '../../components/Center'
+
+// images
 import chartImg from '../../images/chart_placeholder.png'
 import jacqelineBrettImg from '../../images/jacqueline-brett.png'
-import { Center } from '../../components/Center'
+import altbauImg from '../../images/building_type/altbau.png'
+import altbauSaniertImg from '../../images/building_type/altbau_saniert.png'
+import neubauImg from '../../images/building_type/neubau.png'
 
 export function LandingPage(): ReactElement {
   const [weight, setWeight] = useState(0)
@@ -47,13 +52,22 @@ export function LandingPage(): ReactElement {
 
         <Grid2 container spacing={4} justifyContent='center'>
           <Grid2>
-            <SelectButton text='hello' />
+            <SelectButton 
+              text='Altbau' 
+              img={altbauImg}
+            />
           </Grid2>
           <Grid2>
-            <SelectButton text='hello' />
+            <SelectButton 
+              text='Altbau saniert' 
+              img={altbauSaniertImg}  
+            />
           </Grid2>
           <Grid2>
-            <SelectButton text='hello' />
+            <SelectButton 
+              text='Neubau' 
+              img={neubauImg}
+            />
           </Grid2>
         </Grid2>
 

@@ -4,9 +4,11 @@ import React, { ReactElement } from 'react'
 
 interface Props {
   text: string
+  img: string
+  onClick?: () => void
 }
 
-export function SelectButton({ text }: Props): ReactElement {
+export function SelectButton({ text, onClick, img }: Props): ReactElement {
   const theme = useTheme()
 
   return (
@@ -15,16 +17,17 @@ export function SelectButton({ text }: Props): ReactElement {
         display: 'inline-block',
         boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25',
         padding: theme.spacing(4),
+        cursor: onClick ? 'pointer' : undefined
       }}
+      onClick={onClick}
     >
-      <Box
+      <img
+        src={img}
         style={{
-          backgroundColor: '#ebecf0',
           width: 100,
-          height: 100,
         }}
       />
-      <Typography>{text}</Typography>
+      <Typography textAlign="center">{text}</Typography>
     </Box>
   )
 }

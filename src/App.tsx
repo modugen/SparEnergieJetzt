@@ -2,12 +2,19 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {Button, Container} from '@mui/material'
+import { Route, Routes } from 'react-router-dom';
+import { LandingPage } from './pages/LandingPage';
+import { ConfiguratorPage } from './pages/ConfiguratorPage';
+import { ResultPage } from './pages/ResultPage';
 
 function App() {
   return (
-    <Container>
-      <Button>hello</Button>
-    </Container>
+
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="configurator" element={<ConfiguratorPage />} />
+      <Route path="results" element={<ResultPage />} />
+    </Routes>
   );
 }
 

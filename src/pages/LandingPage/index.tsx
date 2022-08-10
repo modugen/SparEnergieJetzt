@@ -97,6 +97,7 @@ export function LandingPage(): ReactElement {
       </LandingPageSection>
 
       <LandingPageSection style={{ backgroundColor: '#F4F4F4' }}>
+        <Typography variant='h3' textAlign="center">Warum jetzt?</Typography>
         <div>
           <Link to='/results'>Result page</Link>
         </div>

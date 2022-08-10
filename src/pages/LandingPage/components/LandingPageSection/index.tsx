@@ -6,11 +6,15 @@ interface Props {
   style?: CSSProperties
 }
 
-export function LandingPageSection({children, style}: Props): ReactElement {
+export function LandingPageSection({ children, style }: Props): ReactElement {
   return (
-    <Container maxWidth={false} style={{
-      ...style
-    }}>
+    <Container
+      maxWidth={false}
+      sx={{
+        ...style,
+        padding: theme => theme.spacing(8)
+      }}
+    >
       {children}
     </Container>
   )

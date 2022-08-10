@@ -1,7 +1,4 @@
-import React from 'react'
-import logo from './logo.svg'
 import './App.css'
-import { Button, Container } from '@mui/material'
 import { Route, Routes } from 'react-router-dom'
 import { LandingPage } from './pages/LandingPage'
 import { ConfiguratorPage } from './pages/ConfiguratorPage'

@@ -1,5 +1,5 @@
 import { Container, Stack } from '@mui/system'
-import { Button, InputAdornment, OutlinedInput, Typography } from '@mui/material'
+import { Button, Grid, InputAdornment, OutlinedInput, Typography } from '@mui/material'
 import React, { ReactElement, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Grid2 from '@mui/material/Unstable_Grid2'
@@ -7,6 +7,7 @@ import { red } from '@mui/material/colors'
 import { SelectButton } from '../../components/SelectButton'
 import { LandingPageSection } from './components/LandingPageSection'
 import chartImg from '../../images/chart_placeholder.png'
+import jacqelineBrettImg from '../../images/jacqueline-brett.png'
 
 export function LandingPage(): ReactElement {
   const [weight, setWeight] = useState(0)
@@ -106,7 +107,9 @@ export function LandingPage(): ReactElement {
         <Typography variant='h3' textAlign='center'>
           Warum jetzt?
         </Typography>
-        <img src={chartImg} />
+        <Grid2 container justifyContent="center">
+          <img src={chartImg} />
+        </Grid2>
       </LandingPageSection>
 
       <LandingPageSection>
@@ -114,6 +117,18 @@ export function LandingPage(): ReactElement {
           <Link to='/configurator' style={{ textDecoration: 'none' }}>
             <Button variant='contained'>Jetzt Konfigurieren</Button>
           </Link>
+        </Grid2>
+
+        <Grid2 container justifyContent="center" alignItems="center" spacing={2}>
+          <Grid2>
+            <Typography>
+              Jacqueline Brett sparte mit dem Kofigurator 700,32€ per Heizperiode 
+              bei Investitionskosten von 280,00€
+            </Typography>
+          </Grid2>
+          <Grid2>
+            <img src={jacqelineBrettImg} style={{borderRadius: 100}} />
+          </Grid2>
         </Grid2>
       </LandingPageSection>
     </Stack>

@@ -1,4 +1,4 @@
-import { Container } from '@mui/system'
+import { Container, Stack } from '@mui/system'
 import React, { CSSProperties, ReactElement, ReactNode } from 'react'
 
 interface Props {
@@ -12,7 +12,7 @@ export function LandingPageSection({ children, style }: Props): ReactElement {
       maxWidth={false}
       sx={{
         ...style,
-        padding: theme => theme.spacing(8)
+        padding: (theme) => theme.spacing(8),
       }}
     >
       {children}

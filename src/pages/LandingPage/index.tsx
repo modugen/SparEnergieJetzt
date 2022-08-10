@@ -6,12 +6,17 @@ import Grid2 from '@mui/material/Unstable_Grid2'
 import { red } from '@mui/material/colors'
 import { SelectButton } from '../../components/SelectButton'
 import { LandingPageSection } from './components/LandingPageSection'
+import  chartImg from '../../images/chart_placeholder.png'
 
 export function LandingPage(): ReactElement {
   const [weight, setWeight] = useState(0)
 
   return (
-    <Stack direction='column'>
+    <Stack direction='column' 
+      // This is needed as the grid gets somehow a bit bigger than the screen
+      // width
+      style={{overflowX: 'hidden'}}
+    >
       <LandingPageSection>
         <Typography variant='h3' textAlign='center'>
           Energiekrise sinnvoll bewältigen
@@ -32,7 +37,7 @@ export function LandingPage(): ReactElement {
           size='small'
         />
 
-        <Grid2 container spacing={8} justifyContent='center'>
+        <Grid2 container spacing={8} justifyContent='center' >
           <Grid2>
             <SelectButton text='hello' />
           </Grid2>
@@ -97,13 +102,20 @@ export function LandingPage(): ReactElement {
       </LandingPageSection>
 
       <LandingPageSection style={{ backgroundColor: '#F4F4F4' }}>
-        <Typography variant='h3' textAlign="center">Warum jetzt?</Typography>
-        <div>
-          <Link to='/results'>Result page</Link>
-        </div>
-        <div>
-          <Link to='/configurator'>Configurator page</Link>
-        </div>
+        <Typography variant='h3' textAlign='center'>
+          Warum jetzt?
+        </Typography>
+        <img
+          src={chartImg}
+        />
+      </LandingPageSection>
+
+      <LandingPageSection>
+        <Grid2 container justifyContent='center'>
+          <Link to='/configurator' style={{ textDecoration: 'none' }}>
+            <Button variant='contained'>Jetzt Konfigurieren</Button>
+          </Link>
+        </Grid2>
       </LandingPageSection>
     </Stack>
   )

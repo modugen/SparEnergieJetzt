@@ -17,10 +17,7 @@ import neubauImg from '../../images/building_type/neubau.png'
 import { useConfiguratorStore } from '../../stores/configuratorStore'
 
 export function LandingPage(): ReactElement {
-  const {
-    squareMeters,
-    setSquareMeters
-  } = useConfiguratorStore()
+  const { squareMeters, setSquareMeters } = useConfiguratorStore()
 
   // TODO: calculate
   const currentSavings = 100

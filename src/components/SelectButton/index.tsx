@@ -17,7 +17,7 @@ export function SelectButton({ text, onClick, img }: Props): ReactElement {
         display: 'inline-block',
         boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25',
         padding: theme.spacing(4),
-        cursor: onClick ? 'pointer' : undefined
+        cursor: onClick ? 'pointer' : undefined,
       }}
       onClick={onClick}
     >
@@ -27,7 +27,7 @@ export function SelectButton({ text, onClick, img }: Props): ReactElement {
           width: 100,
         }}
       />
-      <Typography textAlign="center">{text}</Typography>
+      <Typography textAlign='center'>{text}</Typography>
     </Box>
   )
 }

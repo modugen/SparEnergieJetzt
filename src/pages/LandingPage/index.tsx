@@ -1,5 +1,5 @@
-import { Container, Stack } from '@mui/system'
-import { Button, Grid, InputAdornment, OutlinedInput, Typography } from '@mui/material'
+import { Stack } from '@mui/system'
+import { Button, InputAdornment, OutlinedInput, Typography } from '@mui/material'
 import React, { ReactElement, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Grid2 from '@mui/material/Unstable_Grid2'
@@ -52,22 +52,13 @@ export function LandingPage(): ReactElement {
 
         <Grid2 container spacing={4} justifyContent='center'>
           <Grid2>
-            <SelectButton 
-              text='Altbau' 
-              img={altbauImg}
-            />
+            <SelectButton text='Altbau' img={altbauImg} />
           </Grid2>
           <Grid2>
-            <SelectButton 
-              text='Altbau saniert' 
-              img={altbauSaniertImg}  
-            />
+            <SelectButton text='Altbau saniert' img={altbauSaniertImg} />
           </Grid2>
           <Grid2>
-            <SelectButton 
-              text='Neubau' 
-              img={neubauImg}
-            />
+            <SelectButton text='Neubau' img={neubauImg} />
           </Grid2>
         </Grid2>
 

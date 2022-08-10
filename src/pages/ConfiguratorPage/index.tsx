@@ -16,33 +16,36 @@ export function ConfiguratorPage(): ReactElement {
   return (
     <Container>
       <Routes>
-        <Route path='step-1' element={
-        <Stack>
-          <SelectButtonGroup 
-            config={[
-              {
-                text: '2,5m',
-                img: littleStoreyImg,
-                selected: storeyHeight === 2.5,
-                onClick: () => setStoreyHeight(2.5)
-              }, 
-              {
-                text: '2,8m',
-                img: mediumStoreyImg,
-                selected: storeyHeight === 2.8,
-                onClick: () => setStoreyHeight(2.8)
-              }, 
-              {
-                text: '3,2m',
-                img: bigStoreyImg,
-                selected: storeyHeight === 3.2,
-                onClick: () => setStoreyHeight(3.2)
-              }
-            ]}
-          />
-          <Typography textAlign="center">Oder gib deine Deckenhöhe individuell an!</Typography>
-        </Stack>
-        } />
+        <Route
+          path='step-1'
+          element={
+            <Stack>
+              <SelectButtonGroup
+                config={[
+                  {
+                    text: '2,5m',
+                    img: littleStoreyImg,
+                    selected: storeyHeight === 2.5,
+                    onClick: () => setStoreyHeight(2.5),
+                  },
+                  {
+                    text: '2,8m',
+                    img: mediumStoreyImg,
+                    selected: storeyHeight === 2.8,
+                    onClick: () => setStoreyHeight(2.8),
+                  },
+                  {
+                    text: '3,2m',
+                    img: bigStoreyImg,
+                    selected: storeyHeight === 3.2,
+                    onClick: () => setStoreyHeight(3.2),
+                  },
+                ]}
+              />
+              <Typography textAlign='center'>Oder gib deine Deckenhöhe individuell an!</Typography>
+            </Stack>
+          }
+        />
         <Route path='step-2' element={<Typography>Page 2</Typography>} />
         <Route path='step-3' element={<Typography>Page 3</Typography>} />
         <Route path='step-4' element={<Typography>Page 4</Typography>} />
@@ -51,7 +54,12 @@ export function ConfiguratorPage(): ReactElement {
       <Button>Weiter</Button>
       <Link to='/'>Landing page</Link>
 
-      <Pagination count={10} variant="outlined" page={1} onChange={(_, page) => navigate(`step-${page}`)} />
+      <Pagination
+        count={10}
+        variant='outlined'
+        page={1}
+        onChange={(_, page) => navigate(`step-${page}`)}
+      />
     </Container>
   )
 }

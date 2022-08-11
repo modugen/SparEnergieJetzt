@@ -1,4 +1,4 @@
-import { Backdrop, Button, Fab, SpeedDial, SpeedDialAction } from '@mui/material'
+import { Backdrop, Fab, SpeedDial, SpeedDialAction } from '@mui/material'
 import React, { ReactElement, useState } from 'react'
 import ShareIcon from '@mui/icons-material/Share'
 import FacebookIcon from '@mui/icons-material/Facebook'
@@ -35,7 +35,6 @@ export function ShareMenu(): ReactElement {
 
   return (
     <>
-      <Button onClick={() => window.navigator.share(data)}>share</Button>
       <Backdrop open={open} />
       <SpeedDial
         ariaLabel='SpeedDial basic example'

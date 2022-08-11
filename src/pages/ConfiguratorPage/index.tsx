@@ -1,17 +1,25 @@
-import { Button, Pagination, Typography } from '@mui/material'
+import { Button, InputAdornment, OutlinedInput, Pagination, Typography } from '@mui/material'
 import { Container, Stack } from '@mui/system'
-import React, { ReactElement } from 'react'
-import { Link, Route, Routes, useNavigate } from 'react-router-dom'
+import React, { ReactElement, useMemo } from 'react'
+import { Link, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import littleStoreyImg from '../../images/storey_height/little.png'
 import mediumStoreyImg from '../../images/storey_height/medium.png'
 import bigStoreyImg from '../../images/storey_height/big.png'
 import { useConfiguratorStore } from '../../stores/configuratorStore'
 import { SelectButtonGroup } from '../../components/SelectButtonGroup'
+import { Center } from '../../components/Center'
 
 export function ConfiguratorPage(): ReactElement {
   const navigate = useNavigate()
+  const location = useLocation()
 
   const { storeyHeight, setStoreyHeight } = useConfiguratorStore()
+
+  const page = useMemo(() => 
+    parseInt(location.pathname.charAt(location.pathname.length - 1) as string) || 1
+  , [location.pathname])
+
+  const pages = 4
 
   return (
     <Container>
@@ -43,6 +51,19 @@ export function ConfiguratorPage(): ReactElement {
                 ]}
               />
               <Typography textAlign='center'>Oder gib deine Deckenhöhe individuell an!</Typography>
+              <Center>
+                <OutlinedInput
+                  value={storeyHeight}
+                  onChange={e => setStoreyHeight(parseFloat(e.target.value))}
+                  type='number'
+                  endAdornment={<InputAdornment position='end'>m²</InputAdornment>}
+                  aria-describedby='outlined-weight-helper-text'
+                  inputProps={{
+                    'aria-label': 'weight',
+                  }}
+                  size='small'
+                />
+              </Center>
             </Stack>
           }
         />
@@ -51,13 +72,19 @@ export function ConfiguratorPage(): ReactElement {
         <Route path='step-4' element={<Typography>Page 4</Typography>} />
       </Routes>
 
-      <Button>Weiter</Button>
+      <Button variant='contained' onClick={() => {
+        if (page >= pages){
+          navigate('../results')
+        } else {
+          navigate(`step-${page + 1}`)}
+        }
+      }>Weiter</Button>
       <Link to='/'>Landing page</Link>
 
       <Pagination
-        count={10}
+        count={pages}
         variant='outlined'
-        page={1}
+        page={page}
         onChange={(_, page) => navigate(`step-${page}`)}
       />
     </Container>

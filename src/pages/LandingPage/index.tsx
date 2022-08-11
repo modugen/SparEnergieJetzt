@@ -132,7 +132,7 @@ export function LandingPage(): ReactElement {
         </Typography>
 
         <Center>
-          <Link to='/configurator' style={{ textDecoration: 'none' }}>
+          <Link to='/configurator/step-1' style={{ textDecoration: 'none' }}>
             <Button variant='contained'>Jetzt Konfigurieren</Button>
           </Link>
         </Center>
@@ -149,7 +149,7 @@ export function LandingPage(): ReactElement {
 
       <LandingPageSection>
         <Center>
-          <Link to='/configurator' style={{ textDecoration: 'none' }}>
+          <Link to='/configurator/step-1' style={{ textDecoration: 'none' }}>
             <Button variant='contained'>Jetzt Konfigurieren</Button>
           </Link>
         </Center>

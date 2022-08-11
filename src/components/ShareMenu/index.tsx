@@ -21,7 +21,7 @@ export function ShareMenu(): ReactElement {
         onOpen={handleOpen}
         open={open}
       >
-        <SpeedDialAction tooltipOpen  icon={<FacebookIcon />} tooltipTitle='Facebook' />
+        <SpeedDialAction tooltipOpen icon={<FacebookIcon />} tooltipTitle='Facebook' />
         <SpeedDialAction tooltipOpen icon={<TwitterIcon />} tooltipTitle='Twitter' />
         <SpeedDialAction tooltipOpen icon={<WhatsAppIcon />} tooltipTitle='WhatsApp' />
       </SpeedDial>

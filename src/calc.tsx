@@ -53,8 +53,29 @@ interface ConfiguratorParameters {
     fensterflaecheRelativ: number
     fensterflaecheAbsolut: number // todo maybe just use one of these, and do the calculation in the input fields
     windows: Array<WindowConfiguration>
+    energieEinheitsKosten: Map<Heizungsart, number>
 }
 
+
+const DEFAULT_ENERGY_UNIT_COST = new Map<Heizungsart, number>(
+    [
+        [Heizungsart.Gas, 0.27],
+        [Heizungsart.Strom, 0.5],
+        [Heizungsart.Pellets, 1], // TODO: find actual value
+        [Heizungsart.Fernwaerme, 1] // TODO: find actual value
+    ]
+)
+
+
+
+const HEATING_ENERGY_SOURCE_EFFICIENCY_MAP = new Map<Heizungsart, number>(
+    [
+        [Heizungsart.Gas, 0.88],
+        [Heizungsart.Strom, 1],
+        [Heizungsart.Pellets, 0.9],
+        [Heizungsart.Fernwaerme, 1]
+    ]
+)
 
 
 function calc_external_wall_area(params: ConfiguratorParameters): number {
@@ -188,3 +209,10 @@ function calc_H_T_total(params: ConfiguratorParameters): number {
 }
 
 
+
+
+function calc_effective_heating_cost(params: ConfiguratorParameters): number {
+    const H_T_total = calc_H_T_total(params)
+    const heating_cost = H_T_total / HEATING_ENERGY_SOURCE_EFFICIENCY_MAP.get(params.heizungsart) * params.energieEinheitsKosten.get(params.heizungsart)
+    return heating_cost
+}

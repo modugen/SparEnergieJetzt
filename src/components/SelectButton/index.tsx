@@ -22,7 +22,7 @@ export function SelectButton({ text, onClick, img, selected = false }: Props): R
         boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25',
         padding: theme.spacing(4),
         cursor: onClick ? 'pointer' : undefined,
-        width: 100, 
+        width: 100,
       }}
       onClick={onClick}
     >
@@ -34,14 +34,10 @@ export function SelectButton({ text, onClick, img, selected = false }: Props): R
           }}
         />
       </Center>
-      <Box 
-        minHeight="3em"
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        marginTop={1}
-      >
-        <Typography textAlign='center' lineHeight="1.5em">{text}</Typography>
+      <Box minHeight='3em' display='flex' alignItems='center' justifyContent='center' marginTop={1}>
+        <Typography textAlign='center' lineHeight='1.5em'>
+          {text}
+        </Typography>
       </Box>
     </Box>
   )

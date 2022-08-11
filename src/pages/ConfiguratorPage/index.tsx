@@ -19,13 +19,18 @@ import pelletHeatingImg from '../../images/heating_type/pellet.png'
 import fernHeatingImg from '../../images/heating_type/fern.png'
 import electricityHeatingImg from '../../images/heating_type/electricity.png'
 
-
 export function ConfiguratorPage(): ReactElement {
   const navigate = useNavigate()
   const location = useLocation()
 
-  const { storeyHeight, setStoreyHeight, apartmentPosition, setApartmentPosition, heatingType, setHeatingType } =
-    useConfiguratorStore()
+  const {
+    storeyHeight,
+    setStoreyHeight,
+    apartmentPosition,
+    setApartmentPosition,
+    heatingType,
+    setHeatingType,
+  } = useConfiguratorStore()
 
   const page = useMemo(
     () => parseInt(location.pathname.charAt(location.pathname.length - 1) as string) || 1,
@@ -107,56 +112,62 @@ export function ConfiguratorPage(): ReactElement {
             />
           }
         />
-        <Route path='step-3' element={
-          <Stack direction="column">
+        <Route
+          path='step-3'
+          element={
+            <Stack direction='column'>
+              <SelectButtonGroup
+                config={[
+                  {
+                    text: 'große Fenster',
+                    img: bigWindowImg,
+                  },
+                  {
+                    text: 'mittelgroße Fenster',
+                    img: mediumWindowImg,
+                  },
+                  {
+                    text: 'kleine Fenster',
+                    img: smallWindowImg,
+                  },
+                ]}
+              />
+            </Stack>
+          }
+        />
+        <Route
+          path='step-4'
+          element={
             <SelectButtonGroup
               config={[
                 {
-                  text: 'große Fenster',
-                  img: bigWindowImg,
+                  text: 'Gasheizung',
+                  img: gasHeatingImg,
+                  selected: heatingType === 'gas',
+                  onClick: () => setHeatingType('gas'),
                 },
                 {
-                  text: 'mittelgroße Fenster',
-                  img: mediumWindowImg,
+                  text: 'Pelletheizung',
+                  img: pelletHeatingImg,
+                  selected: heatingType === 'pellet',
+                  onClick: () => setHeatingType('pellet'),
                 },
                 {
-                  text: 'kleine Fenster',
-                  img: smallWindowImg,
+                  text: 'Fernwärme',
+                  img: fernHeatingImg,
+                  selected: heatingType === 'fern',
+                  onClick: () => setHeatingType('fern'),
+                },
+                {
+                  text: 'Stromheizung',
+                  img: electricityHeatingImg,
+                  selected: heatingType === 'electricity',
+                  onClick: () => setHeatingType('electricity'),
                 },
               ]}
             />
-          </Stack>
-        } />
-        <Route path='step-4' element={
-          <SelectButtonGroup
-            config={[
-              {
-                text: 'Gasheizung',
-                img: gasHeatingImg,
-                selected: heatingType === 'gas',
-                onClick: () => setHeatingType('gas'),
-              },
-              {
-                text: 'Pelletheizung',
-                img: pelletHeatingImg,
-                selected: heatingType === 'pellet',
-                onClick: () => setHeatingType('pellet'),
-              },
-              {
-                text: 'Fernwärme',
-                img: fernHeatingImg,
-                selected: heatingType === 'fern',
-                onClick: () => setHeatingType('fern'),
-              },
-              {
-                text: 'Stromheizung',
-                img: electricityHeatingImg,
-                selected: heatingType === 'electricity',
-                onClick: () => setHeatingType('electricity'),
-              },
-            ]}
-          />
-        } />
+          }
+        />
       </Routes>
 
       <Button

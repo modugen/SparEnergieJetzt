@@ -99,6 +99,13 @@ function calc_effective_window_area(params: ConfiguratorParameters): number {
     return windowArea
 }
 
+function calc_effective_external_wall_area(params: ConfiguratorParameters): number {
+    const windowArea = calc_effective_window_area(params)
+    const effectiveWallArea = calc_external_wall_area(params) - windowArea
+    // TODO: this could become negative, if the user inputs are not properly configured
+    return effectiveWallArea
+}
+
 
 function get_u_value_map(params: ConfiguratorParameters): Map<ComponentWithUValue, number> {
     switch (params.bausubstanz) {

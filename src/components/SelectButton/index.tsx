@@ -11,12 +11,20 @@ interface Props {
   onClick?: () => void
   selected?: boolean
 
-  inputNumberValue?: number,
+  inputNumberValue?: number
   onChangeInputNumberValue?: (val: number) => void
   inputAdornment?: string
 }
 
-export function SelectButton({ text, onClick, img, selected = false, inputNumberValue, onChangeInputNumberValue, inputAdornment }: Props): ReactElement {
+export function SelectButton({
+  text,
+  onClick,
+  img,
+  selected = false,
+  inputNumberValue,
+  onChangeInputNumberValue,
+  inputAdornment,
+}: Props): ReactElement {
   const theme = useTheme()
 
   return (
@@ -45,23 +53,27 @@ export function SelectButton({ text, onClick, img, selected = false, inputNumber
           {text}
         </Typography>
       </Box>
-      {isFunction(onChangeInputNumberValue) &&
+      {isFunction(onChangeInputNumberValue) && (
         <Box>
           <OutlinedInput
             value={inputNumberValue}
             type='number'
-            onChange={onChangeInputNumberValue ? (e) => onChangeInputNumberValue(parseFloat(e.target.value)) : undefined}
+            onChange={
+              onChangeInputNumberValue
+                ? (e) => onChangeInputNumberValue(parseFloat(e.target.value))
+                : undefined
+            }
             endAdornment={<InputAdornment position='end'>{inputAdornment}</InputAdornment>}
             aria-describedby='outlined-weight-helper-text'
             inputProps={{
               'aria-label': 'weight',
-              min: 0
+              min: 0,
             }}
             size='small'
             style={{ alignSelf: 'center' }}
           />
         </Box>
-   } 
+      )}
     </Box>
   )
 }

@@ -39,12 +39,12 @@ export function ConfiguratorPage(): ReactElement {
     heatingType,
     setHeatingType,
 
-    bigWindows, 
-    setBigWindows, 
-    mediumWindows, 
-    setMediumWindows, 
-    smallWindows, 
-    setSmallWindows
+    bigWindows,
+    setBigWindows,
+    mediumWindows,
+    setMediumWindows,
+    smallWindows,
+    setSmallWindows,
   } = useConfiguratorStore()
 
   const page = useMemo(
@@ -156,23 +156,23 @@ export function ConfiguratorPage(): ReactElement {
                     {
                       text: 'große Fenster',
                       img: bigWindowImg,
-                      inputAdornment: 'Stk.', 
-                      inputNumberValue: bigWindows, 
-                      onChangeInputNumberValue: setBigWindows
+                      inputAdornment: 'Stk.',
+                      inputNumberValue: bigWindows,
+                      onChangeInputNumberValue: setBigWindows,
                     },
                     {
                       text: 'mittelgroße Fenster',
                       img: mediumWindowImg,
-                      inputAdornment: 'Stk.', 
-                      inputNumberValue: mediumWindows, 
-                      onChangeInputNumberValue: setMediumWindows
+                      inputAdornment: 'Stk.',
+                      inputNumberValue: mediumWindows,
+                      onChangeInputNumberValue: setMediumWindows,
                     },
                     {
                       text: 'kleine Fenster',
                       img: smallWindowImg,
-                      inputAdornment: 'Stk.', 
-                      inputNumberValue: smallWindows, 
-                      onChangeInputNumberValue: setSmallWindows
+                      inputAdornment: 'Stk.',
+                      inputNumberValue: smallWindows,
+                      onChangeInputNumberValue: setSmallWindows,
                     },
                   ]}
                 />

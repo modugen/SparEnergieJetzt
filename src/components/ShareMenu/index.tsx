@@ -65,7 +65,7 @@ export function ShareMenu(): ReactElement {
           tooltipOpen
           icon={<WhatsAppIcon />}
           tooltipTitle='WhatsApp'
-          onClick={() => window.open(`whatsapp://send?text=${SHARE_TEXT}`)}
+          onClick={() => window.open(`https://api.whatsapp.com/send?text=${SHARE_TEXT}`)}
         />
       </SpeedDial>
     </>

@@ -63,8 +63,8 @@ export function ConfiguratorPage(): ReactElement {
           justifyContent: 'center',
           alignItems: 'center',
           flexGrow: 1,
-          marginTop: 64, 
-          marginBottom: 64
+          marginTop: 64,
+          marginBottom: 64,
         }}
       >
         <Routes>
@@ -223,7 +223,9 @@ export function ConfiguratorPage(): ReactElement {
         </Stack>
       </Center>
       <Portal>
-        <Typography textAlign="center" style={{ color: 'black' }}>{stepToQuestionMap[page] as string}</Typography>
+        <Typography textAlign='center' style={{ color: 'black' }}>
+          {stepToQuestionMap[page] as string}
+        </Typography>
       </Portal>
     </Container>
   )

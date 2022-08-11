@@ -23,7 +23,7 @@ function Header() {
           <Center style={{ flexGrow: 1 }}>
             <div id='portal-root' ref={(ref) => setHeaderPortalRoot(ref)} />
           </Center>
-          <Box sx={{minWidth: '40px' }}></Box>
+          <Box sx={{ minWidth: '40px' }}></Box>
         </Toolbar>
       </AppBar>
     </Box>

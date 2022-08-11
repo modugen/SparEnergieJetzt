@@ -12,7 +12,8 @@ export function LandingPageSection({ children, style }: Props): ReactElement {
       maxWidth={false}
       sx={{
         ...style,
-        // padding: (theme) => theme.spacing(8),
+        paddingTop: (theme) => theme.spacing(8),
+        paddingBottom: (theme) => theme.spacing(8),
       }}
     >
       <Stack direction='column' spacing={4}>

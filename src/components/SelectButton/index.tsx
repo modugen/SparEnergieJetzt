@@ -16,14 +16,14 @@ export function SelectButton({ text, onClick, img, selected = false }: Props): R
 
   return (
     <Box
-      sx={{
+      style={{
         backgroundColor: selected ? green[100] : undefined,
         display: 'inline-block',
         padding: theme.spacing(4),
-        // boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25',
-        boxShadow: 4,
+        boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25',
+        // boxShadow: 4,
         cursor: onClick ? 'pointer' : undefined,
-        width: '1em',
+        width: 100,
       }}
       onClick={onClick}
     >
@@ -31,7 +31,7 @@ export function SelectButton({ text, onClick, img, selected = false }: Props): R
         <img
           src={img}
           style={{
-            height: '2em',
+            height: 80,
           }}
         />
       </Center>

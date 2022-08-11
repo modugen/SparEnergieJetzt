@@ -15,6 +15,7 @@ import altbauImg from '../../images/building_type/altbau.png'
 import altbauSaniertImg from '../../images/building_type/altbau_saniert.png'
 import neubauImg from '../../images/building_type/neubau.png'
 import { useConfiguratorStore } from '../../stores/configuratorStore'
+import { ShareMenu } from '../../components/ShareMenu'
 
 export function LandingPage(): ReactElement {
   const { squareMeters, setSquareMeters, buildingType, setBuildingType } = useConfiguratorStore()
@@ -166,6 +167,7 @@ export function LandingPage(): ReactElement {
           </Grid2>
         </Grid2>
       </LandingPageSection>
+      <ShareMenu />
     </Stack>
   )
 }

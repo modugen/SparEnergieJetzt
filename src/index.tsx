@@ -6,9 +6,9 @@ import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from '@mui/material/styles'
 import { theme, globalStyles } from '../src/styles'
 import { GlobalStyles } from '@mui/material'
-import { hydrate, render } from 'react-dom'
+import { createRoot } from 'react-dom/client';
 
-const rootElement = document.getElementById('root') as HTMLElement
+const root = createRoot(document.getElementById('root') as HTMLElement)
 
 const AppWithProviders = () => (
   <React.StrictMode>
@@ -21,11 +21,13 @@ const AppWithProviders = () => (
   </React.StrictMode>
 )
 
-if (rootElement.hasChildNodes()) {
-  hydrate(<AppWithProviders />, rootElement)
-} else {
-  render(<AppWithProviders />, rootElement)
-}
+root.render(<AppWithProviders />)
+
+// if (root.) {
+//   hydrate(<AppWithProviders />, rootElement)
+// } else {
+//   render(<AppWithProviders />, rootElement)
+// }
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

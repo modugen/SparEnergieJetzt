@@ -8,16 +8,20 @@ import bigStoreyImg from '../../images/storey_height/big.png'
 import { useConfiguratorStore } from '../../stores/configuratorStore'
 import { SelectButtonGroup } from '../../components/SelectButtonGroup'
 import { Center } from '../../components/Center'
+import innerImg from '../../images/apartment_position/innenliegend.png'
+import cornerImg from '../../images/apartment_position/am_eck.png'
+import detachedImg from '../../images/apartment_position/freistehend.png'
 
 export function ConfiguratorPage(): ReactElement {
   const navigate = useNavigate()
   const location = useLocation()
 
-  const { storeyHeight, setStoreyHeight } = useConfiguratorStore()
+  const { storeyHeight, setStoreyHeight, apartmentPosition, setApartmentPosition  } = useConfiguratorStore()
 
-  const page = useMemo(() => 
-    parseInt(location.pathname.charAt(location.pathname.length - 1) as string) || 1
-  , [location.pathname])
+  const page = useMemo(
+    () => parseInt(location.pathname.charAt(location.pathname.length - 1) as string) || 1,
+    [location.pathname],
+  )
 
   const pages = 4
 
@@ -54,7 +58,7 @@ export function ConfiguratorPage(): ReactElement {
               <Center>
                 <OutlinedInput
                   value={storeyHeight}
-                  onChange={e => setStoreyHeight(parseFloat(e.target.value))}
+                  onChange={(e) => setStoreyHeight(parseFloat(e.target.value))}
                   type='number'
                   endAdornment={<InputAdornment position='end'>m²</InputAdornment>}
                   aria-describedby='outlined-weight-helper-text'
@@ -67,18 +71,46 @@ export function ConfiguratorPage(): ReactElement {
             </Stack>
           }
         />
-        <Route path='step-2' element={<Typography>Page 2</Typography>} />
+        <Route path='step-2' element={
+          <SelectButtonGroup
+            config={[
+              {
+                text: 'innenliegend',
+                img: innerImg,
+                selected: apartmentPosition === 'innenliegend',
+                onClick: () => setApartmentPosition('innenliegend'),
+              },
+              {
+                text: 'am Eck',
+                img: cornerImg,
+                selected: apartmentPosition === 'am-eck',
+                onClick: () => setApartmentPosition('am-eck'),
+              },
+              {
+                text: 'freistehend',
+                img: detachedImg,
+                selected: apartmentPosition === 'freistehend',
+                onClick: () => setApartmentPosition('freistehend'),
+              },
+            ]}
+          />
+        }/>
         <Route path='step-3' element={<Typography>Page 3</Typography>} />
         <Route path='step-4' element={<Typography>Page 4</Typography>} />
       </Routes>
 
-      <Button variant='contained' onClick={() => {
-        if (page >= pages){
-          navigate('../results')
-        } else {
-          navigate(`step-${page + 1}`)}
-        }
-      }>Weiter</Button>
+      <Button
+        variant='contained'
+        onClick={() => {
+          if (page >= pages) {
+            navigate('../results')
+          } else {
+            navigate(`step-${page + 1}`)
+          }
+        }}
+      >
+        Weiter
+      </Button>
       <Link to='/'>Landing page</Link>
 
       <Pagination

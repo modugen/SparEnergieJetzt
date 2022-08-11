@@ -20,7 +20,7 @@ export function ShareMenu(): ReactElement {
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
 
-  if (isFunction(window.navigator.share)){
+  if (isFunction(window.navigator.share)) {
     return (
       <Fab
         color='primary'
@@ -35,7 +35,7 @@ export function ShareMenu(): ReactElement {
 
   return (
     <>
-    <Button onClick={() => window.navigator.share(data)}>share</Button>
+      <Button onClick={() => window.navigator.share(data)}>share</Button>
       <Backdrop open={open} />
       <SpeedDial
         ariaLabel='SpeedDial basic example'
@@ -45,9 +45,23 @@ export function ShareMenu(): ReactElement {
         onOpen={handleOpen}
         open={open}
       >
-        <SpeedDialAction tooltipOpen icon={<FacebookIcon />} tooltipTitle='Facebook' onClick={() => window.open('https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsparenergie.jetzt%2F&amp;src=sdkpreparse')} />
-        <SpeedDialAction tooltipOpen icon={<TwitterIcon />} tooltipTitle='Twitter'  />
-        <SpeedDialAction tooltipOpen icon={<WhatsAppIcon />} tooltipTitle='WhatsApp' onClick={() => window.open(`whatsapp://send?text=${SHARE_TEXT}`)} />
+        <SpeedDialAction
+          tooltipOpen
+          icon={<FacebookIcon />}
+          tooltipTitle='Facebook'
+          onClick={() =>
+            window.open(
+              'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsparenergie.jetzt%2F&amp;src=sdkpreparse',
+            )
+          }
+        />
+        <SpeedDialAction tooltipOpen icon={<TwitterIcon />} tooltipTitle='Twitter' onClick={() => window.open(`https://twitter.com/intent/tweet?text=${SHARE_TEXT}`)} />
+        <SpeedDialAction
+          tooltipOpen
+          icon={<WhatsAppIcon />}
+          tooltipTitle='WhatsApp'
+          onClick={() => window.open(`whatsapp://send?text=${SHARE_TEXT}`)}
+        />
       </SpeedDial>
     </>
   )

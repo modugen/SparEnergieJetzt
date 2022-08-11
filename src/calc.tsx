@@ -57,22 +57,18 @@ enum RelativeWohnlage {
     }
   }
       
-  function calc_ceiling_and_floor_area(params: ConfiguratorParameters) : number {
-    if (params.lage == Lage.DG) {
-      return params.wohnflaeche;
-    }
-    else if (params.lage == Lage.EG) {
-      return params.wohnflaeche;
-    }
-    else if (params.lage == Lage.Zwischengeschoss) {
-      return 0 // 0 area in this case
-    }
-    else if (params.lage == Lage.DG_EG) {
-      return params.wohnflaeche;
-    }
-    else {
-      // raise error here?
-      return 0
+function calc_ceiling_and_floor_area(params: ConfiguratorParameters): number {
+    switch (params.lage) {
+        case Lage.DG:
+          return params.wohnflaeche
+        case Lage.EG:
+          return params.wohnflaeche
+        case Lage.Zwischengeschoss:
+            return 0
+        case Lage.DG_EG:
+            return params.wohnflaeche
+        default:
+            return 0
     }
   }
   

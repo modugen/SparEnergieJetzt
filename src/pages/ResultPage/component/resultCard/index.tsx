@@ -18,7 +18,7 @@ const ResultCard = ({ result }: Props) => {
   const isSMallScreen = useMediaQuery(theme.breakpoints.down('sm'))
 
   return (
-    <ResultCardContainer width={isSMallScreen ? '90vw' : '55vw'} >
+    <ResultCardContainer width={isSMallScreen ? '90vw' : '55vw'}>
       <Grid container direction='row'>
         <Grid item lg={4} md={2} xs={3}>
           <img style={{ width: '90%', height: theme.spacing(20) }} src={result.image} />

@@ -59,7 +59,7 @@ export function ResultPage(): ReactElement {
           </Typography>
           <Typography padding='0 12% 0' textAlign='center'>
             Nachfolgend unsere Vorschläge gelistet nach Einsparpotenzial innerhalb von einer
-            Heizperioden. Wie wir zu den Ergebnissen komment kannst du hier nachlesen
+            Heizperiode. Wie wir zu den Ergebnissen komment kannst du hier nachlesen
           </Typography>
           <Typography variant='h4' textAlign='center'>
             Kläre auf und teile deine Erkenntnisse!

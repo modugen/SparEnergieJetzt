@@ -42,18 +42,16 @@ interface ConfiguratorParameters {
 
 function calc_external_wall_area(params: ConfiguratorParameters): number {
     const singleOuterSurfaceArea = Math.sqrt(params.wohnflaeche) * params.deckenhoehe
-    if (params.relativeWohnlage == RelativeWohnlage.AmEck) {
-        return singleOuterSurfaceArea * 2
-    }
-    else if (params.relativeWohnlage == RelativeWohnlage.Freistehend) {
-        return singleOuterSurfaceArea * 4
-    }
-    else if (params.relativeWohnlage == RelativeWohnlage.Innenliegend) {
-        return singleOuterSurfaceArea * 1
-    }
-    else {
-        // raise error here?
-        return 0
+    switch (params.relativeWohnlage) {
+        case RelativeWohnlage.AmEck :
+            return singleOuterSurfaceArea * 2
+        case RelativeWohnlage.Freistehend:
+            return singleOuterSurfaceArea * 4
+        case RelativeWohnlage.Innenliegend:
+            return singleOuterSurfaceArea * 1
+        default:
+            // TODO: maybe raise error here
+            return 0
     }
 }
 
@@ -68,6 +66,7 @@ function calc_ceiling_and_floor_area(params: ConfiguratorParameters): number {
         case Lage.DG_EG:
             return params.wohnflaeche
         default:
+            // TODO: maybe raise error here
             return 0
     }
 }

@@ -1,5 +1,6 @@
 import { Box } from '@mui/system'
 import React, { ReactNode } from 'react'
+import Footer from '../footer'
 import Header from '../header'
 
 interface props {
@@ -11,7 +12,7 @@ const Layout = ({ children }: props) => {
     <Box minHeight='100vH' display='flex' flexDirection='column'>
       <Header />
       {children}
-      <div>Footer</div>
+      <Footer />
     </Box>
   )
 }

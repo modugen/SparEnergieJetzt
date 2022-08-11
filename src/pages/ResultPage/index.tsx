@@ -2,7 +2,7 @@ import { Stack, Typography, useTheme } from '@mui/material'
 import Box from '@mui/material/Box'
 import { Container } from '@mui/system'
 import React, { ReactElement } from 'react'
-import { HEATING_ENERGY_SOURCE_EFFICIENCY_MAP, Lage } from '../../calc'
+import { DEFAULT_ENERGY_UNIT_COST, Lage } from '../../calc'
 import { useConfiguratorStore } from '../../stores/configuratorStore'
 import ResultCard from './component/resultCard'
 import { results } from './constant'
@@ -11,28 +11,28 @@ export function ResultPage(): ReactElement {
   const theme = useTheme()
 
   const {
-    squareMeters, 
-    buildingType, 
+    squareMeters,
+    buildingType,
     storeyHeight,
     apartmentPosition,
-  
+
     bigWindows,
     mediumWindows,
     smallWindows,
-  
+
     heatingType,
   } = useConfiguratorStore()
 
   const config = {
-    wohnflaeche: squareMeters, 
-    relativeWohnlage: apartmentPosition, 
+    wohnflaeche: squareMeters,
+    relativeWohnlage: apartmentPosition,
     // TODO: implement lage
-    lage: Lage.DG_EG, 
-    deckenhoehe: storeyHeight, 
-    bausubstanz: buildingType, 
-    heizungsart: heatingType, 
+    lage: Lage.DG_EG,
+    deckenhoehe: storeyHeight,
+    bausubstanz: buildingType,
+    heizungsart: heatingType,
     fensterflaecheRelativ: 0,
-    fensterflaecheAbsolut: 0, 
+    fensterflaecheAbsolut: 0,
     windows: [
       {
         areaPerWindow: 1.5,
@@ -47,7 +47,7 @@ export function ResultPage(): ReactElement {
         NumberOfWindows: smallWindows,
       },
     ],
-    energieEinheitsKosten: HEATING_ENERGY_SOURCE_EFFICIENCY_MAP
+    energieEinheitsKosten: DEFAULT_ENERGY_UNIT_COST,
   }
 
   return (

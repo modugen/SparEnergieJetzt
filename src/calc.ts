@@ -1,5 +1,3 @@
-
-
 export enum RelativeWohnlage {
   AmEck = 'AmEck',
   Innenliegend = 'Innenliegend',
@@ -51,8 +49,7 @@ export interface ConfiguratorParameters {
   energieEinheitsKosten: Map<Heizungsart, number>
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const DEFAULT_ENERGY_UNIT_COST = new Map<Heizungsart, number>([
+export const DEFAULT_ENERGY_UNIT_COST = new Map<Heizungsart, number>([
   [Heizungsart.Gas, 0.27],
   [Heizungsart.Strom, 0.5],
   [Heizungsart.Pellets, 1], // TODO: find actual value
@@ -65,7 +62,6 @@ export const HEATING_ENERGY_SOURCE_EFFICIENCY_MAP = new Map<Heizungsart, number>
   [Heizungsart.Pellets, 0.9],
   [Heizungsart.Fernwaerme, 1],
 ])
-
 
 function calcExternalWallArea(params: ConfiguratorParameters): number {
   const singleOuterSurfaceArea = Math.sqrt(params.wohnflaeche) * params.deckenhoehe

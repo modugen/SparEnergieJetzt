@@ -13,7 +13,7 @@ function Header() {
     <Box marginBottom={theme.spacing(10)} sx={{ display: 'flex' }}>
       <AppBar sx={{ backgroundColor: theme.palette.grey[100] }} component='nav'>
         <Toolbar>
-          <Link to="/">
+          <Link to='/'>
             <img style={{ width: theme.spacing(5) }} src={logo} />
           </Link>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}></Box>

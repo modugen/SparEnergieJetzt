@@ -6,6 +6,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import ExpandLessIcon from '@mui/icons-material/ExpandLess'
 import BuyButtons from './BuyButton'
 import { ResultCardContainer } from '../styled'
+import { round } from 'lodash-es'
 
 interface Props {
   result: ResultProposal
@@ -44,7 +45,7 @@ const ResultCard = ({ result, savedValue }: Props) => {
                     fontSize: theme.spacing(3),
                   }}
                 >
-                  {savedValue}€
+                  {round(savedValue, 2)}€
                 </b>
               </Typography>
             </Box>

@@ -1,6 +1,7 @@
-import { Typography } from '@mui/material'
+import { InputAdornment, OutlinedInput, Typography } from '@mui/material'
 import { green } from '@mui/material/colors'
 import { Box, useTheme } from '@mui/system'
+import { isFunction } from 'lodash'
 import React, { ReactElement } from 'react'
 import { Center } from '../Center'
 
@@ -9,9 +10,13 @@ interface Props {
   img: string
   onClick?: () => void
   selected?: boolean
+
+  inputNumberValue?: number,
+  onChangeInputNumberValue?: (val: number) => void
+  inputAdornment?: string
 }
 
-export function SelectButton({ text, onClick, img, selected = false }: Props): ReactElement {
+export function SelectButton({ text, onClick, img, selected = false, inputNumberValue, onChangeInputNumberValue, inputAdornment }: Props): ReactElement {
   const theme = useTheme()
 
   return (
@@ -40,6 +45,23 @@ export function SelectButton({ text, onClick, img, selected = false }: Props): R
           {text}
         </Typography>
       </Box>
+      {isFunction(onChangeInputNumberValue) &&
+        <Box>
+          <OutlinedInput
+            value={inputNumberValue}
+            type='number'
+            onChange={onChangeInputNumberValue ? (e) => onChangeInputNumberValue(parseFloat(e.target.value)) : undefined}
+            endAdornment={<InputAdornment position='end'>{inputAdornment}</InputAdornment>}
+            aria-describedby='outlined-weight-helper-text'
+            inputProps={{
+              'aria-label': 'weight',
+              min: 0
+            }}
+            size='small'
+            style={{ alignSelf: 'center' }}
+          />
+        </Box>
+   } 
     </Box>
   )
 }

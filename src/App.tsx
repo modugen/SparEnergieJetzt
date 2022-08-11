@@ -10,7 +10,7 @@ function App() {
     <Layout>
       <Routes>
         <Route path='/' element={<LandingPage />} />
-        <Route path='configurator' element={<ConfiguratorPage />} />
+        <Route path='configurator/*' element={<ConfiguratorPage />} />
         <Route path='results' element={<ResultPage />} />
       </Routes>
     </Layout>

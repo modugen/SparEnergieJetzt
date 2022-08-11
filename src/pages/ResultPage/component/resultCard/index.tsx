@@ -5,6 +5,7 @@ import { ResultProposal } from '../../constant'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import ExpandLessIcon from '@mui/icons-material/ExpandLess'
 import BuyButtons from './BuyButton'
+import { ResultCardContainer } from '../styled'
 
 interface Props {
   result: ResultProposal
@@ -17,16 +18,7 @@ const ResultCard = ({ result }: Props) => {
   const isSMallScreen = useMediaQuery(theme.breakpoints.down('sm'))
 
   return (
-    <Box
-      sx={{
-        width: isSMallScreen ? '90vw' : '55vw',
-        minHeight: theme.spacing(20),
-        border: `1px solid ${theme.palette.primary.main}`,
-        marginBottom: theme.spacing(3),
-        borderRadius: theme.spacing(1),
-        padding: theme.spacing(1),
-      }}
-    >
+    <ResultCardContainer width={isSMallScreen ? '90vw' : '55vw'} >
       <Grid container direction='row'>
         <Grid item lg={4} md={2} xs={3}>
           <img style={{ width: '90%', height: theme.spacing(20) }} src={result.image} />
@@ -65,7 +57,7 @@ const ResultCard = ({ result }: Props) => {
           </Stack>
         </Grid>
       </Grid>
-    </Box>
+    </ResultCardContainer>
   )
 }
 

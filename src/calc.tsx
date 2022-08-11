@@ -154,3 +154,23 @@ function calc_H_V(params: ConfiguratorParameters): number {
     const H_V = 0.163 * calc_room_volume(params)
     return H_V
 }
+
+
+function calc_Q_i(params: ConfiguratorParameters): number {
+    const Q_i = 22 * 0.32 * params.wohnflaeche
+    return Q_i
+}
+
+
+function calc_Q_s(params: ConfiguratorParameters): number {
+    const Q_s = calc_effective_window_area(params) * 150 * 0.65 * 0.567
+}
+
+
+
+
+
+function calc_Q_H(params: ConfiguratorParameters): number {
+    const heizgradstunde = 66000
+    const Q_H = heizgradstunde
+}

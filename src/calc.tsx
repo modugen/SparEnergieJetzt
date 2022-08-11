@@ -7,22 +7,22 @@ enum RelativeWohnlage {
 
 enum Lage {
     DG = "DG"
-EG = "EG"
-Zwischengeschoss = "Zwischengeschoss"
-DG_EG = "DG+EG"
+    EG = "EG"
+    Zwischengeschoss = "Zwischengeschoss"
+    DG_EG = "DG+EG"
 }
 
 enum Bausubstanz {
     Altbau = "Altbau"
-AltbauSaniert = "AltbauSaniert"
-Neubau = "Neubau"
+    AltbauSaniert = "AltbauSaniert"
+    Neubau = "Neubau"
 }
 
 enum Heizungsart {
     Gas = "Gas"
-Strom = "Strom"
-Pellets = "Pellets"
-Fernwaerme = "Fernwaerme"
+    Strom = "Strom"
+    Pellets = "Pellets"
+    Fernwaerme = "Fernwaerme"
 
 }
 

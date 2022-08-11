@@ -7,6 +7,8 @@ import { useConfiguratorStore } from '../../stores/configuratorStore'
 import ResultCard from './component/resultCard'
 import { results } from './constant'
 
+// TODO: Add filter for results if saving is 0
+
 export function ResultPage(): ReactElement {
   const theme = useTheme()
 

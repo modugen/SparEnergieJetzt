@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from '@mui/material/styles'
 import { theme, globalStyles } from '../src/styles'
 import { GlobalStyles } from '@mui/material'
-import { createRoot } from 'react-dom/client';
+import { createRoot } from 'react-dom/client'
 
 const root = createRoot(document.getElementById('root') as HTMLElement)
 

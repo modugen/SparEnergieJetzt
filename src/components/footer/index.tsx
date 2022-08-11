@@ -28,12 +28,11 @@ const Footer = () => {
   return (
     <Box
       flexWrap='wrap'
-      margin={0}
+      height={theme.spacing(10)}
       display='flex'
       alignItems='center'
-      justifyContent='space-between'
-      marginTop={theme.spacing(4)}
-      sx={{ backgroundColor: theme.palette.grey[900], padding: 5 }}
+      justifyContent='space-around'
+      sx={{ backgroundColor: theme.palette.grey[900] }}
     >
       <Typography variant='caption' color={theme.palette.grey[200]}>
         © 2022 ModuGen GmbH. All rights reserved.

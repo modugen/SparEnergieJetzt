@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactDOM from 'react-dom/client'
 import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
@@ -7,9 +6,11 @@ import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from '@mui/material/styles'
 import { theme, globalStyles } from '../src/styles'
 import { GlobalStyles } from '@mui/material'
+import { hydrate, render } from 'react-dom'
 
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
-root.render(
+const rootElement = document.getElementById('root') as HTMLElement
+
+const AppWithProviders = () => (
   <React.StrictMode>
     <GlobalStyles styles={globalStyles} />
     <ThemeProvider theme={theme}>
@@ -17,8 +18,14 @@ root.render(
         <App />
       </BrowserRouter>
     </ThemeProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 )
+
+if (rootElement.hasChildNodes()) {
+  hydrate(<AppWithProviders />, rootElement)
+} else {
+  render(<AppWithProviders />, rootElement)
+}
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

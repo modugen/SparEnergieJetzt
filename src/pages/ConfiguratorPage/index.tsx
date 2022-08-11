@@ -18,6 +18,14 @@ import gasHeatingImg from '../../images/heating_type/gas.png'
 import pelletHeatingImg from '../../images/heating_type/pellet.png'
 import fernHeatingImg from '../../images/heating_type/fern.png'
 import electricityHeatingImg from '../../images/heating_type/electricity.png'
+import { Portal } from '../../components/header/Portal'
+
+const stepToQuestionMap: Record<number, string> = {
+  1: 'In welchem Zustand befindet sich dein Gebäude/Apartment?',
+  2: 'Wie hoch ist die Deckenhöhe in deinen Zimmern?',
+  3: 'An welcher Position befindet sich dein Gebäude/Apartment?',
+  4: 'Wie viele Fenster hat dein Gebäude/Apartment?',
+}
 
 export function ConfiguratorPage(): ReactElement {
   const navigate = useNavigate()
@@ -55,6 +63,8 @@ export function ConfiguratorPage(): ReactElement {
           justifyContent: 'center',
           alignItems: 'center',
           flexGrow: 1,
+          marginTop: 64, 
+          marginBottom: 64
         }}
       >
         <Routes>
@@ -212,6 +222,9 @@ export function ConfiguratorPage(): ReactElement {
           />
         </Stack>
       </Center>
+      <Portal>
+        <Typography textAlign="center" style={{ color: 'black' }}>{stepToQuestionMap[page] as string}</Typography>
+      </Portal>
     </Container>
   )
 }

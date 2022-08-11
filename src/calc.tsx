@@ -23,8 +23,17 @@ enum Heizungsart {
     Strom = "Strom"
     Pellets = "Pellets"
     Fernwaerme = "Fernwaerme"
-
 }
+
+
+
+interface WindowConfiguration {
+    areaPerWindow: number // non-negative
+    NumberOfWindows: number // non-negative
+}
+
+
+
 
 
 interface ConfiguratorParameters {
@@ -36,6 +45,7 @@ interface ConfiguratorParameters {
     heizungsart: Heizungsart
     fensterflaecheRelativ: number
     fensterflaecheAbsolut: number // todo maybe just use one of these, and do the calculation in the input fields
+    windows: Array<WindowConfiguration>
 }
 
 
@@ -71,4 +81,13 @@ function calc_ceiling_and_floor_area(params: ConfiguratorParameters): number {
     }
 }
 
+function calc_room_volume(params: ConfiguratorParameters): number {
+    return params.wohnflaeche * params.deckenhoehe
+}
 
+
+function calc_effective_window_area(params: ConfiguratorParameters): number {
+    // Using this snippet here https://stackoverflow.com/a/39214814
+    const windowArea = params.windows.map(w => w.areaPerWindow * w.NumberOfWindows).reduce((sum, current) => sum + current)
+    return windowArea
+}

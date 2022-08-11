@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom'
 
 const links = [
   {
-    title: 'Impressm',
+    title: 'Impressum',
     link: '',
   },
   {
-    title: 'Datenschuz',
+    title: 'Datenschutz',
     link: '',
   },
   {

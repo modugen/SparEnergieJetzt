@@ -1,11 +1,17 @@
+import Box from '@mui/material/Box'
 import { Container } from '@mui/system'
 import React, { ReactElement } from 'react'
-import { Link } from 'react-router-dom'
+import ResultCard from './component/resultCard'
+import { results } from './constant'
 
 export function ResultPage(): ReactElement {
   return (
     <Container>
-      <Link to='/'>Landing page</Link>
+      <Box flexDirection='column' display='flex' alignItems='center'>
+        {results.map((result, index) => (
+          <ResultCard result={result} key={index} />
+        ))}
+      </Box>
     </Container>
   )
 }

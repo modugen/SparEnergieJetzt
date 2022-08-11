@@ -10,8 +10,8 @@ export const BuyButton = styled(Button)({
   transition: 'opacity 1s',
   '&:hover': {
     background: theme.palette.primary.main,
-    opacity: 0.8
-  }
+    opacity: 0.8,
+  },
 })
 
 export const ResultCardContainer = styled(Box)({
@@ -20,5 +20,5 @@ export const ResultCardContainer = styled(Box)({
   borderRadius: theme.spacing(1),
   padding: theme.spacing(1),
   boxShadow: 'rgb(0 0 0 / 25%) 0px 4px 4px',
-  backgroundColor: theme.palette.common.white
+  backgroundColor: theme.palette.common.white,
 })

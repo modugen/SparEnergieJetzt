@@ -78,7 +78,7 @@ const HEATING_ENERGY_SOURCE_EFFICIENCY_MAP = new Map<Heizungsart, number>(
 )
 
 
-function calc_external_wall_area(params: ConfiguratorParameters): number {
+function calcExternalWallArea(params: ConfiguratorParameters): number {
     const singleOuterSurfaceArea = Math.sqrt(params.wohnflaeche) * params.deckenhoehe
     switch (params.relativeWohnlage) {
         case RelativeWohnlage.AmEck :
@@ -93,7 +93,7 @@ function calc_external_wall_area(params: ConfiguratorParameters): number {
     }
 }
 
-function calc_ceiling_and_floor_area(params: ConfiguratorParameters): number {
+function calcCeilingAndFloorArea(params: ConfiguratorParameters): number {
     switch (params.lage) {
         case Lage.DG:
             return params.wohnflaeche
@@ -109,26 +109,26 @@ function calc_ceiling_and_floor_area(params: ConfiguratorParameters): number {
     }
 }
 
-function calc_room_volume(params: ConfiguratorParameters): number {
+function calcRoomVolume(params: ConfiguratorParameters): number {
     return params.wohnflaeche * params.deckenhoehe
 }
 
 
-function calc_effective_window_area(params: ConfiguratorParameters): number {
+function calcEffectiveWindowArea(params: ConfiguratorParameters): number {
     // Using this snippet here https://stackoverflow.com/a/39214814
     const windowArea = params.windows.map(w => w.areaPerWindow * w.NumberOfWindows).reduce((sum, current) => sum + current)
     return windowArea
 }
 
-function calc_effective_external_wall_area(params: ConfiguratorParameters): number {
-    const windowArea = calc_effective_window_area(params)
-    const effectiveWallArea = calc_external_wall_area(params) - windowArea
+function calcEffectiveExternalWallArea(params: ConfiguratorParameters): number {
+    const windowArea = calcEffectiveWindowArea(params)
+    const effectiveWallArea = calcExternalWallArea(params) - windowArea
     // TODO: this could become negative, if the user inputs are not properly configured
     return effectiveWallArea
 }
 
 
-function get_u_value_map(params: ConfiguratorParameters): Map<ComponentWithUValue, number> {
+function getUValueMap(params: ConfiguratorParameters): Map<ComponentWithUValue, number> {
     switch (params.bausubstanz) {
         case Bausubstanz.Neubau:
             const uValueMap = new Map<ComponentWithUValue, number>([
@@ -159,20 +159,20 @@ function get_u_value_map(params: ConfiguratorParameters): Map<ComponentWithUValu
 
 
 function calc_H_T(params: ConfiguratorParameters): Map<ComponentWithUValue, number> {
-    const uValueMap = get_u_value_map(params)
+    const uValueMap = getUValueMap(params)
     const H_T_valueMap = new Map<ComponentWithUValue, number>(
         [
-            [ComponentWithUValue.Wall, uValueMap.get(ComponentWithUValue.Wall) * calc_effective_external_wall_area(params)],
-            [ComponentWithUValue.Window, uValueMap.get(ComponentWithUValue.Window) * calc_effective_window_area(params)],
-            [ComponentWithUValue.Floor, uValueMap.get(ComponentWithUValue.Floor) * calc_ceiling_and_floor_area(params)],
-            [ComponentWithUValue.Roof, uValueMap.get(ComponentWithUValue.Roof) * calc_ceiling_and_floor_area(params)]
+            [ComponentWithUValue.Wall, uValueMap.get(ComponentWithUValue.Wall) * calcEffectiveExternalWallArea(params)],
+            [ComponentWithUValue.Window, uValueMap.get(ComponentWithUValue.Window) * calcEffectiveWindowArea(params)],
+            [ComponentWithUValue.Floor, uValueMap.get(ComponentWithUValue.Floor) * calcCeilingAndFloorArea(params)],
+            [ComponentWithUValue.Roof, uValueMap.get(ComponentWithUValue.Roof) * calcCeilingAndFloorArea(params)]
         ]
     )
     return H_T_valueMap
 }
 
 function calc_H_V(params: ConfiguratorParameters): number {
-    const H_V = 0.163 * calc_room_volume(params)
+    const H_V = 0.163 * calcRoomVolume(params)
     return H_V
 }
 
@@ -184,7 +184,7 @@ function calc_Q_i(params: ConfiguratorParameters): number {
 
 
 function calc_Q_s(params: ConfiguratorParameters): number {
-    const Q_s = calc_effective_window_area(params) * 150 * 0.65 * 0.567
+    const Q_s = calcEffectiveWindowArea(params) * 150 * 0.65 * 0.567
     return Q_s
 }
 
@@ -211,14 +211,14 @@ function calc_H_T_total(params: ConfiguratorParameters): number {
 
 
 
-function calc_effective_heating_cost(params: ConfiguratorParameters): number {
+function calcEffectiveHeatingCost(params: ConfiguratorParameters): number {
     const H_T_total = calc_H_T_total(params)
     const heating_cost = H_T_total / HEATING_ENERGY_SOURCE_EFFICIENCY_MAP.get(params.heizungsart) * params.energieEinheitsKosten.get(params.heizungsart)
     return heating_cost
 }
 
 
-function calc_savings_heizkoerperbuerste(params: ConfiguratorParameters): number {
+function calcSavingsHeizkoerperbuerste(params: ConfiguratorParameters): number {
     let savingsCoefficient
     switch (params.bausubstanz) {
         case Bausubstanz.Altbau:
@@ -228,6 +228,6 @@ function calc_savings_heizkoerperbuerste(params: ConfiguratorParameters): number
         case Bausubstanz.Neubau:
             savingsCoefficient = 0.02
     }
-    const savings = savingsCoefficient * calc_effective_heating_cost(params)
+    const savings = savingsCoefficient * calcEffectiveHeatingCost(params)
     return savings
 }

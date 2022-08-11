@@ -164,13 +164,27 @@ function calc_Q_i(params: ConfiguratorParameters): number {
 
 function calc_Q_s(params: ConfiguratorParameters): number {
     const Q_s = calc_effective_window_area(params) * 150 * 0.65 * 0.567
+    return Q_s
 }
-
-
-
 
 
 function calc_Q_H(params: ConfiguratorParameters): number {
-    const heizgradstunde = 66000
-    const Q_H = heizgradstunde
+    const heizgradstunden = 66000
+    const Q_H = heizgradstunden * calc_H_T_total(params) + calc_H_V(params) - 0.95 * (calc_Q_s(params) + calc_Q_i(params))
+    return Q_H
 }
+
+
+function calc_H_T_total(params: ConfiguratorParameters): number {
+    let H_T_total = 0
+    const H_T_valueMap = calc_H_T(params)
+    H_T_valueMap.forEach(
+        H_T_i => {
+            H_T_total += H_T_i
+        }
+    )
+    const H_T_total_final = H_T_total // return const instead of variable
+    return H_T_total_final
+}
+
+

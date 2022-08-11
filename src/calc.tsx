@@ -135,3 +135,22 @@ function get_u_value_map(params: ConfiguratorParameters): Map<ComponentWithUValu
             return uValueMap
     }
 }
+
+
+function calc_H_T(params: ConfiguratorParameters): Map<ComponentWithUValue, number> {
+    const uValueMap = get_u_value_map(params)
+    const H_T_valueMap = new Map<ComponentWithUValue, number>(
+        [
+            [ComponentWithUValue.Wall, uValueMap.get(ComponentWithUValue.Wall) * calc_effective_external_wall_area(params)],
+            [ComponentWithUValue.Window, uValueMap.get(ComponentWithUValue.Window) * calc_effective_window_area(params)],
+            [ComponentWithUValue.Floor, uValueMap.get(ComponentWithUValue.Floor) * calc_ceiling_and_floor_area(params)],
+            [ComponentWithUValue.Roof, uValueMap.get(ComponentWithUValue.Roof) * calc_ceiling_and_floor_area(params)]
+        ]
+    )
+    return H_T_valueMap
+}
+
+function calc_H_V(params: ConfiguratorParameters): number {
+    const H_V = 0.163 * calc_room_volume(params)
+    return H_V
+}

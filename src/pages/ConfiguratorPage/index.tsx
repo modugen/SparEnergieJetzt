@@ -19,6 +19,7 @@ import pelletHeatingImg from '../../images/heating_type/pellet.png'
 import fernHeatingImg from '../../images/heating_type/fern.png'
 import electricityHeatingImg from '../../images/heating_type/electricity.png'
 import { Portal } from '../../components/header/Portal'
+import { RelativeWohnlage, Heizungsart } from '../../calc'
 
 const stepToQuestionMap: Record<number, string> = {
   1: 'In welchem Zustand befindet sich dein Gebäude/Apartment?',
@@ -128,20 +129,20 @@ export function ConfiguratorPage(): ReactElement {
                   {
                     text: 'innenliegend',
                     img: innerImg,
-                    selected: apartmentPosition === 'innenliegend',
-                    onClick: () => setApartmentPosition('innenliegend'),
+                    selected: apartmentPosition === RelativeWohnlage.Innenliegend,
+                    onClick: () => setApartmentPosition(RelativeWohnlage.Innenliegend),
                   },
                   {
                     text: 'am Eck',
                     img: cornerImg,
-                    selected: apartmentPosition === 'am-eck',
-                    onClick: () => setApartmentPosition('am-eck'),
+                    selected: apartmentPosition === RelativeWohnlage.AmEck,
+                    onClick: () => setApartmentPosition(RelativeWohnlage.AmEck),
                   },
                   {
                     text: 'freistehend',
                     img: detachedImg,
-                    selected: apartmentPosition === 'freistehend',
-                    onClick: () => setApartmentPosition('freistehend'),
+                    selected: apartmentPosition === RelativeWohnlage.Freistehend,
+                    onClick: () => setApartmentPosition(RelativeWohnlage.Freistehend),
                   },
                 ]}
               />
@@ -187,26 +188,26 @@ export function ConfiguratorPage(): ReactElement {
                   {
                     text: 'Gasheizung',
                     img: gasHeatingImg,
-                    selected: heatingType === 'gas',
-                    onClick: () => setHeatingType('gas'),
+                    selected: heatingType === Heizungsart.Gas,
+                    onClick: () => setHeatingType(Heizungsart.Gas),
                   },
                   {
                     text: 'Pelletheizung',
                     img: pelletHeatingImg,
-                    selected: heatingType === 'pellet',
-                    onClick: () => setHeatingType('pellet'),
+                    selected: heatingType === Heizungsart.Pellets,
+                    onClick: () => setHeatingType(Heizungsart.Pellets),
                   },
                   {
                     text: 'Fernwärme',
                     img: fernHeatingImg,
-                    selected: heatingType === 'fern',
-                    onClick: () => setHeatingType('fern'),
+                    selected: heatingType === Heizungsart.Fernwaerme,
+                    onClick: () => setHeatingType(Heizungsart.Fernwaerme),
                   },
                   {
                     text: 'Stromheizung',
                     img: electricityHeatingImg,
-                    selected: heatingType === 'electricity',
-                    onClick: () => setHeatingType('electricity'),
+                    selected: heatingType === Heizungsart.Strom,
+                    onClick: () => setHeatingType(Heizungsart.Strom),
                   },
                 ]}
               />

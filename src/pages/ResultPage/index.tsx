@@ -2,12 +2,53 @@ import { Stack, Typography, useTheme } from '@mui/material'
 import Box from '@mui/material/Box'
 import { Container } from '@mui/system'
 import React, { ReactElement } from 'react'
-import { ConfiguratorParameters } from '../../calc'
+import { HEATING_ENERGY_SOURCE_EFFICIENCY_MAP, Lage } from '../../calc'
+import { useConfiguratorStore } from '../../stores/configuratorStore'
 import ResultCard from './component/resultCard'
 import { results } from './constant'
 
 export function ResultPage(): ReactElement {
   const theme = useTheme()
+
+  const {
+    squareMeters, 
+    buildingType, 
+    storeyHeight,
+    apartmentPosition,
+  
+    bigWindows,
+    mediumWindows,
+    smallWindows,
+  
+    heatingType,
+  } = useConfiguratorStore()
+
+  const config = {
+    wohnflaeche: squareMeters, 
+    relativeWohnlage: apartmentPosition, 
+    // TODO: implement lage
+    lage: Lage.DG_EG, 
+    deckenhoehe: storeyHeight, 
+    bausubstanz: buildingType, 
+    heizungsart: heatingType, 
+    fensterflaecheRelativ: 0,
+    fensterflaecheAbsolut: 0, 
+    windows: [
+      {
+        areaPerWindow: 1.5,
+        NumberOfWindows: bigWindows,
+      },
+      {
+        areaPerWindow: 1,
+        NumberOfWindows: mediumWindows,
+      },
+      {
+        areaPerWindow: 0.5,
+        NumberOfWindows: smallWindows,
+      },
+    ],
+    energieEinheitsKosten: HEATING_ENERGY_SOURCE_EFFICIENCY_MAP
+  }
 
   return (
     <Box sx={{ backgroundColor: theme.palette.grey[50], paddingBottom: 5, overflowX: 'hidden' }}>
@@ -26,7 +67,11 @@ export function ResultPage(): ReactElement {
         </Stack>
         <Stack spacing={4} flexDirection='column' display='flex' alignItems='center'>
           {results.map((result, index) => (
-            <ResultCard result={{ ...result}} savedValue={result.calculation({} as ConfiguratorParameters)} key={index} />
+            <ResultCard
+              result={{ ...result }}
+              savedValue={result.calculation(config)}
+              key={index}
+            />
           ))}
         </Stack>
       </Container>

@@ -1,35 +1,37 @@
-enum RelativeWohnlage {
+
+
+export enum RelativeWohnlage {
   AmEck = 'AmEck',
   Innenliegend = 'Innenliegend',
   Freistehend = 'Freistehend',
 }
 
-enum Lage {
-  DG = 'DG',
-  EG = 'EG',
-  Zwischengeschoss = 'Zwischengeschoss',
-  DG_EG = 'DG+EG',
-}
-
-enum Bausubstanz {
+export enum Bausubstanz {
   Altbau = 'Altbau',
   AltbauSaniert = 'AltbauSaniert',
   Neubau = 'Neubau',
 }
 
-enum Heizungsart {
+export enum Heizungsart {
   Gas = 'Gas',
   Strom = 'Strom',
   Pellets = 'Pellets',
   Fernwaerme = 'Fernwaerme',
 }
 
-interface WindowConfiguration {
+export enum Lage {
+  DG = 'DG',
+  EG = 'EG',
+  Zwischengeschoss = 'Zwischengeschoss',
+  DG_EG = 'DG+EG',
+}
+
+export interface WindowConfiguration {
   areaPerWindow: number // non-negative
   NumberOfWindows: number // non-negative
 }
 
-enum ComponentWithUValue {
+export enum ComponentWithUValue {
   Wall = 'Wall',
   Window = 'Window',
   Floor = 'Floor',
@@ -57,12 +59,13 @@ const DEFAULT_ENERGY_UNIT_COST = new Map<Heizungsart, number>([
   [Heizungsart.Fernwaerme, 1], // TODO: find actual value
 ])
 
-const HEATING_ENERGY_SOURCE_EFFICIENCY_MAP = new Map<Heizungsart, number>([
+export const HEATING_ENERGY_SOURCE_EFFICIENCY_MAP = new Map<Heizungsart, number>([
   [Heizungsart.Gas, 0.88],
   [Heizungsart.Strom, 1],
   [Heizungsart.Pellets, 0.9],
   [Heizungsart.Fernwaerme, 1],
 ])
+
 
 function calcExternalWallArea(params: ConfiguratorParameters): number {
   const singleOuterSurfaceArea = Math.sqrt(params.wohnflaeche) * params.deckenhoehe

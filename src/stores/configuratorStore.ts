@@ -1,35 +1,32 @@
 import { cloneDeep } from 'lodash-es'
 import create from 'zustand'
 import { combine, persist } from 'zustand/middleware'
-
-type BuildingType = 'altbau' | 'altbau-saniert' | 'neubau'
-type ApartmentPosition = 'innenliegend' | 'am-eck' | 'freistehend'
-type HeatingType = 'gas' | 'electricity' | 'pellet' | 'fern'
+import { Bausubstanz, RelativeWohnlage, Heizungsart } from '../calc'
 
 interface ConfiguratorStoreState {
   squareMeters: number
-  buildingType: BuildingType
+  buildingType: Bausubstanz
   storeyHeight: number
-  apartmentPosition: ApartmentPosition
+  apartmentPosition: RelativeWohnlage
 
   bigWindows: number
   mediumWindows: number
   smallWindows: number
 
-  heatingType: HeatingType
+  heatingType: Heizungsart
 }
 
 const initialState: ConfiguratorStoreState = {
   squareMeters: 100,
-  buildingType: 'altbau',
+  buildingType: Bausubstanz.Altbau,
   storeyHeight: 2.8,
-  apartmentPosition: 'innenliegend',
+  apartmentPosition: RelativeWohnlage.Innenliegend,
 
   bigWindows: 0,
   mediumWindows: 0,
   smallWindows: 0,
 
-  heatingType: 'gas',
+  heatingType: Heizungsart.Gas,
 }
 
 export const useConfiguratorStore = create(
@@ -39,12 +36,12 @@ export const useConfiguratorStore = create(
 
       setSquareMeters: (squareMeters: number) => set({ squareMeters }),
       setStoreyHeight: (storeyHeight: number) => set({ storeyHeight }),
-      setBuildingType: (buildingType: BuildingType) => set({ buildingType }),
-      setApartmentPosition: (apartmentPosition: ApartmentPosition) => set({ apartmentPosition }),
+      setBuildingType: (buildingType: Bausubstanz) => set({ buildingType }),
+      setApartmentPosition: (apartmentPosition: RelativeWohnlage) => set({ apartmentPosition }),
       setBigWindows: (bigWindows: number) => set({ bigWindows }),
       setMediumWindows: (mediumWindows: number) => set({ mediumWindows }),
       setSmallWindows: (smallWindows: number) => set({ smallWindows }),
-      setHeatingType: (heatingType: HeatingType) => set({ heatingType }),
+      setHeatingType: (heatingType: Heizungsart) => set({ heatingType }),
     })),
     {
       name: 'configurator-storage',

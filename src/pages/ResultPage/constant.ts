@@ -7,7 +7,7 @@ import leuchten from '../../assets/images/results/leuchten.png'
 import dichtbander from '../../assets/images/results/dichtbander.png'
 import thermovorhange from '../../assets/images/results/thermovorhange.png'
 import thermostat from '../../assets/images/results/thermostat.png'
-import { ConfiguratorParameters } from '../../calc'
+import { calcSavingsHeizkoerperbuerste, ConfiguratorParameters } from '../../calc'
 
 export interface ResultProposal {
   title: string
@@ -28,7 +28,7 @@ export const results: ResultProposal[] = [
     winner: true,
     link: 'https://amzn.to/3OWoMNU',
     type: 'reflection',
-    calculation: () => 300
+    calculation: () => 300,
   },
   {
     title: 'Heizkörperbürste',
@@ -37,8 +37,7 @@ export const results: ResultProposal[] = [
     image: heizungsburste,
     link: 'https://amzn.to/3Sme3PK',
     type: 'heizkoerperbuerste',
-    calculation: () => 300
-
+    calculation: calcSavingsHeizkoerperbuerste,
   },
   {
     title: 'Thermoheld',
@@ -47,8 +46,7 @@ export const results: ResultProposal[] = [
     image: thermoheld,
     link: 'https://www.thermoheld.global/thermoheld-glas/',
     type: 'thermoheld',
-    calculation: () => 300
-
+    calculation: () => 300,
   },
   {
     title: 'Wassersparender Duschkopf',
@@ -57,8 +55,7 @@ export const results: ResultProposal[] = [
     image: wassersparender,
     link: 'https://amzn.to/3cZlLiO',
     type: 'duschkopf',
-    calculation: () => 300
-
+    calculation: () => 300,
   },
   {
     title: 'Timer',
@@ -67,8 +64,7 @@ export const results: ResultProposal[] = [
     image: timer,
     link: 'https://amzn.to/3Qb7ayX',
     type: 'timer',
-    calculation: () => 300
-
+    calculation: () => 300,
   },
   {
     title: 'Leuchten mit Bewegungsmelder',
@@ -77,8 +73,7 @@ export const results: ResultProposal[] = [
     image: leuchten,
     link: 'https://amzn.to/3bpDiA0',
     type: 'movementsensor',
-    calculation: () => 300
-
+    calculation: () => 300,
   },
   {
     title: 'Dichtbänder für Kastenfenster',
@@ -87,8 +82,7 @@ export const results: ResultProposal[] = [
     image: dichtbander,
     link: 'https://amzn.to/3vulM4w',
     type: 'dichtbaender',
-    calculation: () => 300
-
+    calculation: () => 300,
   },
   {
     title: 'Thermovorhänge',
@@ -97,8 +91,7 @@ export const results: ResultProposal[] = [
     image: thermovorhange,
     link: 'https://amzn.to/3SmnM8C',
     type: 'thermovorhaenge',
-    calculation: () => 300
-
+    calculation: () => 300,
   },
   {
     title: 'Thermostat',
@@ -107,7 +100,6 @@ export const results: ResultProposal[] = [
     image: thermostat,
     link: 'https://amzn.to/3oPxFOU',
     type: 'hydraulischeThermostate',
-    calculation: () => 300
-
+    calculation: () => 300,
   },
 ]

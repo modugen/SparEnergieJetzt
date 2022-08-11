@@ -16,6 +16,7 @@ import altbauSaniertImg from '../../images/building_type/altbau_saniert.png'
 import neubauImg from '../../images/building_type/neubau.png'
 import { useConfiguratorStore } from '../../stores/configuratorStore'
 import { ShareMenu } from '../../components/ShareMenu'
+import { Bausubstanz } from '../../calc'
 
 export function LandingPage(): ReactElement {
   const { squareMeters, setSquareMeters, buildingType, setBuildingType } = useConfiguratorStore()
@@ -61,24 +62,24 @@ export function LandingPage(): ReactElement {
             <SelectButton
               text='Altbau'
               img={altbauImg}
-              selected={buildingType === 'altbau'}
-              onClick={() => setBuildingType('altbau')}
+              selected={buildingType === Bausubstanz.Altbau}
+              onClick={() => setBuildingType(Bausubstanz.Altbau)}
             />
           </Grid2>
           <Grid2>
             <SelectButton
               text='Altbau saniert'
               img={altbauSaniertImg}
-              selected={buildingType === 'altbau-saniert'}
-              onClick={() => setBuildingType('altbau-saniert')}
+              selected={buildingType === Bausubstanz.AltbauSaniert}
+              onClick={() => setBuildingType(Bausubstanz.AltbauSaniert)}
             />
           </Grid2>
           <Grid2>
             <SelectButton
               text='Neubau'
               img={neubauImg}
-              selected={buildingType === 'neubau'}
-              onClick={() => setBuildingType('neubau')}
+              selected={buildingType === Bausubstanz.Neubau}
+              onClick={() => setBuildingType(Bausubstanz.Neubau)}
             />
           </Grid2>
         </Grid2>

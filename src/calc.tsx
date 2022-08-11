@@ -34,6 +34,13 @@ interface WindowConfiguration {
 
 
 
+enum ComponentWithUValue {
+    Wall = "Wall"
+    Window = "Window"
+    Floor = "Floor"
+    Roof = "Roof"
+}
+
 
 
 interface ConfiguratorParameters {
@@ -90,4 +97,34 @@ function calc_effective_window_area(params: ConfiguratorParameters): number {
     // Using this snippet here https://stackoverflow.com/a/39214814
     const windowArea = params.windows.map(w => w.areaPerWindow * w.NumberOfWindows).reduce((sum, current) => sum + current)
     return windowArea
+}
+
+
+function get_u_value_map(params: ConfiguratorParameters): Map<ComponentWithUValue, number> {
+    switch (params.bausubstanz) {
+        case Bausubstanz.Neubau:
+            const uValueMap = new Map<ComponentWithUValue, number>([
+                [ComponentWithUValue.Wall, 0.2],
+                [ComponentWithUValue.Window, 0.8],
+                [ComponentWithUValue.Floor, 0.4],
+                [ComponentWithUValue.Roof, 0.2]
+            ])
+            return uValueMap
+        case Bausubstanz.AltbauSaniert:
+            const uValueMap = new Map<ComponentWithUValue, number>([
+                [ComponentWithUValue.Wall, 0.8],
+                [ComponentWithUValue.Window, 1.3],
+                [ComponentWithUValue.Floor, 0.4],
+                [ComponentWithUValue.Roof, 0.5]
+            ])
+            return uValueMap
+        case Bausubstanz.Altbau:
+            const uValueMap = new Map<ComponentWithUValue, number>([
+                [ComponentWithUValue.Wall, 1.4],
+                [ComponentWithUValue.Window, 2.7],
+                [ComponentWithUValue.Floor, 0.4],
+                [ComponentWithUValue.Roof, 1.4]
+            ])
+            return uValueMap
+    }
 }

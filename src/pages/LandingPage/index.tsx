@@ -92,7 +92,7 @@ export function LandingPage(): ReactElement {
               <OutlinedInput
                 value={currentSavings}
                 type='number'
-                endAdornment={<InputAdornment position='end'>m²</InputAdornment>}
+                endAdornment={<InputAdornment position='end'>€</InputAdornment>}
                 aria-describedby='outlined-weight-helper-text'
                 inputProps={{
                   'aria-label': 'weight',
@@ -113,7 +113,7 @@ export function LandingPage(): ReactElement {
               <OutlinedInput
                 value={futureSavings}
                 type='number'
-                endAdornment={<InputAdornment position='end'>m²</InputAdornment>}
+                endAdornment={<InputAdornment position='end'>€</InputAdornment>}
                 aria-describedby='outlined-weight-helper-text'
                 inputProps={{
                   'aria-label': 'weight',

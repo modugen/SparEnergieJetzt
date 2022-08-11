@@ -55,7 +55,12 @@ export function ShareMenu(): ReactElement {
             )
           }
         />
-        <SpeedDialAction tooltipOpen icon={<TwitterIcon />} tooltipTitle='Twitter' onClick={() => window.open(`https://twitter.com/intent/tweet?text=${SHARE_TEXT}`)} />
+        <SpeedDialAction
+          tooltipOpen
+          icon={<TwitterIcon />}
+          tooltipTitle='Twitter'
+          onClick={() => window.open(`https://twitter.com/intent/tweet?text=${SHARE_TEXT}`)}
+        />
         <SpeedDialAction
           tooltipOpen
           icon={<WhatsAppIcon />}

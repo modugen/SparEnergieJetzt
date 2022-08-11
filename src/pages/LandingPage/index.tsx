@@ -145,7 +145,7 @@ export function LandingPage(): ReactElement {
           Warum jetzt?
         </Typography>
         <Center>
-          <img src={chartImg} />
+          <img src={chartImg} style={{maxWidth: '100%'}} />
         </Center>
       </LandingPageSection>
 

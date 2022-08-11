@@ -22,34 +22,34 @@ enum RelativeWohnlage {
     Gas = "Gas"
     Strom = "Strom"
     Pellets = "Pellets"
-    Fernwaerme = Fernwaerme
+    Fernwaerme = "Fernwaerme"
   
   }
   
   
   interface ConfiguratorParameters {
-    wohnflaeche: number;
-    relative_wohnlage: RelativeWohnlage;
-    lage: Lage;
-    deckenhoehe: number;
-    bausubstanz: Bausubstanz;
-    heizungsart: Heizungsart;
-    fensterflaeche_relativ: number;
-    fensterflaeche_absolut: number; // todo maybe just use one of these, and do the calculation in the input fields
+    wohnflaeche: number
+    relativeWohnlage: RelativeWohnlage
+    lage: Lage
+    deckenhoehe: number
+    bausubstanz: Bausubstanz
+    heizungsart: Heizungsart
+    fensterflaecheRelativ: number
+    fensterflaecheAbsolut: number // todo maybe just use one of these, and do the calculation in the input fields
   }
   
   
   
   function calc_external_wall_area(params: ConfiguratorParameters): number {
-    const single_outer_surface_area = Math.sqrt(params.wohnflaeche) * params.deckenhoehe
-    if (params.relative_wohnlage == RelativeWohnlage.AmEck) {
-      return single_outer_surface_area * 2
+    const singleOuterSurfaceArea = Math.sqrt(params.wohnflaeche) * params.deckenhoehe
+    if (params.relativeWohnlage == RelativeWohnlage.AmEck) {
+      return singleOuterSurfaceArea * 2
     }
-    else if (params.relative_wohnlage == RelativeWohnlage.Freistehend) {
-      return single_outer_surface_area * 4
+    else if (params.relativeWohnlage == RelativeWohnlage.Freistehend) {
+      return singleOuterSurfaceArea * 4
     }
-    else if (params.relative_wohnlage == RelativeWohnlage.Innenliegend) {
-      return single_outer_surface_area * 1
+    else if (params.relativeWohnlage == RelativeWohnlage.Innenliegend) {
+      return singleOuterSurfaceArea * 1
     } 
     else {
       // raise error here?

@@ -1,5 +1,6 @@
 import { Box } from '@mui/system'
 import React, { ReactNode } from 'react'
+import Footer from '../footer'
 import Header from '../header'
 import { ShareMenu } from '../ShareMenu'
 
@@ -13,7 +14,7 @@ const Layout = ({ children }: props) => {
       <Header />
       {children}
       <ShareMenu />
-      <div>Footer</div>
+      <Footer />
     </Box>
   )
 }

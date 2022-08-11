@@ -10,8 +10,8 @@ function Header() {
   const theme = useTheme()
 
   return (
-    <Box marginBottom={theme.spacing(10)} sx={{ display: 'flex' }}>
-      <AppBar sx={{ backgroundColor: theme.palette.grey[100] }} component='nav'>
+    <Box marginBottom={theme.spacing(8)} sx={{ display: 'flex' }}>
+      <AppBar sx={{ backgroundColor: theme.palette.common.white }} component='nav'>
         <Toolbar>
           <Link to='/'>
             <img style={{ width: theme.spacing(5) }} src={logo} />

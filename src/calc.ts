@@ -36,7 +36,7 @@ enum ComponentWithUValue {
   Roof = 'Roof',
 }
 
-interface ConfiguratorParameters {
+export interface ConfiguratorParameters {
   wohnflaeche: number
   relativeWohnlage: RelativeWohnlage
   lage: Lage

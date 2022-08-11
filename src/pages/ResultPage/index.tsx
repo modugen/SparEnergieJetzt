@@ -2,6 +2,7 @@ import { Stack, Typography, useTheme } from '@mui/material'
 import Box from '@mui/material/Box'
 import { Container } from '@mui/system'
 import React, { ReactElement } from 'react'
+import { ConfiguratorParameters } from '../../calc'
 import ResultCard from './component/resultCard'
 import { results } from './constant'
 
@@ -25,7 +26,7 @@ export function ResultPage(): ReactElement {
         </Stack>
         <Stack spacing={4} flexDirection='column' display='flex' alignItems='center'>
           {results.map((result, index) => (
-            <ResultCard result={result} key={index} />
+            <ResultCard result={{ ...result}} savedValue={result.calculation({} as ConfiguratorParameters)} key={index} />
           ))}
         </Stack>
       </Container>

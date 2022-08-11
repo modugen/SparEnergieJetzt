@@ -9,9 +9,10 @@ import { ResultCardContainer } from '../styled'
 
 interface Props {
   result: ResultProposal
+  savedValue: number
 }
 
-const ResultCard = ({ result }: Props) => {
+const ResultCard = ({ result, savedValue }: Props) => {
   const theme = useTheme()
   const [descriptionColsaped, setDescriptionColsaped] = useState(false)
 
@@ -43,7 +44,7 @@ const ResultCard = ({ result }: Props) => {
                     fontSize: theme.spacing(3),
                   }}
                 >
-                  300$
+                  {savedValue}€
                 </b>
               </Typography>
             </Box>

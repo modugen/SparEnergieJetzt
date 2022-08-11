@@ -11,12 +11,21 @@ import { Center } from '../../components/Center'
 import innerImg from '../../images/apartment_position/innenliegend.png'
 import cornerImg from '../../images/apartment_position/am_eck.png'
 import detachedImg from '../../images/apartment_position/freistehend.png'
+import bigWindowImg from '../../images/windows/big.png'
+import mediumWindowImg from '../../images/windows/medium.png'
+import smallWindowImg from '../../images/windows/small.png'
+import gasHeatingImg from '../../images/heating_type/gas.png'
+import pelletHeatingImg from '../../images/heating_type/pellet.png'
+import fernHeatingImg from '../../images/heating_type/fern.png'
+import electricityHeatingImg from '../../images/heating_type/electricity.png'
+
 
 export function ConfiguratorPage(): ReactElement {
   const navigate = useNavigate()
   const location = useLocation()
 
-  const { storeyHeight, setStoreyHeight, apartmentPosition, setApartmentPosition  } = useConfiguratorStore()
+  const { storeyHeight, setStoreyHeight, apartmentPosition, setApartmentPosition, heatingType, setHeatingType } =
+    useConfiguratorStore()
 
   const page = useMemo(
     () => parseInt(location.pathname.charAt(location.pathname.length - 1) as string) || 1,
@@ -71,32 +80,83 @@ export function ConfiguratorPage(): ReactElement {
             </Stack>
           }
         />
-        <Route path='step-2' element={
+        <Route
+          path='step-2'
+          element={
+            <SelectButtonGroup
+              config={[
+                {
+                  text: 'innenliegend',
+                  img: innerImg,
+                  selected: apartmentPosition === 'innenliegend',
+                  onClick: () => setApartmentPosition('innenliegend'),
+                },
+                {
+                  text: 'am Eck',
+                  img: cornerImg,
+                  selected: apartmentPosition === 'am-eck',
+                  onClick: () => setApartmentPosition('am-eck'),
+                },
+                {
+                  text: 'freistehend',
+                  img: detachedImg,
+                  selected: apartmentPosition === 'freistehend',
+                  onClick: () => setApartmentPosition('freistehend'),
+                },
+              ]}
+            />
+          }
+        />
+        <Route path='step-3' element={
+          <Stack direction="column">
+            <SelectButtonGroup
+              config={[
+                {
+                  text: 'große Fenster',
+                  img: bigWindowImg,
+                },
+                {
+                  text: 'mittelgroße Fenster',
+                  img: mediumWindowImg,
+                },
+                {
+                  text: 'kleine Fenster',
+                  img: smallWindowImg,
+                },
+              ]}
+            />
+          </Stack>
+        } />
+        <Route path='step-4' element={
           <SelectButtonGroup
             config={[
               {
-                text: 'innenliegend',
-                img: innerImg,
-                selected: apartmentPosition === 'innenliegend',
-                onClick: () => setApartmentPosition('innenliegend'),
+                text: 'Gasheizung',
+                img: gasHeatingImg,
+                selected: heatingType === 'gas',
+                onClick: () => setHeatingType('gas'),
               },
               {
-                text: 'am Eck',
-                img: cornerImg,
-                selected: apartmentPosition === 'am-eck',
-                onClick: () => setApartmentPosition('am-eck'),
+                text: 'Pelletheizung',
+                img: pelletHeatingImg,
+                selected: heatingType === 'pellet',
+                onClick: () => setHeatingType('pellet'),
               },
               {
-                text: 'freistehend',
-                img: detachedImg,
-                selected: apartmentPosition === 'freistehend',
-                onClick: () => setApartmentPosition('freistehend'),
+                text: 'Fernwärme',
+                img: fernHeatingImg,
+                selected: heatingType === 'fern',
+                onClick: () => setHeatingType('fern'),
+              },
+              {
+                text: 'Stromheizung',
+                img: electricityHeatingImg,
+                selected: heatingType === 'electricity',
+                onClick: () => setHeatingType('electricity'),
               },
             ]}
           />
-        }/>
-        <Route path='step-3' element={<Typography>Page 3</Typography>} />
-        <Route path='step-4' element={<Typography>Page 4</Typography>} />
+        } />
       </Routes>
 
       <Button

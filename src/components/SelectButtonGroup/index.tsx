@@ -3,7 +3,7 @@ import { ReactElement } from 'react'
 import { SelectButton } from '../SelectButton'
 
 interface Props {
-  config: { img: string; text: string; selected: boolean; onClick: () => void }[]
+  config: { img: string; text: string; selected?: boolean; onClick?: () => void }[]
 }
 
 export function SelectButtonGroup({ config }: Props): ReactElement {

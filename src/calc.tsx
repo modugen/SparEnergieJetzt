@@ -216,3 +216,18 @@ function calc_effective_heating_cost(params: ConfiguratorParameters): number {
     const heating_cost = H_T_total / HEATING_ENERGY_SOURCE_EFFICIENCY_MAP.get(params.heizungsart) * params.energieEinheitsKosten.get(params.heizungsart)
     return heating_cost
 }
+
+
+function calc_savings_heizkoerperbuerste(params: ConfiguratorParameters): number {
+    let savingsCoefficient
+    switch (params.bausubstanz) {
+        case Bausubstanz.Altbau:
+            savingsCoefficient = 0.05
+        case Bausubstanz.AltbauSaniert:
+            savingsCoefficient = 0.03
+        case Bausubstanz.Neubau:
+            savingsCoefficient = 0.02
+    }
+    const savings = savingsCoefficient * calc_effective_heating_cost(params)
+    return savings
+}

@@ -34,7 +34,7 @@ const initialState: ConfiguratorStoreState = {
 
   location: Lage.DG,
 
-  persons: 2
+  persons: 2,
 }
 
 export const useConfiguratorStore = create(
@@ -51,7 +51,7 @@ export const useConfiguratorStore = create(
       setSmallWindows: (smallWindows: number) => set({ smallWindows }),
       setHeatingType: (heatingType: Heizungsart) => set({ heatingType }),
       setLocation: (location: Lage) => set({ location }),
-      setPersons: (persons: number) => set({ persons })
+      setPersons: (persons: number) => set({ persons }),
     })),
     {
       name: 'configurator-storage',

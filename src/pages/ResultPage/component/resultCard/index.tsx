@@ -7,6 +7,7 @@ import ExpandLessIcon from '@mui/icons-material/ExpandLess'
 import BuyButtons from './BuyButton'
 import { ResultCardContainer } from '../styled'
 import { round } from 'lodash-es'
+import CardMedia from '@mui/material/CardMedia'
 
 interface Props {
   result: ResultProposal
@@ -20,23 +21,31 @@ const ResultCard = ({ result, savedValue }: Props) => {
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm') || theme.breakpoints.down('xs'))
 
   return (
-    <ResultCardContainer sx={{ overflowX: 'hidden' }} width={isSmallScreen ? '90vw' : '55vw'}>
+    <ResultCardContainer width={isSmallScreen ? '95vw' : '55vw'}>
       <Grid container direction='row'>
-        <Grid item lg={4} md={2} xs={3}>
-          <img style={{ width: '90%', height: theme.spacing(20) }} src={result.image} />
+        <Grid item lg={4} md={2} xs={4}>
+          <CardMedia
+            component='img'
+            style={{ width: '100%', height: isSmallScreen ? theme.spacing(22) : theme.spacing(25) }}
+            image={result.image}
+          />
         </Grid>
-        <Grid item lg={8} md={10} xs={9}>
+        <Grid padding={theme.spacing(1.5)} item lg={8} md={10} xs={8}>
           <Stack>
             <Box
               alignItems='center'
               justifyContent='space-between'
               display='flex'
-              flexDirection='row'
+              flexDirection={isSmallScreen ? 'column' : 'row'}
             >
-              <Typography variant='h5'>
+              <Typography textAlign={'center'} variant={isSmallScreen ? 'body1' : 'h5'}>
                 <b>{result.title}</b>
               </Typography>
-              <Typography color={theme.palette.grey[800]} variant='h5'>
+              <Typography
+                textAlign='start'
+                color={theme.palette.grey[800]}
+                variant={isSmallScreen ? 'body1' : 'h5'}
+              >
                 <b>{'Spare bis zu: '}</b>
                 <b
                   style={{
@@ -49,8 +58,12 @@ const ResultCard = ({ result, savedValue }: Props) => {
                 </b>
               </Typography>
             </Box>
-            <Box justifyContent='flex-end' display='flex' flexDirection='row'>
-              <Typography color={theme.palette.grey[800]} variant='h6'>
+            <Box
+              justifyContent={isSmallScreen ? 'flex-start' : 'flex-end'}
+              display='flex'
+              flexDirection='row'
+            >
+              <Typography color={theme.palette.grey[800]} variant={isSmallScreen ? 'body2' : 'h6'}>
                 {'Kostet nur '}
                 <b style={{ color: theme.palette.primary.main, opacity: 0.9 }}>65$</b>
               </Typography>
@@ -58,9 +71,13 @@ const ResultCard = ({ result, savedValue }: Props) => {
             <Collapse
               sx={{ marginTop: theme.spacing(1) }}
               in={descriptionColsaped}
-              collapsedSize={40}
+              collapsedSize={isSmallScreen ? 20 : 40}
             >
-              <Typography>{result.description}</Typography>
+              <Typography
+                color={!descriptionColsaped ? theme.palette.grey[500] : theme.palette.grey[800]}
+              >
+                {result.description}
+              </Typography>
               {isSmallScreen && <BuyButtons />}
             </Collapse>
             <Box display='flex' justifyContent='center'>

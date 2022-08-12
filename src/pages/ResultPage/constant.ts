@@ -6,7 +6,7 @@ import timer from '../../assets/images/results/timer.png'
 import leuchten from '../../assets/images/results/leuchten.png'
 import dichtbander from '../../assets/images/results/dichtbander.png'
 import thermovorhange from '../../assets/images/results/thermovorhange.png'
-import thermostat from '../../assets/images/results/thermostat.png'
+import thermostat from '../../assets/images/results/bb.jpg'
 import { calcSavingsHeizkoerperbuerste, ConfiguratorParameters } from '../../calc'
 
 export interface ResultProposal {

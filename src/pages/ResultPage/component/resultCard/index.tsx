@@ -28,7 +28,7 @@ const ResultCard = ({ result, savedValue }: Props) => {
             component='img'
             style={{
               width: '100%',
-              height: isMidDownScreen ? theme.spacing(22) : theme.spacing(25),
+              height: isMidDownScreen ? theme.spacing(22) : theme.spacing(26),
             }}
             image={result.image}
           />

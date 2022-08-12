@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import { ConfiguratorParameters, DEFAULT_ENERGY_UNIT_COST } from '../calc'
 import { useConfiguratorStore } from '../stores/configuratorStore'
 
@@ -19,7 +20,7 @@ export function useResultConfiguration(): ConfiguratorParameters {
     persons,
   } = useConfiguratorStore()
 
-  return {
+  const config = useMemo(() => ({
     wohnflaeche: squareMeters,
     relativeWohnlage: apartmentPosition,
     lage: location,
@@ -42,5 +43,7 @@ export function useResultConfiguration(): ConfiguratorParameters {
     ],
     energieEinheitsKosten: DEFAULT_ENERGY_UNIT_COST,
     anzahlBewohner: persons,
-  }
+  }), [squareMeters, apartmentPosition, location, storeyHeight, buildingType, heatingType, bigWindows, mediumWindows, smallWindows, persons])
+
+  return config
 }

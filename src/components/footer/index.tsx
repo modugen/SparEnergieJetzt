@@ -9,7 +9,7 @@ const links = [
     link: '',
   },
   {
-    title: 'Datenschuz',
+    title: 'Datenschutz',
     link: '',
   },
   {

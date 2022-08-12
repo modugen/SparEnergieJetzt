@@ -87,9 +87,11 @@ export function SelectButton({
                 ? (e) => onChangeInputNumberValue(parseFloat(e.target.value))
                 : undefined
             }
-            endAdornment={<InputAdornment position='end' 
-            sx={{ display: {xs: 'none', md: 'flex'}}}
-            >{inputAdornment}</InputAdornment>}
+            endAdornment={
+              <InputAdornment position='end' sx={{ display: { xs: 'none', md: 'flex' } }}>
+                {inputAdornment}
+              </InputAdornment>
+            }
             aria-describedby='outlined-weight-helper-text'
             inputProps={{
               'aria-label': 'weight',

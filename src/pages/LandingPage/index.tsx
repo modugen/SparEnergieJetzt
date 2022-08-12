@@ -1,5 +1,5 @@
 import { Stack } from '@mui/system'
-import { Button, Chip, InputAdornment, OutlinedInput, Typography } from '@mui/material'
+import { Box, Button, Chip, InputAdornment, OutlinedInput, Typography } from '@mui/material'
 import React, { ReactElement, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import Grid2 from '@mui/material/Unstable_Grid2'
@@ -151,7 +151,10 @@ export function LandingPage(): ReactElement {
           Warum jetzt?
         </Typography>
         <Center>
-          <img src={chartImg} style={{ maxWidth: 1300 }} />
+          <Box sx={{ maxWidth: {sm: '100%', md: 1300}}}>
+
+            <img src={chartImg} style={{ maxWidth: '100%' }} />
+          </Box>
         </Center>
       </LandingPageSection>
 

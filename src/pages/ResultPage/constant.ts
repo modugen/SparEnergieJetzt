@@ -1,4 +1,4 @@
-import heizkorper from '../../assets/images/results/heizkorper.png'
+import heizkorper from '../../assets/images/results/reflectionCropped.jpg'
 import heizungsburste from '../../assets/images/results/heizungsburste.png'
 import thermoheld from '../../assets/images/results/thermoheld.png'
 import wassersparender from '../../assets/images/results/wassersparender.png'

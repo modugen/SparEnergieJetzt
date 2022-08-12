@@ -13,7 +13,7 @@ export function ResultPage(): ReactElement {
   const config = useResultConfiguration()
 
   return (
-    <Box sx={{ backgroundColor: theme.palette.grey[50], paddingBottom: 5}}>
+    <Box sx={{ backgroundColor: theme.palette.grey[50], paddingBottom: 5 }}>
       <Container>
         <Stack paddingTop={theme.spacing(5)} marginBottom={theme.spacing(6)} spacing={2}>
           <Typography variant='h2' textAlign='center'>

@@ -5,7 +5,7 @@ import wassersparender from '../../assets/images/results/wassersparender.png'
 import timer from '../../assets/images/results/timer.png'
 import dichtbander from '../../assets/images/results/dichtbander.png'
 import thermovorhange from '../../assets/images/results/thermovorhange.png'
-import thermostat from '../../assets/images/results/thermostat.png'
+import thermostat from '../../assets/images/results/thermo.jpg'
 import {
   calcSavingsReflexionsfolie,
   calcSavingsDichtbaenderKastenfenster,

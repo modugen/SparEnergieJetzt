@@ -9,7 +9,7 @@ interface props {
 
 const Layout = ({ children }: props) => {
   return (
-    <Box minHeight='100vH' display='flex' flexDirection='column'>
+    <Box minHeight='100vH' sx={{ overflowX: 'hidden' }} display='flex' flexDirection='column'>
       <Header />
       {children}
       <Footer />

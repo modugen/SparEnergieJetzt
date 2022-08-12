@@ -1,5 +1,5 @@
-import { ConfiguratorParameters, DEFAULT_ENERGY_UNIT_COST, Lage } from '../calc';
-import { useConfiguratorStore } from '../stores/configuratorStore';
+import { ConfiguratorParameters, DEFAULT_ENERGY_UNIT_COST, Lage } from '../calc'
+import { useConfiguratorStore } from '../stores/configuratorStore'
 
 export function useResultConfiguration(): ConfiguratorParameters {
   const {

@@ -18,24 +18,31 @@ import { useConfiguratorStore } from '../../stores/configuratorStore'
 import { ShareMenu } from '../../components/ShareMenu'
 import { Bausubstanz, calcEffectiveHeatingCost, Heizungsart } from '../../calc'
 import { useResultConfiguration } from '../../hooks/useResultConfiguration'
+import { round } from 'lodash-es'
 
 export function LandingPage(): ReactElement {
   const { squareMeters, setSquareMeters, buildingType, setBuildingType } = useConfiguratorStore()
 
   const resultConfig = useResultConfiguration()
 
-  const currentSavings = useMemo(() => calcEffectiveHeatingCost({
-    ...resultConfig, 
-    heizungsart: Heizungsart.Gas,
-    energieEinheitsKosten: new Map<Heizungsart, number>([
-      [Heizungsart.Gas, 0.27]
-    ]), 
-  }), [resultConfig])
+  const currentCost = useMemo(
+    () =>
+      round(calcEffectiveHeatingCost({
+        ...resultConfig,
+        heizungsart: Heizungsart.Gas,
+        energieEinheitsKosten: new Map<Heizungsart, number>([[Heizungsart.Gas, 0.06]]),
+      }), 0),
+    [resultConfig],
+  )
 
-  const futureSavings = useMemo(() => calcEffectiveHeatingCost({
-    ...resultConfig, 
-    heizungsart: Heizungsart.Gas,
-  }), [])
+  const futureCost = useMemo(
+    () =>
+      round(calcEffectiveHeatingCost({
+        ...resultConfig,
+        heizungsart: Heizungsart.Gas,
+      }), 0),
+    [resultConfig],
+  )
 
   return (
     <Stack
@@ -103,7 +110,7 @@ export function LandingPage(): ReactElement {
             </Typography>
             <Center>
               <OutlinedInput
-                value={currentSavings}
+                value={currentCost}
                 type='number'
                 endAdornment={<InputAdornment position='end'>€</InputAdornment>}
                 aria-describedby='outlined-weight-helper-text'
@@ -124,7 +131,7 @@ export function LandingPage(): ReactElement {
             </Typography>
             <Center>
               <OutlinedInput
-                value={futureSavings}
+                value={futureCost}
                 type='number'
                 endAdornment={<InputAdornment position='end'>€</InputAdornment>}
                 aria-describedby='outlined-weight-helper-text'

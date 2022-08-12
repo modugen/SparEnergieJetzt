@@ -26,7 +26,10 @@ const ResultCard = ({ result, savedValue }: Props) => {
         <Grid item lg={4} sm={4} xs={4}>
           <CardMedia
             component='img'
-            style={{ width: '100%', height: isMidDownScreen ? theme.spacing(22) : theme.spacing(25) }}
+            style={{
+              width: '100%',
+              height: isMidDownScreen ? theme.spacing(22) : theme.spacing(25),
+            }}
             image={result.image}
           />
         </Grid>
@@ -63,7 +66,10 @@ const ResultCard = ({ result, savedValue }: Props) => {
               display='flex'
               flexDirection='row'
             >
-              <Typography color={theme.palette.grey[800]} variant={isMidDownScreen ? 'body2' : 'h6'}>
+              <Typography
+                color={theme.palette.grey[800]}
+                variant={isMidDownScreen ? 'body2' : 'h6'}
+              >
                 {'Kostet nur '}
                 <b style={{ color: theme.palette.primary.main, opacity: 0.9 }}>65$</b>
               </Typography>

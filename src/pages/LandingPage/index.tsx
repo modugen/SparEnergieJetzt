@@ -141,7 +141,7 @@ export function LandingPage(): ReactElement {
 
         <Center>
           <Link to='/configurator/step-1' style={{ textDecoration: 'none' }}>
-            <Button variant='contained'>Jetzt Konfigurieren</Button>
+            <Button variant='contained'>Jetzt Einsparungen ermitteln</Button>
           </Link>
         </Center>
       </LandingPageSection>
@@ -167,7 +167,7 @@ export function LandingPage(): ReactElement {
       <LandingPageSection>
         <Center>
           <Link to='/configurator/step-1' style={{ textDecoration: 'none' }}>
-            <Button variant='contained'>Jetzt Konfigurieren</Button>
+            <Button variant='contained'>Jetzt Einsparungen ermitteln</Button>
           </Link>
         </Center>
 

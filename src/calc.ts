@@ -337,16 +337,18 @@ export function calcSavingsDuschkopf(params: ConfiguratorParameters): number {
 
 export function calcSavingsTimer(params: ConfiguratorParameters): number {
   const baseCost = calcEffectiveWarmWaterCost(params)
+  const averageShowerTime = 8
+  const adjustedShowerTimeUsingTimer = 2
   let savingsCoefficient
   switch (params.bausubstanz) {
     case Bausubstanz.Altbau:
-      savingsCoefficient = 1 / 8
+      savingsCoefficient = (averageShowerTime - adjustedShowerTimeUsingTimer) / averageShowerTime
       break
     case Bausubstanz.AltbauSaniert:
-      savingsCoefficient = 1 / 8
+      savingsCoefficient = (averageShowerTime - adjustedShowerTimeUsingTimer) / averageShowerTime
       break
     case Bausubstanz.Neubau:
-      savingsCoefficient = 1 / 8
+      savingsCoefficient = (averageShowerTime - adjustedShowerTimeUsingTimer) / averageShowerTime
   }
   const savings = baseCost * savingsCoefficient
   return savings

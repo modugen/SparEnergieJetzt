@@ -57,7 +57,7 @@ export const results: ResultProposal[] = [
     link: 'https://www.thermoheld.global/thermoheld-glas/',
     type: 'thermoheld',
     calculation: calcSavingsThermoheld,
-    calculationNotPossible: true
+    calculationNotPossible: true,
   },
   {
     title: 'Wassersparender Duschkopf',

@@ -61,7 +61,7 @@ export function LandingPage(): ReactElement {
       <LandingPageSection>
         <Grid2 container spacing={2} direction='column'>
           <Grid2>
-            <Typography variant='h3' textAlign='center'>
+            <Typography variant='h2' textAlign='center'>
               Die Energiekrise sinnvoll bewältigen
             </Typography>
           </Grid2>

@@ -1,19 +1,18 @@
-import { Box, useTheme } from '@mui/material'
+import Grid2 from '@mui/material/Unstable_Grid2'
 import React from 'react'
 import { BuyButton } from '../styled'
 
-const BuyButtons = ({ link }: { link: string }) => {
-  const theme = useTheme()
-
+const BuyButtons = ({ links }: { links: string[] }) => {
   return (
-    <Box display='flex' justifyContent='flex-end'>
-      <BuyButton variant='body1' href={link} style={{ marginRight: theme.spacing(1) }}>
-        kaufen
-      </BuyButton>
-      <BuyButton variant='body1' href={link}>
-        kaufen
-      </BuyButton>
-    </Box>
+    <Grid2 container display='flex' justifyContent='flex-end' spacing={1}>
+      {links.map(link => (
+        <Grid2 key={link} >
+          <BuyButton variant='body1' href={link}>
+            kaufen
+          </BuyButton>
+        </Grid2>
+      ))}
+    </Grid2>
   )
 }
 

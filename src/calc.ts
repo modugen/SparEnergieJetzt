@@ -43,8 +43,6 @@ export interface ConfiguratorParameters {
   deckenhoehe: number
   bausubstanz: Bausubstanz
   heizungsart: Heizungsart
-  fensterflaecheRelativ: number
-  fensterflaecheAbsolut: number // todo maybe just use one of these, and do the calculation in the input fields
   windows: Array<WindowConfiguration>
   energieEinheitsKosten: Map<Heizungsart, number>
 }

@@ -117,7 +117,7 @@ export function LandingPage(): ReactElement {
             <Center>
               <Chip label={`${currentCost}€`} style={{ width: 65 }} />
             </Center>
-            <Typography variant='subtitle1' textAlign="center">
+            <Typography variant='subtitle1' textAlign='center'>
               pro Heizperiode
             </Typography>
           </Grid2>
@@ -126,16 +126,17 @@ export function LandingPage(): ReactElement {
               Heizkosten In Zukunft
             </Typography>
             <Center>
-            <Chip label={`${futureCost}€`} style={{ width: 65 }} />
+              <Chip label={`${futureCost}€`} style={{ width: 65 }} />
             </Center>
-            <Typography variant='subtitle1' textAlign="center">
+            <Typography variant='subtitle1' textAlign='center'>
               pro Heizperiode
             </Typography>
           </Grid2>
         </Grid2>
 
         <Typography color={red[500]} textAlign='center'>
-          Bei der empfohlenen Einsparung von 20% kannst du bis zu <b>{round(futureCost * 0.2, 0)}€</b> sparen
+          Bei der empfohlenen Einsparung von 20% kannst du bis zu{' '}
+          <b>{round(futureCost * 0.2, 0)}€</b> sparen
         </Typography>
 
         <Center>
@@ -150,7 +151,7 @@ export function LandingPage(): ReactElement {
           Warum jetzt?
         </Typography>
         <Center>
-          <img src={chartImg} style={{ maxWidth: '100%' }} />
+          <img src={chartImg} style={{ maxWidth: 1300 }} />
         </Center>
       </LandingPageSection>
 

@@ -16,6 +16,8 @@ interface ConfiguratorStoreState {
   heatingType: Heizungsart
 
   location: Lage
+
+  persons: number
 }
 
 const initialState: ConfiguratorStoreState = {
@@ -31,6 +33,8 @@ const initialState: ConfiguratorStoreState = {
   heatingType: Heizungsart.Gas,
 
   location: Lage.DG,
+
+  persons: 2,
 }
 
 export const useConfiguratorStore = create(
@@ -47,6 +51,7 @@ export const useConfiguratorStore = create(
       setSmallWindows: (smallWindows: number) => set({ smallWindows }),
       setHeatingType: (heatingType: Heizungsart) => set({ heatingType }),
       setLocation: (location: Lage) => set({ location }),
+      setPersons: (persons: number) => set({ persons }),
     })),
     {
       name: 'configurator-storage',

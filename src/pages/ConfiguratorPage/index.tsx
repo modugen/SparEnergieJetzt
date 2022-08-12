@@ -30,7 +30,7 @@ const stepToQuestionMap: Record<number, string> = {
   2: 'Wie hoch ist die Deckenhöhe in deinen Zimmern?',
   3: 'An welcher Position befindet sich dein Gebäude/Apartment?',
   4: 'Wie viele Fenster hat dein Gebäude/Apartment?',
-  5: 'Wie sieht die Lage deines Apartments aus?'
+  5: 'Wie sieht die Lage deines Apartments aus?',
 }
 
 export function ConfiguratorPage(): ReactElement {
@@ -53,7 +53,7 @@ export function ConfiguratorPage(): ReactElement {
     setSmallWindows,
 
     location: apartmentLocation,
-    setLocation
+    setLocation,
   } = useConfiguratorStore()
 
   const page = useMemo(
@@ -237,12 +237,14 @@ export function ConfiguratorPage(): ReactElement {
                     img: mittelgeschossImg,
                     selected: apartmentLocation === Lage.Zwischengeschoss,
                     onClick: () => setLocation(Lage.Zwischengeschoss),
-                  },                  {
+                  },
+                  {
                     text: 'Erdgeschoss',
                     img: erdgeschossImg,
                     selected: apartmentLocation === Lage.EG,
                     onClick: () => setLocation(Lage.EG),
-                  },                  {
+                  },
+                  {
                     text: 'Boden + Dach',
                     img: bodenDachImg,
                     selected: apartmentLocation === Lage.DG_EG,

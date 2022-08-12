@@ -22,7 +22,8 @@ export function ResultPage(): ReactElement {
           </Typography>
           <Typography variant='body1' padding='0 12% 0' textAlign='center'>
             Nachfolgend unsere Vorschläge gelistet nach Einsparpotenzial innerhalb von einer
-            Heizperiode. Wie wir zu den Ergebnissen komment kannst du <Link href=''>hier</Link> nachlesen
+            Heizperiode. Wie wir zu den Ergebnissen komment kannst du <Link href=''>hier</Link>{' '}
+            nachlesen
           </Typography>
           <Typography variant='subtitle1' textAlign='center'>
             Kläre auf und teile deine Erkenntnisse!
@@ -43,7 +44,8 @@ export function ResultPage(): ReactElement {
           <Typography variant='body1' padding='0 12% 0' textAlign='center'>
             Die hier gelisteten Maßnahmen haben keinen Anspruch auf Vollständigkeit. Sie haben ein
             Produkt oder eine Idee, die wir hier noch abbilden sollten, sodass wir gemeinsam besser
-            Energie sparen können? Schreiben sie uns: <Link href='mailto:info@modugen.de'>info@modugen.de</Link>
+            Energie sparen können? Schreiben sie uns:{' '}
+            <Link href='mailto:info@modugen.de'>info@modugen.de</Link>
           </Typography>
         </Stack>
       </Container>

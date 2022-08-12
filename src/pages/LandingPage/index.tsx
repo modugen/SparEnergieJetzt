@@ -152,10 +152,10 @@ export function LandingPage(): ReactElement {
         </Typography>
         <Typography variant='body1' textAlign='center'>
           Die Energiepreise steigen stark an. Im Vergleich zu den Vorjahren werden besonders
-          gasbetriebene Heizungen mindestens viermal teuerer. Es ist so wichtig wie nie, energiesparend zu
-          heizen. Heizkosten sparen bei steigenden Preisen bedeutet, dass der Verbrauch gesenkt
-          werden muss. Mit dem SparEnergie Konfigurator findest du schnell heraus, welche
-          Sparmaßnahmen für dich am effektivsten sind.
+          gasbetriebene Heizungen mindestens viermal teuerer. Es ist so wichtig wie nie,
+          energiesparend zu heizen. Heizkosten sparen bei steigenden Preisen bedeutet, dass der
+          Verbrauch gesenkt werden muss. Mit dem SparEnergie Konfigurator findest du schnell heraus,
+          welche Sparmaßnahmen für dich am effektivsten sind.
         </Typography>
         <Center>
           <Box sx={{ maxWidth: { sm: '100%', md: 1200 } }}>

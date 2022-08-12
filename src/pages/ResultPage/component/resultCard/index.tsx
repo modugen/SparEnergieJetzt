@@ -60,7 +60,7 @@ const ResultCard = ({ result, savedValue }: Props) => {
                         opacity: 0.9,
                       }}
                     >
-                      {round(savedValue, 2)}€
+                      {round(savedValue, 0)}€
                     </b>
                   </>
                 )}

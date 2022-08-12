@@ -199,9 +199,11 @@ function calcHTtotal(params: ConfiguratorParameters): number {
 
 export function calcEffectiveHeatingCost(params: ConfiguratorParameters): number {
   const Q_H = calcQH(params)
+  const wattHoursToKiloWattHours = 1 / 1000
   const heatingCost =
     (Q_H / (HEATING_ENERGY_SOURCE_EFFICIENCY_MAP.get(params.heizungsart) as number)) *
-    (params.energieEinheitsKosten.get(params.heizungsart) as number)
+    (params.energieEinheitsKosten.get(params.heizungsart) as number) *
+    wattHoursToKiloWattHours
   return heatingCost
 }
 

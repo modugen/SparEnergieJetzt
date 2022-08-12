@@ -8,11 +8,11 @@ import dichtbander from '../../assets/images/results/dichtbander.png'
 import thermovorhange from '../../assets/images/results/thermovorhange.png'
 import thermostat from '../../assets/images/results/thermostat.png'
 import {
-  calcReflexionsfolie,
+  calcSavingsReflexionsfolie,
   calcSavingsDichtbaenderKastenfenster,
   calcSavingsHeizkoerperbuerste,
   calcSavingsThermovorhaenge,
-  calcThermostate,
+  calcSavingsThermostate,
   ConfiguratorParameters,
 } from '../../calc'
 
@@ -35,7 +35,7 @@ export const results: ResultProposal[] = [
     winner: true,
     link: 'https://amzn.to/3OWoMNU',
     type: 'reflection',
-    calculation: calcReflexionsfolie,
+    calculation: calcSavingsReflexionsfolie,
   },
   {
     title: 'Heizkörperbürste',
@@ -107,6 +107,6 @@ export const results: ResultProposal[] = [
     image: thermostat,
     link: 'https://amzn.to/3oPxFOU',
     type: 'hydraulischeThermostate',
-    calculation: calcThermostate,
+    calculation: calcSavingsThermostate,
   },
 ]

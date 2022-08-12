@@ -275,7 +275,7 @@ export function calcSavingsDichtbaenderKastenfenster(params: ConfiguratorParamet
   return savings
 }
 
-export function calcThermostate(params: ConfiguratorParameters): number {
+export function calcSavingsThermostate(params: ConfiguratorParameters): number {
   let savingsCoefficient
   switch (params.bausubstanz) {
     case Bausubstanz.Altbau:
@@ -292,7 +292,7 @@ export function calcThermostate(params: ConfiguratorParameters): number {
   return savings
 }
 
-export function calcReflexionsfolie(params: ConfiguratorParameters): number {
+export function calcSavingsReflexionsfolie(params: ConfiguratorParameters): number {
   let savingsCoefficient
   switch (params.bausubstanz) {
     case Bausubstanz.Altbau:

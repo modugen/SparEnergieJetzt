@@ -96,12 +96,11 @@ const ResultCard = ({ result, savedValue }: Props) => {
                     {result.description}
                   </Typography>
                 </Grid2>
-                {isMidDownScreen && 
+                {isMidDownScreen && (
                   <Grid2>
-
                     <BuyButtons links={result.links} />
                   </Grid2>
-}
+                )}
               </Grid2>
             </Collapse>
             <Box display='flex' justifyContent='center'>
@@ -109,7 +108,11 @@ const ResultCard = ({ result, savedValue }: Props) => {
                 {!descriptionColsaped ? <ExpandMoreIcon /> : <ExpandLessIcon />}
               </IconButton>
             </Box>
-            {!isMidDownScreen && <BuyButtons links={result.links} />}
+            {!isMidDownScreen && 
+            <Grid2>
+
+              <BuyButtons links={result.links} />
+            </Grid2>}
           </Stack>
         </Grid>
       </Grid>

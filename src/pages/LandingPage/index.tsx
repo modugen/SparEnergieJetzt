@@ -155,8 +155,8 @@ export function LandingPage(): ReactElement {
         </Grid2>
 
         <Typography color={red[500]} textAlign='center' variant='h5'>
-          Bei einer Einsparung von 20% kannst du bis zu{' '}
-          <b>{round(futureCost * 0.2, 0)}€</b> pro Heizperiode sparen
+          Bei einer Einsparung von 20% kannst du bis zu <b>{round(futureCost * 0.2, 0)}€</b> pro
+          Heizperiode sparen
         </Typography>
 
         <Center>

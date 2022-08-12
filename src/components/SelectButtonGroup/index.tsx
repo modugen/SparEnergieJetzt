@@ -12,7 +12,7 @@ export function SelectButtonGroup({ config }: Props): ReactElement {
   return (
     <Grid2 container spacing={4} justifyContent='center'>
       {config.map((selectButtonConfig) => (
-        <Grid2 key={selectButtonConfig.text}>
+        <Grid2 key={selectButtonConfig.text} xs={config.length >= 4 ? 6 : undefined} md={3}>
           <SelectButton {...selectButtonConfig} />
         </Grid2>
       ))}

@@ -20,30 +20,44 @@ export function useResultConfiguration(): ConfiguratorParameters {
     persons,
   } = useConfiguratorStore()
 
-  const config = useMemo(() => ({
-    wohnflaeche: squareMeters,
-    relativeWohnlage: apartmentPosition,
-    lage: location,
-    deckenhoehe: storeyHeight,
-    bausubstanz: buildingType,
-    heizungsart: heatingType,
-    windows: [
-      {
-        areaPerWindow: 4,
-        NumberOfWindows: bigWindows,
-      },
-      {
-        areaPerWindow: 2,
-        NumberOfWindows: mediumWindows,
-      },
-      {
-        areaPerWindow: 1,
-        NumberOfWindows: smallWindows,
-      },
+  const config = useMemo(
+    () => ({
+      wohnflaeche: squareMeters,
+      relativeWohnlage: apartmentPosition,
+      lage: location,
+      deckenhoehe: storeyHeight,
+      bausubstanz: buildingType,
+      heizungsart: heatingType,
+      windows: [
+        {
+          areaPerWindow: 4,
+          NumberOfWindows: bigWindows,
+        },
+        {
+          areaPerWindow: 2,
+          NumberOfWindows: mediumWindows,
+        },
+        {
+          areaPerWindow: 1,
+          NumberOfWindows: smallWindows,
+        },
+      ],
+      energieEinheitsKosten: DEFAULT_ENERGY_UNIT_COST,
+      anzahlBewohner: persons,
+    }),
+    [
+      squareMeters,
+      apartmentPosition,
+      location,
+      storeyHeight,
+      buildingType,
+      heatingType,
+      bigWindows,
+      mediumWindows,
+      smallWindows,
+      persons,
     ],
-    energieEinheitsKosten: DEFAULT_ENERGY_UNIT_COST,
-    anzahlBewohner: persons,
-  }), [squareMeters, apartmentPosition, location, storeyHeight, buildingType, heatingType, bigWindows, mediumWindows, smallWindows, persons])
+  )
 
   return config
 }

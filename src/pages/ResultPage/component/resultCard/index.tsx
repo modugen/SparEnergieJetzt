@@ -44,25 +44,32 @@ const ResultCard = ({ result, savedValue }: Props) => {
               <Typography textAlign={'left'} variant={isMidDownScreen ? 'body1' : 'h5'}>
                 <b>{result.title}</b>
               </Typography>
-              <Typography
+                <Typography
                 textAlign='start'
                 color={theme.palette.grey[800]}
                 variant={isMidDownScreen ? 'body1' : 'h5'}
-              >
-                {'Spare bis zu: '}
-                <b
-                  style={{
-                    color: theme.palette.primary.main,
-                    opacity: 0.9,
-                  }}
                 >
-                  {round(savedValue, 2)}€
-                </b>
-              </Typography>
+                  {result.calculationNotPossible ? 
+                    'Einsparungen nicht ermittelbar'
+                    : 
+                    <>
+                  {'Spare bis zu: '}
+                  <b
+                    style={{
+                      color: theme.palette.primary.main,
+                      opacity: 0.9,
+                    }}
+                    >
+                    {round(savedValue, 2)}€
+                  </b>
+                    </>
+                  }
+                </Typography>
+            
             </Box>
             <Box
-              justifyContent={isMidDownScreen ? 'flex-start' : 'flex-end'}
-              display='flex'
+            justifyContent={isMidDownScreen ? 'flex-start' : 'flex-end'}
+            display='flex'
               flexDirection='row'
             >
               <Typography

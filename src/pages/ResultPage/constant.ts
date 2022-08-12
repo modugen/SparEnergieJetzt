@@ -25,6 +25,7 @@ export interface ResultProposal {
   link: string
   type: string
   calculation: (config: ConfiguratorParameters) => number
+  calculationNotPossible?: boolean
 }
 
 export const results: ResultProposal[] = [
@@ -55,6 +56,7 @@ export const results: ResultProposal[] = [
     link: 'https://www.thermoheld.global/thermoheld-glas/',
     type: 'thermoheld',
     calculation: () => 300,
+    calculationNotPossible: true
   },
   {
     title: 'Wassersparender Duschkopf',

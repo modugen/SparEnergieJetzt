@@ -16,7 +16,7 @@ export function useResultConfiguration(): ConfiguratorParameters {
 
     location,
 
-    persons
+    persons,
   } = useConfiguratorStore()
 
   return {

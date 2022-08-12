@@ -68,6 +68,7 @@ export function SelectButton({
             inputProps={{
               'aria-label': 'weight',
               min: 0,
+
             }}
             size='small'
             style={{ alignSelf: 'center' }}

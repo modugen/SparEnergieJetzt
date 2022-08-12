@@ -31,6 +31,7 @@ const stepToQuestionMap: Record<number, string> = {
   3: 'An welcher Position befindet sich dein Gebäude/Apartment?',
   4: 'Wie viele Fenster hat dein Gebäude/Apartment?',
   5: 'Wie sieht die Lage deines Apartments aus?',
+  6: 'Wie viele Personen leben in dem Haushalt?'
 }
 
 export function ConfiguratorPage(): ReactElement {
@@ -54,6 +55,9 @@ export function ConfiguratorPage(): ReactElement {
 
     location: apartmentLocation,
     setLocation,
+
+    persons, 
+    setPersons
   } = useConfiguratorStore()
 
   const page = useMemo(
@@ -252,6 +256,52 @@ export function ConfiguratorPage(): ReactElement {
                   },
                 ]}
               />
+            }
+          />
+                    <Route
+            path='step-6'
+            element={
+              <Stack spacing={3}>
+              <SelectButtonGroup
+                config={[
+                  {
+                    text: '1 Person',
+                    img: dachgeschossImg,
+                    selected: persons === 1,
+                    onClick: () => setPersons(1),
+                  },
+                  {
+                    text: '2 Personen',
+                    img: mittelgeschossImg,
+                    selected: persons === 2,
+                    onClick: () => setPersons(2),
+                  },
+                  {
+                    text: '4 Personen',
+                    img: erdgeschossImg,
+                    selected: persons === 4,
+                    onClick: () => setPersons(4),
+                  },
+                ]}
+              />
+              <Typography textAlign='center'>
+              Oder gib die Anzahl der Personen individuell an!
+            </Typography>
+            <Center>
+              <OutlinedInput
+                value={persons}
+                onChange={(e) => setPersons(parseInt(e.target.value))}
+                type='number'
+                endAdornment={<InputAdornment position='end'>Personen</InputAdornment>}
+                aria-describedby='outlined-weight-helper-text'
+                inputProps={{
+                  'aria-label': 'weight',
+                  min: 1, 
+                }}
+                size='small'
+              />
+            </Center>
+          </Stack>
             }
           />
         </Routes>

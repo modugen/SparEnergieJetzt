@@ -28,15 +28,15 @@ export function useResultConfiguration(): ConfiguratorParameters {
     heizungsart: heatingType,
     windows: [
       {
-        areaPerWindow: 1.5,
+        areaPerWindow: 4,
         NumberOfWindows: bigWindows,
       },
       {
-        areaPerWindow: 1,
+        areaPerWindow: 2,
         NumberOfWindows: mediumWindows,
       },
       {
-        areaPerWindow: 0.5,
+        areaPerWindow: 1,
         NumberOfWindows: smallWindows,
       },
     ],

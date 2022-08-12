@@ -16,7 +16,7 @@ export function LandingPageSection({ children, style }: Props): ReactElement {
         paddingBottom: (theme) => theme.spacing(8),
       }}
     >
-      <Stack direction='column' spacing={4}>
+      <Stack direction='column' spacing={3}>
         {children}
       </Stack>
     </Container>

@@ -18,74 +18,86 @@ const ResultCard = ({ result, savedValue }: Props) => {
   const theme = useTheme()
   const [descriptionColsaped, setDescriptionColsaped] = useState(false)
 
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm') || theme.breakpoints.down('xs'))
+  const isMidDownScreen = useMediaQuery(theme.breakpoints.down('md'))
 
   return (
-    <ResultCardContainer width={isSmallScreen ? '95vw' : '55vw'}>
+    <ResultCardContainer width={isMidDownScreen ? '95vw' : '55vw'}>
       <Grid container direction='row'>
-        <Grid item lg={4} md={2} xs={4}>
+        <Grid item lg={4} sm={4} xs={4}>
           <CardMedia
             component='img'
-            style={{ width: '100%', height: isSmallScreen ? theme.spacing(22) : theme.spacing(25) }}
+            style={{
+              width: '100%',
+              height: isMidDownScreen ? theme.spacing(22) : theme.spacing(26),
+            }}
             image={result.image}
           />
         </Grid>
-        <Grid padding={theme.spacing(1.5)} item lg={8} md={10} xs={8}>
+        <Grid padding={theme.spacing(1.5)} item lg={8} sm={8} xs={8}>
           <Stack>
             <Box
-              alignItems='center'
+              alignItems={isMidDownScreen ? 'left' : 'center'}
               justifyContent='space-between'
               display='flex'
-              flexDirection={isSmallScreen ? 'column' : 'row'}
+              flexDirection={isMidDownScreen ? 'column' : 'row'}
             >
-              <Typography textAlign={'center'} variant={isSmallScreen ? 'body1' : 'h5'}>
+              <Typography textAlign={'left'} variant={isMidDownScreen ? 'body1' : 'h5'}>
                 <b>{result.title}</b>
               </Typography>
-              <Typography
+                <Typography
                 textAlign='start'
                 color={theme.palette.grey[800]}
-                variant={isSmallScreen ? 'body1' : 'h5'}
-              >
-                <b>{'Spare bis zu: '}</b>
-                <b
-                  style={{
-                    color: theme.palette.primary.main,
-                    opacity: 0.9,
-                    fontSize: theme.spacing(3),
-                  }}
+                variant={isMidDownScreen ? 'body1' : 'h5'}
                 >
-                  {round(savedValue, 2)}€
-                </b>
-              </Typography>
+                  {result.calculationNotPossible ? 
+                    'Einsparungen nicht ermittelbar'
+                    : 
+                    <>
+                  {'Spare bis zu: '}
+                  <b
+                    style={{
+                      color: theme.palette.primary.main,
+                      opacity: 0.9,
+                    }}
+                    >
+                    {round(savedValue, 2)}€
+                  </b>
+                    </>
+                  }
+                </Typography>
+            
             </Box>
             <Box
-              justifyContent={isSmallScreen ? 'flex-start' : 'flex-end'}
-              display='flex'
+            justifyContent={isMidDownScreen ? 'flex-start' : 'flex-end'}
+            display='flex'
               flexDirection='row'
             >
-              <Typography color={theme.palette.grey[800]} variant={isSmallScreen ? 'body2' : 'h6'}>
+              <Typography
+                color={theme.palette.grey[600]}
+                variant={isMidDownScreen ? 'body2' : 'h6'}
+              >
                 {'Kostet nur '}
-                <b style={{ color: theme.palette.primary.main, opacity: 0.9 }}>65$</b>
+                <b style={{ color: theme.palette.primary.main, opacity: 0.7 }}>65$</b>
               </Typography>
             </Box>
             <Collapse
               sx={{ marginTop: theme.spacing(1) }}
               in={descriptionColsaped}
-              collapsedSize={isSmallScreen ? 20 : 40}
+              collapsedSize={isMidDownScreen ? 20 : 40}
             >
               <Typography
                 color={!descriptionColsaped ? theme.palette.grey[500] : theme.palette.grey[800]}
               >
                 {result.description}
               </Typography>
-              {isSmallScreen && <BuyButtons />}
+              {isMidDownScreen && <BuyButtons link={result.link} />}
             </Collapse>
             <Box display='flex' justifyContent='center'>
               <IconButton onClick={() => setDescriptionColsaped(!descriptionColsaped)}>
                 {!descriptionColsaped ? <ExpandMoreIcon /> : <ExpandLessIcon />}
               </IconButton>
             </Box>
-            {!isSmallScreen && <BuyButtons />}
+            {!isMidDownScreen && <BuyButtons link={result.link} />}
           </Stack>
         </Grid>
       </Grid>

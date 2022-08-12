@@ -1,4 +1,13 @@
-import { Button, InputAdornment, OutlinedInput, Pagination, Typography } from '@mui/material'
+import {
+  Button,
+  FormControlLabel,
+  InputAdornment,
+  OutlinedInput,
+  Pagination,
+  Radio,
+  RadioGroup,
+  Typography,
+} from '@mui/material'
 import { Box, Container, Stack } from '@mui/system'
 import React, { ReactElement, useMemo } from 'react'
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
@@ -24,17 +33,14 @@ import dachgeschossImg from '../../images/apartment_type/dachgeschoss.png'
 import mittelgeschossImg from '../../images/apartment_type/mittelgeschoss.png'
 import erdgeschossImg from '../../images/apartment_type/erdgeschoss.png'
 import bodenDachImg from '../../images/apartment_type/boden_dach.png'
-import onePersonImg from '../../images/persons/1_person.png'
-import twoPersonsImg from '../../images/persons/2_persons.png'
-import fourPersonsImg from '../../images/persons/4_persons.png'
 
 const stepToQuestionMap: Record<number, string> = {
-  1: 'In welchem Zustand befindet sich dein Gebäude/Apartment?',
-  2: 'Wie hoch ist die Deckenhöhe in deinen Zimmern?',
-  3: 'An welcher Position befindet sich dein Gebäude/Apartment?',
+  1: 'An welcher Position befindet sich dein Gebäude/Apartment?',
+  2: 'Wie sieht die Lage deines Apartments aus?',
+  3: 'Wie hoch ist die Deckenhöhe in deinen Zimmern?',
   4: 'Wie viele Fenster hat dein Gebäude/Apartment?',
-  5: 'Wie sieht die Lage deines Apartments aus?',
-  6: 'Wie viele Personen leben in dem Haushalt?',
+  5: 'Wie viele Personen leben in dem Haushalt?',
+  6: 'Mit was wird bei dir geheizt?',
 }
 
 export function ConfiguratorPage(): ReactElement {
@@ -94,6 +100,66 @@ export function ConfiguratorPage(): ReactElement {
           <Route
             path='step-1'
             element={
+              <SelectButtonGroup
+                config={[
+                  {
+                    text: 'innenliegend',
+                    img: innerImg,
+                    selected: apartmentPosition === RelativeWohnlage.Innenliegend,
+                    onClick: () => setApartmentPosition(RelativeWohnlage.Innenliegend),
+                  },
+                  {
+                    text: 'am Eck',
+                    img: cornerImg,
+                    selected: apartmentPosition === RelativeWohnlage.AmEck,
+                    onClick: () => setApartmentPosition(RelativeWohnlage.AmEck),
+                  },
+                  {
+                    text: 'freistehend',
+                    img: detachedImg,
+                    selected: apartmentPosition === RelativeWohnlage.Freistehend,
+                    onClick: () => setApartmentPosition(RelativeWohnlage.Freistehend),
+                  },
+                ]}
+              />
+            }
+          />
+          <Route
+            path='step-2'
+            element={
+              <SelectButtonGroup
+                config={[
+                  {
+                    text: 'Dachgeschoss',
+                    img: dachgeschossImg,
+                    selected: apartmentLocation === Lage.DG,
+                    onClick: () => setLocation(Lage.DG),
+                  },
+                  {
+                    text: 'Mittelgeschoss',
+                    img: mittelgeschossImg,
+                    selected: apartmentLocation === Lage.Zwischengeschoss,
+                    onClick: () => setLocation(Lage.Zwischengeschoss),
+                  },
+                  {
+                    text: 'Erdgeschoss',
+                    img: erdgeschossImg,
+                    selected: apartmentLocation === Lage.EG,
+                    onClick: () => setLocation(Lage.EG),
+                  },
+                  {
+                    text: 'Boden + Dach',
+                    img: bodenDachImg,
+                    selected: apartmentLocation === Lage.DG_EG,
+                    onClick: () => setLocation(Lage.DG_EG),
+                  },
+                ]}
+              />
+            }
+          />
+          <Route
+            path='step-3'
+            element={
               <Stack spacing={3}>
                 <SelectButtonGroup
                   config={[
@@ -136,35 +202,9 @@ export function ConfiguratorPage(): ReactElement {
               </Stack>
             }
           />
+
           <Route
-            path='step-2'
-            element={
-              <SelectButtonGroup
-                config={[
-                  {
-                    text: 'innenliegend',
-                    img: innerImg,
-                    selected: apartmentPosition === RelativeWohnlage.Innenliegend,
-                    onClick: () => setApartmentPosition(RelativeWohnlage.Innenliegend),
-                  },
-                  {
-                    text: 'am Eck',
-                    img: cornerImg,
-                    selected: apartmentPosition === RelativeWohnlage.AmEck,
-                    onClick: () => setApartmentPosition(RelativeWohnlage.AmEck),
-                  },
-                  {
-                    text: 'freistehend',
-                    img: detachedImg,
-                    selected: apartmentPosition === RelativeWohnlage.Freistehend,
-                    onClick: () => setApartmentPosition(RelativeWohnlage.Freistehend),
-                  },
-                ]}
-              />
-            }
-          />
-          <Route
-            path='step-3'
+            path='step-4'
             element={
               <Stack direction='column'>
                 <SelectButtonGroup
@@ -196,7 +236,26 @@ export function ConfiguratorPage(): ReactElement {
             }
           />
           <Route
-            path='step-4'
+            path='step-5'
+            element={
+              <Stack spacing={3}>
+                <RadioGroup
+                  aria-labelledby='demo-radio-buttons-group-label'
+                  value={persons}
+                  name='radio-buttons-group'
+                  onChange={(e) => setPersons(parseInt(e.target.value))}
+                >
+                  <FormControlLabel value={1} control={<Radio />} label='1 Person' />
+                  <FormControlLabel value={2} control={<Radio />} label='2 Personen' />
+                  <FormControlLabel value={3} control={<Radio />} label='3 Personen' />
+                  <FormControlLabel value={4} control={<Radio />} label='4 Personen' />
+                  <FormControlLabel value={5} control={<Radio />} label='5 Personen' />
+                </RadioGroup>
+              </Stack>
+            }
+          />
+          <Route
+            path='step-6'
             element={
               <SelectButtonGroup
                 config={[
@@ -226,85 +285,6 @@ export function ConfiguratorPage(): ReactElement {
                   },
                 ]}
               />
-            }
-          />
-          <Route
-            path='step-5'
-            element={
-              <SelectButtonGroup
-                config={[
-                  {
-                    text: 'Dachgeschoss',
-                    img: dachgeschossImg,
-                    selected: apartmentLocation === Lage.DG,
-                    onClick: () => setLocation(Lage.DG),
-                  },
-                  {
-                    text: 'Mittelgeschoss',
-                    img: mittelgeschossImg,
-                    selected: apartmentLocation === Lage.Zwischengeschoss,
-                    onClick: () => setLocation(Lage.Zwischengeschoss),
-                  },
-                  {
-                    text: 'Erdgeschoss',
-                    img: erdgeschossImg,
-                    selected: apartmentLocation === Lage.EG,
-                    onClick: () => setLocation(Lage.EG),
-                  },
-                  {
-                    text: 'Boden + Dach',
-                    img: bodenDachImg,
-                    selected: apartmentLocation === Lage.DG_EG,
-                    onClick: () => setLocation(Lage.DG_EG),
-                  },
-                ]}
-              />
-            }
-          />
-          <Route
-            path='step-6'
-            element={
-              <Stack spacing={3}>
-                <SelectButtonGroup
-                  config={[
-                    {
-                      text: '1 Person',
-                      img: onePersonImg,
-                      selected: persons === 1,
-                      onClick: () => setPersons(1),
-                    },
-                    {
-                      text: '2 Personen',
-                      img: twoPersonsImg,
-                      selected: persons === 2,
-                      onClick: () => setPersons(2),
-                    },
-                    {
-                      text: '4 Personen',
-                      img: fourPersonsImg,
-                      selected: persons === 4,
-                      onClick: () => setPersons(4),
-                    },
-                  ]}
-                />
-                <Typography textAlign='center'>
-                  Oder gib die Anzahl der Personen individuell an!
-                </Typography>
-                <Center>
-                  <OutlinedInput
-                    value={persons}
-                    onChange={(e) => setPersons(parseInt(e.target.value))}
-                    type='number'
-                    endAdornment={<InputAdornment position='end'>Personen</InputAdornment>}
-                    aria-describedby='outlined-weight-helper-text'
-                    inputProps={{
-                      'aria-label': 'weight',
-                      min: 1,
-                    }}
-                    size='small'
-                  />
-                </Center>
-              </Stack>
             }
           />
         </Routes>

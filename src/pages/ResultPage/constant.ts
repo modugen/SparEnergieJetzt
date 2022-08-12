@@ -5,7 +5,7 @@ import wassersparender from '../../assets/images/results/wassersparender.png'
 import timer from '../../assets/images/results/timer.png'
 import dichtbander from '../../assets/images/results/dichtbander.png'
 import thermovorhange from '../../assets/images/results/thermovorhange.png'
-import thermostat from '../../assets/images/results/thermostat.png'
+import thermostat from '../../assets/images/results/thermo.jpg'
 import {
   calcSavingsReflexionsfolie,
   calcSavingsDichtbaenderKastenfenster,
@@ -26,6 +26,7 @@ export interface ResultProposal {
   link: string
   type: string
   calculation: (config: ConfiguratorParameters) => number
+  calculationNotPossible?: boolean
 }
 
 export const results: ResultProposal[] = [
@@ -56,6 +57,7 @@ export const results: ResultProposal[] = [
     link: 'https://www.thermoheld.global/thermoheld-glas/',
     type: 'thermoheld',
     calculation: calcSavingsThermoheld,
+    calculationNotPossible: true
   },
   {
     title: 'Wassersparender Duschkopf',

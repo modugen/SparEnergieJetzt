@@ -1,5 +1,5 @@
 import { Stack } from '@mui/system'
-import { Box, Button, Chip, InputAdornment, OutlinedInput, Typography } from '@mui/material'
+import { Box, Button, InputAdornment, OutlinedInput, Typography } from '@mui/material'
 import React, { ReactElement, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import Grid2 from '@mui/material/Unstable_Grid2'
@@ -19,6 +19,7 @@ import { ShareMenu } from '../../components/ShareMenu'
 import { Bausubstanz, calcEffectiveHeatingCost, Heizungsart } from '../../calc'
 import { useResultConfiguration } from '../../hooks/useResultConfiguration'
 import { round } from 'lodash-es'
+import { BigChip } from '../../components/BigChip'
 
 export function LandingPage(): ReactElement {
   const { squareMeters, setSquareMeters, buildingType, setBuildingType } = useConfiguratorStore()
@@ -58,29 +59,35 @@ export function LandingPage(): ReactElement {
       style={{ overflowX: 'hidden' }}
     >
       <LandingPageSection>
-        <div>
-          <Typography variant='h3' textAlign='center'>
-            Energiekrise sinnvoll bewältigen
-          </Typography>
-          <Typography variant='subtitle1' textAlign='center'>
-            Konfigurieren Sie sich jetzt Ihre Einsparmaßnahmen passend zu Ihrem Gebäuden und tun Sie
-            dabei der Umwelt und Ihrem Geldbeutel etwas Gutes!
-          </Typography>
-          <Center>
-            <OutlinedInput
-              value={squareMeters}
-              type='number'
-              onChange={(e) => setSquareMeters(parseFloat(e.target.value))}
-              endAdornment={<InputAdornment position='end'>m²</InputAdornment>}
-              aria-describedby='outlined-weight-helper-text'
-              inputProps={{
-                'aria-label': 'weight',
-              }}
-              size='small'
-              style={{ alignSelf: 'center' }}
-            />
-          </Center>
-        </div>
+        <Grid2 container spacing={2} direction='column'>
+          <Grid2>
+            <Typography variant='h3' textAlign='center'>
+              Die Energiekrise sinnvoll bewältigen
+            </Typography>
+          </Grid2>
+          <Grid2>
+            <Typography variant='subtitle1' textAlign='center'>
+              Konfigurieren Sie Ihre Sparmaßnahmen passend zu Ihrem Gebäude und finden Sie heraus,
+              wie Sie effektiv Energie sparen können.
+            </Typography>
+          </Grid2>
+          <Grid2>
+            <Center>
+              <OutlinedInput
+                value={squareMeters}
+                type='number'
+                onChange={(e) => setSquareMeters(parseFloat(e.target.value))}
+                endAdornment={<InputAdornment position='end'>m²</InputAdornment>}
+                aria-describedby='outlined-weight-helper-text'
+                inputProps={{
+                  'aria-label': 'weight',
+                }}
+                size='small'
+                style={{ alignSelf: 'center' }}
+              />
+            </Center>
+          </Grid2>
+        </Grid2>
 
         <Grid2 container spacing={4} justifyContent='center'>
           <Grid2>
@@ -110,38 +117,53 @@ export function LandingPage(): ReactElement {
         </Grid2>
 
         <Grid2 container justifyContent='center' spacing={2}>
-          <Grid2>
-            <Typography variant='h3' textAlign='center'>
-              Heizkosten Aktuell
-            </Typography>
-            <Center>
-              <Chip label={`${currentCost}€`} style={{ width: 65 }} />
-            </Center>
-            <Typography variant='subtitle1' textAlign='center'>
-              pro Heizperiode
-            </Typography>
+          <Grid2 spacing={2} direction='column'>
+            <Grid2>
+              <Typography variant='h3' textAlign='center' display='block'>
+                Heizkosten Aktuell
+              </Typography>
+            </Grid2>
+
+            <Grid2>
+              <Center>
+                <BigChip>{`${currentCost}€`}</BigChip>
+              </Center>
+            </Grid2>
+            <Grid2>
+              <Typography variant='subtitle1' textAlign='center'>
+                pro Heizperiode
+              </Typography>
+            </Grid2>
           </Grid2>
-          <Grid2>
-            <Typography variant='h3' textAlign='center'>
-              Heizkosten In Zukunft
-            </Typography>
-            <Center>
-              <Chip label={`${futureCost}€`} style={{ width: 65 }} />
-            </Center>
-            <Typography variant='subtitle1' textAlign='center'>
-              pro Heizperiode
-            </Typography>
+          <Grid2 spacing={2} direction='column'>
+            <Grid2>
+              <Typography variant='h3' textAlign='center'>
+                Heizkosten In Zukunft
+              </Typography>
+            </Grid2>
+            <Grid2>
+              <Center>
+                <BigChip>{`${futureCost}€`}</BigChip>
+              </Center>
+            </Grid2>
+            <Grid2>
+              <Typography variant='subtitle1' textAlign='center'>
+                pro Heizperiode
+              </Typography>
+            </Grid2>
           </Grid2>
         </Grid2>
 
-        <Typography color={red[500]} textAlign='center'>
+        <Typography color={red[500]} textAlign='center' variant='h5'>
           Bei der empfohlenen Einsparung von 20% kannst du bis zu{' '}
           <b>{round(futureCost * 0.2, 0)}€</b> pro Heizperiode sparen
         </Typography>
 
         <Center>
           <Link to='/configurator/step-1' style={{ textDecoration: 'none' }}>
-            <Button variant='contained'>Jetzt Konfigurieren</Button>
+            <Button variant='contained' size='large'>
+              Jetzt Einsparungen ermitteln
+            </Button>
           </Link>
         </Center>
       </LandingPageSection>
@@ -149,6 +171,13 @@ export function LandingPage(): ReactElement {
       <LandingPageSection style={{ backgroundColor: '#F4F4F4' }}>
         <Typography variant='h3' textAlign='center'>
           Warum jetzt?
+        </Typography>
+        <Typography variant='body1' textAlign='center'>
+          Die Energiepreise steigen stark an. Im Vergleich zu den Vorjahren werden besonders
+          gasbetriebene Heizungen mindestens viermal teuerer. Es ist so wichtig wie nie,
+          energiesparend zu heizen. Heizkosten sparen bei steigenden Preisen bedeutet, dass der
+          Verbrauch gesenkt werden muss. Mit dem SparEnergie Konfigurator findest du schnell heraus,
+          welche Sparmaßnahmen für dich am effektivsten sind.
         </Typography>
         <Center>
           <Box sx={{ maxWidth: { sm: '100%', md: 1200 } }}>
@@ -160,7 +189,9 @@ export function LandingPage(): ReactElement {
       <LandingPageSection>
         <Center>
           <Link to='/configurator/step-1' style={{ textDecoration: 'none' }}>
-            <Button variant='contained'>Jetzt Konfigurieren</Button>
+            <Button variant='contained' size='large'>
+              Jetzt Einsparungen ermitteln
+            </Button>
           </Link>
         </Center>
 

@@ -48,6 +48,7 @@ export function ResultPage(): ReactElement {
       },
     ],
     energieEinheitsKosten: DEFAULT_ENERGY_UNIT_COST,
+    anzahlBewohner: 1
   }
 
   return (

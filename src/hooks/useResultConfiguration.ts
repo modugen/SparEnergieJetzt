@@ -38,5 +38,6 @@ export function useResultConfiguration(): ConfiguratorParameters {
       },
     ],
     energieEinheitsKosten: DEFAULT_ENERGY_UNIT_COST,
+    anzahlBewohner: 1
   }
 }

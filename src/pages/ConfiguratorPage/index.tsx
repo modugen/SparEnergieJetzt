@@ -1,4 +1,4 @@
-import { Button, InputAdornment, OutlinedInput, Pagination, Typography } from '@mui/material'
+import { Button, FormControlLabel, InputAdornment, OutlinedInput, Pagination, Radio, RadioGroup, Typography } from '@mui/material'
 import { Box, Container, Stack } from '@mui/system'
 import React, { ReactElement, useMemo } from 'react'
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
@@ -24,9 +24,6 @@ import dachgeschossImg from '../../images/apartment_type/dachgeschoss.png'
 import mittelgeschossImg from '../../images/apartment_type/mittelgeschoss.png'
 import erdgeschossImg from '../../images/apartment_type/erdgeschoss.png'
 import bodenDachImg from '../../images/apartment_type/boden_dach.png'
-import onePersonImg from '../../images/persons/1_person.png'
-import twoPersonsImg from '../../images/persons/2_persons.png'
-import fourPersonsImg from '../../images/persons/4_persons.png'
 
 const stepToQuestionMap: Record<number, string> = {
   1: 'In welchem Zustand befindet sich dein Gebäude/Apartment?',
@@ -265,45 +262,19 @@ export function ConfiguratorPage(): ReactElement {
             path='step-6'
             element={
               <Stack spacing={3}>
-                <SelectButtonGroup
-                  config={[
-                    {
-                      text: '1 Person',
-                      img: onePersonImg,
-                      selected: persons === 1,
-                      onClick: () => setPersons(1),
-                    },
-                    {
-                      text: '2 Personen',
-                      img: twoPersonsImg,
-                      selected: persons === 2,
-                      onClick: () => setPersons(2),
-                    },
-                    {
-                      text: '4 Personen',
-                      img: fourPersonsImg,
-                      selected: persons === 4,
-                      onClick: () => setPersons(4),
-                    },
-                  ]}
-                />
-                <Typography textAlign='center'>
-                  Oder gib die Anzahl der Personen individuell an!
-                </Typography>
-                <Center>
-                  <OutlinedInput
+
+                  <RadioGroup
+                    aria-labelledby="demo-radio-buttons-group-label"
                     value={persons}
-                    onChange={(e) => setPersons(parseInt(e.target.value))}
-                    type='number'
-                    endAdornment={<InputAdornment position='end'>Personen</InputAdornment>}
-                    aria-describedby='outlined-weight-helper-text'
-                    inputProps={{
-                      'aria-label': 'weight',
-                      min: 1,
-                    }}
-                    size='small'
-                  />
-                </Center>
+                    name="radio-buttons-group"
+                    onChange={e => setPersons(parseInt(e.target.value))}
+                  >
+                    <FormControlLabel value={1} control={<Radio />} label="1 Person" />
+                    <FormControlLabel value={2} control={<Radio />} label="2 Personen" />
+                    <FormControlLabel value={3} control={<Radio />} label="3 Personen" />
+                    <FormControlLabel value={4} control={<Radio />} label="4 Personen" />
+                    <FormControlLabel value={5} control={<Radio />} label="5 Personen" />
+                  </RadioGroup>
               </Stack>
             }
           />

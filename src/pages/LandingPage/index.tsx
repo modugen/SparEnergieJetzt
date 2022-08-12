@@ -76,16 +76,20 @@ export function LandingPage(): ReactElement {
               <OutlinedInput
                 value={squareMeters}
                 type='number'
-                onChange={(e) => setSquareMeters(isNaN(parseFloat(e.target.value)) ? 0 : parseFloat(e.target.value))}
+                onChange={(e) =>
+                  setSquareMeters(
+                    isNaN(parseFloat(e.target.value)) ? 0 : parseFloat(e.target.value),
+                  )
+                }
                 endAdornment={<InputAdornment position='end'>m²</InputAdornment>}
                 aria-describedby='outlined-weight-helper-text'
                 inputProps={{
                   'aria-label': 'weight',
-                  min: 1
+                  min: 1,
                 }}
                 size='small'
                 style={{ alignSelf: 'center' }}
-                onFocus={e => e.target.select()}
+                onFocus={(e) => e.target.select()}
               />
             </Center>
           </Grid2>

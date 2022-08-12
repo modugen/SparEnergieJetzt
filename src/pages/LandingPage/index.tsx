@@ -27,20 +27,26 @@ export function LandingPage(): ReactElement {
 
   const currentCost = useMemo(
     () =>
-      round(calcEffectiveHeatingCost({
-        ...resultConfig,
-        heizungsart: Heizungsart.Gas,
-        energieEinheitsKosten: new Map<Heizungsart, number>([[Heizungsart.Gas, 0.06]]),
-      }), 0),
+      round(
+        calcEffectiveHeatingCost({
+          ...resultConfig,
+          heizungsart: Heizungsart.Gas,
+          energieEinheitsKosten: new Map<Heizungsart, number>([[Heizungsart.Gas, 0.06]]),
+        }),
+        0,
+      ),
     [resultConfig],
   )
 
   const futureCost = useMemo(
     () =>
-      round(calcEffectiveHeatingCost({
-        ...resultConfig,
-        heizungsart: Heizungsart.Gas,
-      }), 0),
+      round(
+        calcEffectiveHeatingCost({
+          ...resultConfig,
+          heizungsart: Heizungsart.Gas,
+        }),
+        0,
+      ),
     [resultConfig],
   )
 

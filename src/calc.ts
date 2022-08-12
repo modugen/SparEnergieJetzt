@@ -1,3 +1,4 @@
+
 export enum RelativeWohnlage {
   AmEck = 'AmEck',
   Innenliegend = 'Innenliegend',
@@ -45,6 +46,7 @@ export interface ConfiguratorParameters {
   heizungsart: Heizungsart
   windows: Array<WindowConfiguration>
   energieEinheitsKosten: Map<Heizungsart, number>
+  anzahlBewohner: number
 }
 
 export const DEFAULT_ENERGY_UNIT_COST = new Map<Heizungsart, number>([
@@ -304,4 +306,15 @@ export function calcSavingsReflexionsfolie(params: ConfiguratorParameters): numb
   const baseCost = calcEffectiveHeatingCost(params)
   const savings = baseCost * savingsCoefficient
   return savings
+}
+
+// warm water related savings
+
+export const QW = 700 // kWh per Person
+
+export function calcEffectiveWarmWaterCost(params: ConfiguratorParameters): number {
+  const heatingEfficiency = HEATING_ENERGY_SOURCE_EFFICIENCY_MAP.get(params.heizungsart) as number
+  const energyCost = params.energieEinheitsKosten.get(params.heizungsart) as number
+  const cost = (QW / heatingEfficiency) * energyCost * params.anzahlBewohner
+  return cost
 }

@@ -8,6 +8,7 @@ import BuyButtons from './BuyButton'
 import { ResultCardContainer } from '../styled'
 import { round } from 'lodash-es'
 import CardMedia from '@mui/material/CardMedia'
+import Grid2 from '@mui/material/Unstable_Grid2'
 
 interface Props {
   result: ResultProposal
@@ -87,12 +88,21 @@ const ResultCard = ({ result, savedValue }: Props) => {
               in={descriptionColsaped}
               collapsedSize={isMidDownScreen ? 20 : 40}
             >
-              <Typography
-                color={!descriptionColsaped ? theme.palette.grey[500] : theme.palette.grey[800]}
-              >
-                {result.description}
-              </Typography>
-              {isMidDownScreen && <BuyButtons links={result.links} />}
+              <Grid2 container direction='column' spacing={1}>
+                <Grid2>
+                  <Typography
+                    color={!descriptionColsaped ? theme.palette.grey[500] : theme.palette.grey[800]}
+                  >
+                    {result.description}
+                  </Typography>
+                </Grid2>
+                {isMidDownScreen && 
+                  <Grid2>
+
+                    <BuyButtons links={result.links} />
+                  </Grid2>
+}
+              </Grid2>
             </Collapse>
             <Box display='flex' justifyContent='center'>
               <IconButton onClick={() => setDescriptionColsaped(!descriptionColsaped)}>

@@ -27,6 +27,7 @@ export interface ResultProposal {
   type: string
   calculation: (config: ConfiguratorParameters) => number
   calculationNotPossible?: boolean
+  cost: number
 }
 
 export const results: ResultProposal[] = [
@@ -39,6 +40,7 @@ export const results: ResultProposal[] = [
     link: 'https://amzn.to/3OWoMNU',
     type: 'reflection',
     calculation: calcSavingsReflexionsfolie,
+    cost: 20
   },
   {
     title: 'Heizkörperbürste',
@@ -48,6 +50,7 @@ export const results: ResultProposal[] = [
     link: 'https://amzn.to/3Sme3PK',
     type: 'heizkoerperbuerste',
     calculation: calcSavingsHeizkoerperbuerste,
+    cost: 15,
   },
   {
     title: 'Thermoheld',
@@ -58,6 +61,7 @@ export const results: ResultProposal[] = [
     type: 'thermoheld',
     calculation: calcSavingsThermoheld,
     calculationNotPossible: true,
+    cost: 814
   },
   {
     title: 'Wassersparender Duschkopf',
@@ -67,6 +71,7 @@ export const results: ResultProposal[] = [
     link: 'https://amzn.to/3cZlLiO',
     type: 'duschkopf',
     calculation: calcSavingsDuschkopf,
+    cost: 20
   },
   {
     title: 'Timer',
@@ -76,6 +81,7 @@ export const results: ResultProposal[] = [
     link: 'https://amzn.to/3Qb7ayX',
     type: 'timer',
     calculation: calcSavingsTimer,
+    cost: 20
   },
   {
     title: 'Dichtbänder für Kastenfenster',
@@ -85,6 +91,7 @@ export const results: ResultProposal[] = [
     link: 'https://amzn.to/3vulM4w',
     type: 'dichtbaender',
     calculation: calcSavingsDichtbaenderKastenfenster,
+    cost: 15
   },
   {
     title: 'Thermovorhänge',
@@ -94,6 +101,7 @@ export const results: ResultProposal[] = [
     link: 'https://amzn.to/3SmnM8C',
     type: 'thermovorhaenge',
     calculation: calcSavingsThermovorhaenge,
+    cost: 40
   },
   {
     title: 'Thermostat',
@@ -103,5 +111,6 @@ export const results: ResultProposal[] = [
     link: 'https://amzn.to/3oPxFOU',
     type: 'hydraulischeThermostate',
     calculation: calcSavingsThermostate,
+    cost: 80
   },
 ]

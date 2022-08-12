@@ -20,11 +20,11 @@ export function ResultPage(): ReactElement {
           <Typography variant='h2' textAlign='center'>
             Du hast es in der Hand!
           </Typography>
-          <Typography padding='0 12% 0' textAlign='center'>
+          <Typography variant='body1' padding='0 12% 0' textAlign='center'>
             Nachfolgend unsere Vorschläge gelistet nach Einsparpotenzial innerhalb von einer
-            Heizperiode. Wie wir zu den Ergebnissen komment kannst du hier nachlesen
+            Heizperiode. Wie wir zu den Ergebnissen komment kannst du <a href=''>hier</a> nachlesen
           </Typography>
-          <Typography variant='h4' textAlign='center'>
+          <Typography variant='subtitle1' textAlign='center'>
             Kläre auf und teile deine Erkenntnisse!
           </Typography>
         </Stack>
@@ -36,6 +36,14 @@ export function ResultPage(): ReactElement {
               key={index}
             />
           ))}
+        </Stack>
+        <Stack paddingTop={theme.spacing(5)} marginBottom={theme.spacing(6)} spacing={2}>
+          <Typography variant='body1' padding='0 12% 0' textAlign='center'>
+            Die hier gelisteten Maßnahmen haben keinen Anspruch auf Vollständigkeit. Sie haben ein
+            Produkt oder eine Idee, die wir hier noch abbilden sollten, sodass wir gemeinsam besser
+            Energie sparen können? Schreiben sie uns:{' '}
+            <a href='mailto:info@modugen.de'>info@modugen.de.</a>
+          </Typography>
         </Stack>
       </Container>
       <ShareMenu />

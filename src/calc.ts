@@ -61,6 +61,9 @@ export const HEATING_ENERGY_SOURCE_EFFICIENCY_MAP = new Map<Heizungsart, number>
   [Heizungsart.Fernwaerme, 1],
 ])
 
+export const WATT_HOURS_TO_KILO_WATT_HOURS = 1 / 1000
+export const HEIZGRADSTUNDEN = 66000
+
 function calcExternalWallArea(params: ConfiguratorParameters): number {
   const singleOuterSurfaceArea = Math.sqrt(params.wohnflaeche) * params.deckenhoehe
   switch (params.relativeWohnlage) {
@@ -179,9 +182,8 @@ function calcQs(params: ConfiguratorParameters): number {
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function calcQH(params: ConfiguratorParameters): number {
-  const heizgradstunden = 66000
   const QH =
-    heizgradstunden * calcHTtotal(params) +
+    HEIZGRADSTUNDEN * calcHTtotal(params) +
     calcHV(params) -
     0.95 * (calcQs(params) + calcQi(params))
   return QH
@@ -235,14 +237,13 @@ export function calcSavingsThermovorhaenge(params: ConfiguratorParameters): numb
     case Bausubstanz.Neubau:
       savingsCoefficient = 0.0
   }
-  const wattHoursToKiloWattHours = 1 / 1000
-  const heizgradstunden = 66000
+
   const HTMap = calcHT(params)
   const HTWIndows = HTMap.get(ComponentWithUValue.Window) as number
   const heatingEfficiency = HEATING_ENERGY_SOURCE_EFFICIENCY_MAP.get(params.heizungsart) as number
   const energyCost = params.energieEinheitsKosten.get(params.heizungsart) as number
   const baseCost =
-    HTWIndows * heatingEfficiency * energyCost * wattHoursToKiloWattHours * heizgradstunden
+    HTWIndows * heatingEfficiency * energyCost * WATT_HOURS_TO_KILO_WATT_HOURS * HEIZGRADSTUNDEN
   const savings = baseCost * savingsCoefficient
   return savings
 }
@@ -259,16 +260,14 @@ export function calcSavingsDichtbaenderKastenfenster(params: ConfiguratorParamet
     case Bausubstanz.Neubau:
       savingsCoefficient = 0.0
   }
-  const wattHoursToKiloWattHours = 1 / 1000
-  const heizgradstunden = 66000
   const HTMap = calcHT(params)
   const HTWIndows = HTMap.get(ComponentWithUValue.Window) as number
   const baseCost =
     HTWIndows *
     (HEATING_ENERGY_SOURCE_EFFICIENCY_MAP.get(params.heizungsart) as number) *
     (params.energieEinheitsKosten.get(params.heizungsart) as number) *
-    wattHoursToKiloWattHours *
-    heizgradstunden
+    WATT_HOURS_TO_KILO_WATT_HOURS *
+    HEIZGRADSTUNDEN
   const savings = baseCost * savingsCoefficient
   return savings
 }
@@ -285,7 +284,7 @@ export function calcSavingsThermostate(params: ConfiguratorParameters): number {
     case Bausubstanz.Neubau:
       savingsCoefficient = 0.15
   }
-  const baseCost = calcQH(params)
+  const baseCost = calcEffectiveHeatingCost(params)
   const savings = baseCost * savingsCoefficient
   return savings
 }
@@ -302,7 +301,7 @@ export function calcSavingsReflexionsfolie(params: ConfiguratorParameters): numb
     case Bausubstanz.Neubau:
       savingsCoefficient = 0.0
   }
-  const baseCost = calcQH(params)
+  const baseCost = calcEffectiveHeatingCost(params)
   const savings = baseCost * savingsCoefficient
   return savings
 }

@@ -53,7 +53,7 @@ const ResultCard = ({ result, savedValue }: Props) => {
                   'Einsparungen nicht ermittelbar'
                 ) : (
                   <>
-                    {'Spare bis zu: '}
+                    {'Spare bis zu '}
                     <b
                       style={{
                         color: theme.palette.primary.main,
@@ -62,6 +62,7 @@ const ResultCard = ({ result, savedValue }: Props) => {
                     >
                       {round(savedValue, 0)}€
                     </b>
+                    {' pro Heizperiode'}
                   </>
                 )}
               </Typography>
@@ -76,7 +77,9 @@ const ResultCard = ({ result, savedValue }: Props) => {
                 variant={isMidDownScreen ? 'body2' : 'h6'}
               >
                 {'Kostet nur '}
-                <b style={{ color: theme.palette.primary.main, opacity: 0.7 }}>65$</b>
+                <b style={{ color: theme.palette.primary.main, opacity: 0.7 }}>
+                  {round(result.cost)}€
+                </b>
               </Typography>
             </Box>
             <Collapse

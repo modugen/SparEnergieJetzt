@@ -83,14 +83,14 @@ const ResultCard = ({ result, savedValue }: Props) => {
               >
                 {result.description}
               </Typography>
-              {isMidDownScreen && <BuyButtons />}
+              {isMidDownScreen && <BuyButtons link={result.link} />}
             </Collapse>
             <Box display='flex' justifyContent='center'>
               <IconButton onClick={() => setDescriptionColsaped(!descriptionColsaped)}>
                 {!descriptionColsaped ? <ExpandMoreIcon /> : <ExpandLessIcon />}
               </IconButton>
             </Box>
-            {!isMidDownScreen && <BuyButtons />}
+            {!isMidDownScreen && <BuyButtons link={result.link} />}
           </Stack>
         </Grid>
       </Grid>

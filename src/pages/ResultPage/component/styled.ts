@@ -1,11 +1,13 @@
 import styled from '@emotion/styled'
-import { Box, Button } from '@mui/material'
+import { Box, Link } from '@mui/material'
 import { theme } from '../../../styles'
 
-export const BuyButton = styled(Button)({
+export const BuyButton = styled(Link)({
   color: theme.palette.common.white,
   background: theme.palette.primary.main,
-  fontSize: 12,
+  textDecoration: 'none',
+  padding: theme.spacing(1),
+  borderRadius: 3,
   boxShadow: `${theme.palette.primary.main} 0px 2px 2px`,
   transition: 'opacity 1s',
   '&:hover': {

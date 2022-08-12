@@ -318,7 +318,7 @@ export function calcEffectiveWarmWaterCost(params: ConfiguratorParameters): numb
   return cost
 }
 
-export function calcSavingsDuschkopf(params: ConfiguratorParameters): number{
+export function calcSavingsDuschkopf(params: ConfiguratorParameters): number {
   const baseCost = calcEffectiveWarmWaterCost(params)
   let savingsCoefficient
   switch (params.bausubstanz) {
@@ -330,12 +330,12 @@ export function calcSavingsDuschkopf(params: ConfiguratorParameters): number{
       break
     case Bausubstanz.Neubau:
       savingsCoefficient = 0.0
-  } 
+  }
   const savings = baseCost * savingsCoefficient
   return savings
 }
 
-export function calcSavingsTimer(params: ConfiguratorParameters): number{
+export function calcSavingsTimer(params: ConfiguratorParameters): number {
   const baseCost = calcEffectiveWarmWaterCost(params)
   let savingsCoefficient
   switch (params.bausubstanz) {
@@ -347,7 +347,7 @@ export function calcSavingsTimer(params: ConfiguratorParameters): number{
       break
     case Bausubstanz.Neubau:
       savingsCoefficient = 1 / 8
-  } 
+  }
   const savings = baseCost * savingsCoefficient
   return savings
 }

@@ -36,12 +36,12 @@ const ResultCard = ({ result, savedValue }: Props) => {
         <Grid padding={theme.spacing(1.5)} item lg={8} sm={8} xs={8}>
           <Stack>
             <Box
-              alignItems='center'
+              alignItems={isMidDownScreen ? 'left' : 'center'}
               justifyContent='space-between'
               display='flex'
               flexDirection={isMidDownScreen ? 'column' : 'row'}
             >
-              <Typography textAlign={'center'} variant={isMidDownScreen ? 'body1' : 'h5'}>
+              <Typography textAlign={'left'} variant={isMidDownScreen ? 'body1' : 'h5'}>
                 <b>{result.title}</b>
               </Typography>
               <Typography

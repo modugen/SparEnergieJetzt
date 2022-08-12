@@ -13,7 +13,7 @@ export function ResultPage(): ReactElement {
   const config = useResultConfiguration()
 
   return (
-    <Box sx={{ backgroundColor: theme.palette.grey[50], paddingBottom: 5 }}>
+    <Box sx={{ backgroundColor: theme.palette.grey[50], paddingBottom: 5, overflowX: 'hidden' }}>
       <Container>
         <Stack paddingTop={theme.spacing(5)} marginBottom={theme.spacing(6)} spacing={2}>
           <Typography variant='h2' textAlign='center'>
@@ -28,13 +28,15 @@ export function ResultPage(): ReactElement {
           </Typography>
         </Stack>
         <Stack spacing={4} flexDirection='column' display='flex' alignItems='center'>
-          {filter(results, (result) => result.calculation(config) > 0).map((result, index) => (
-            <ResultCard
-              result={{ ...result }}
-              savedValue={result.calculation(config)}
-              key={index}
-            />
-          ))}
+          {filter(results, (result) => result.calculation(config) > 0)
+            .reverse()
+            .map((result, index) => (
+              <ResultCard
+                result={{ ...result }}
+                savedValue={result.calculation(config)}
+                key={index}
+              />
+            ))}
         </Stack>
       </Container>
     </Box>

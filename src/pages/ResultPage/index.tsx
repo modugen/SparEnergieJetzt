@@ -1,6 +1,7 @@
 import { Stack, Typography, useTheme } from '@mui/material'
 import Box from '@mui/material/Box'
 import { Container } from '@mui/system'
+import { filter } from 'lodash-es'
 import React, { ReactElement } from 'react'
 import { DEFAULT_ENERGY_UNIT_COST, Lage } from '../../calc'
 import { useConfiguratorStore } from '../../stores/configuratorStore'
@@ -68,7 +69,7 @@ export function ResultPage(): ReactElement {
           </Typography>
         </Stack>
         <Stack spacing={4} flexDirection='column' display='flex' alignItems='center'>
-          {results.map((result, index) => (
+          {filter(results, result => result.calculation(config) > 0).map((result, index) => (
             <ResultCard
               result={{ ...result }}
               savedValue={result.calculation(config)}

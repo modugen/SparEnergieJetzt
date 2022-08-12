@@ -14,7 +14,7 @@ export function useResultConfiguration(): ConfiguratorParameters {
 
     heatingType,
 
-    location
+    location,
   } = useConfiguratorStore()
 
   return {
@@ -39,6 +39,6 @@ export function useResultConfiguration(): ConfiguratorParameters {
       },
     ],
     energieEinheitsKosten: DEFAULT_ENERGY_UNIT_COST,
-    anzahlBewohner: 1
+    anzahlBewohner: 1,
   }
 }

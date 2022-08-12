@@ -1,4 +1,3 @@
-
 export enum RelativeWohnlage {
   AmEck = 'AmEck',
   Innenliegend = 'Innenliegend',

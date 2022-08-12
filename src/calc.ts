@@ -238,13 +238,10 @@ export function calcSavingsThermovorhaenge(params: ConfiguratorParameters): numb
   const wattHoursToKiloWattHours = 1 / 1000
   const heizgradstunden = 66000
   const HTMap = calcHT(params)
-  const HTWIndows = HTMap.get(ComponentWithUValue.Window)
-  const baseCost =
-    HTWIndows *
-    HEATING_ENERGY_SOURCE_EFFICIENCY_MAP.get(params.heizungsart) *
-    params.energieEinheitsKosten.get(params.heizungsart) *
-    wattHoursToKiloWattHours *
-    heizgradstunden
+  const HTWIndows = (HTMap.get(ComponentWithUValue.Window) as number)
+  const heatingEfficiency = (HEATING_ENERGY_SOURCE_EFFICIENCY_MAP.get(params.heizungsart) as number)
+  const energyCost = (params.energieEinheitsKosten.get(params.heizungsart) as number)
+  const baseCost = HTWIndows * heatingEfficiency * energyCost * wattHoursToKiloWattHours * heizgradstunden
   const savings = baseCost * savingsCoefficient
   return savings
 }
@@ -264,13 +261,8 @@ export function calcSavingsDichtbaenderKastenfenster(params: ConfiguratorParamet
   const wattHoursToKiloWattHours = 1 / 1000
   const heizgradstunden = 66000
   const HTMap = calcHT(params)
-  const HTWIndows = HTMap.get(ComponentWithUValue.Window)
-  const baseCost =
-    HTWIndows *
-    HEATING_ENERGY_SOURCE_EFFICIENCY_MAP.get(params.heizungsart) *
-    params.energieEinheitsKosten.get(params.heizungsart) *
-    wattHoursToKiloWattHours *
-    heizgradstunden
+  const HTWIndows = (HTMap.get(ComponentWithUValue.Window) as number)
+  const baseCost = HTWIndows * (HEATING_ENERGY_SOURCE_EFFICIENCY_MAP.get(params.heizungsart) as number) * (params.energieEinheitsKosten.get(params.heizungsart) as number) * wattHoursToKiloWattHours * heizgradstunden
   const savings = baseCost * savingsCoefficient
   return savings
 }

@@ -1,11 +1,11 @@
 import heizkorper from '../../assets/images/results/reflectionCropped.jpg'
-import heizungsburste from '../../assets/images/results/heizungsburste.jpg'
-import thermoheld from '../../assets/images/results/thermoheld.png'
-import wassersparender from '../../assets/images/results/wassersparender.png'
-import timer from '../../assets/images/results/timer.png'
+import heizungsburste from '../../assets/images/results/heizungsbuerste.jpg'
+import thermoheld from '../../assets/images/results/thermoheld Cropped.jpg'
+import wassersparender from '../../assets/images/results/duschkopf Cropped.jpg'
+import timer from '../../assets/images/results/timer Cropped.jpg'
 import dichtbander from '../../assets/images/results/dichtbander.png'
-import thermovorhange from '../../assets/images/results/thermovorhange.png'
-import thermostat from '../../assets/images/results/thermo.jpg'
+import thermovorhange from '../../assets/images/results/thermovorhang.png'
+import thermostat from '../../assets/images/results/thermostate Cropped.jpg'
 import {
   calcSavingsReflexionsfolie,
   calcSavingsDichtbaenderKastenfenster,

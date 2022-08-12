@@ -222,3 +222,18 @@ export function calcSavingsHeizkoerperbuerste(params: ConfiguratorParameters): n
   const savings = savingsCoefficient * calcEffectiveHeatingCost(params)
   return savings
 }
+
+export function calcSavingsThermovorhaenge(params: ConfiguratorParameters): number {
+  const wattHoursToKiloWattHours = 1 / 1000
+  const heizgradstunden = 66000
+  const HTMap = calcHT(params)
+  const HTWIndows = HTMap.get(ComponentWithUValue.Window)
+  const savings =
+    HTWIndows *
+    0.1 *
+    HEATING_ENERGY_SOURCE_EFFICIENCY_MAP.get(params.heizungsart) *
+    params.energieEinheitsKosten.get(params.heizungsart) *
+    wattHoursToKiloWattHours *
+    heizgradstunden
+  return savings
+}

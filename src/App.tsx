@@ -5,32 +5,42 @@ import { ConfiguratorPage } from './pages/ConfiguratorPage'
 import { ResultPage } from './pages/ResultPage'
 import Layout from './components/layout'
 import { useConfiguratorStore } from './stores/configuratorStore'
-import {ErrorBoundary} from 'react-error-boundary'
+import { ErrorBoundary } from 'react-error-boundary'
 import { Button, Card, CardActions, CardContent, Stack, Typography } from '@mui/material'
 import { grey } from '@mui/material/colors'
 
 function App() {
-  const resetConfiguratorStore = useConfiguratorStore(state => state.clear)
+  const resetConfiguratorStore = useConfiguratorStore((state) => state.clear)
 
   return (
-    <ErrorBoundary 
-      FallbackComponent={() =>
-        <Stack display='flex' flexGrow={1} justifyContent='center' alignItems='center' height='100vH' style={{backgroundColor: grey[200]}}>
+    <ErrorBoundary
+      FallbackComponent={() => (
+        <Stack
+          display='flex'
+          flexGrow={1}
+          justifyContent='center'
+          alignItems='center'
+          height='100vH'
+          style={{ backgroundColor: grey[200] }}
+        >
           <Card sx={{ maxWidth: 345 }}>
             <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
+              <Typography gutterBottom variant='h5' component='div'>
                 Fehler
               </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Der Konfigurator ist in einen fehlerhaften Zustand gelangt. Bitte klicke unten, um den Zustand zurückzusetzen
+              <Typography variant='body2' color='text.secondary'>
+                Der Konfigurator ist in einen fehlerhaften Zustand gelangt. Bitte klicke unten, um
+                den Zustand zurückzusetzen
               </Typography>
             </CardContent>
             <CardActions>
-              <Button size="small" onClick={resetConfiguratorStore}>Zurücksetzen</Button>
+              <Button size='small' onClick={resetConfiguratorStore}>
+                Zurücksetzen
+              </Button>
             </CardActions>
           </Card>
         </Stack>
-      }
+      )}
     >
       <Layout>
         <Routes>

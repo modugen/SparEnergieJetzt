@@ -1,4 +1,13 @@
-import { Button, FormControlLabel, InputAdornment, OutlinedInput, Pagination, Radio, RadioGroup, Typography } from '@mui/material'
+import {
+  Button,
+  FormControlLabel,
+  InputAdornment,
+  OutlinedInput,
+  Pagination,
+  Radio,
+  RadioGroup,
+  Typography,
+} from '@mui/material'
 import { Box, Container, Stack } from '@mui/system'
 import React, { ReactElement, useMemo } from 'react'
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
@@ -262,19 +271,18 @@ export function ConfiguratorPage(): ReactElement {
             path='step-6'
             element={
               <Stack spacing={3}>
-
-                  <RadioGroup
-                    aria-labelledby="demo-radio-buttons-group-label"
-                    value={persons}
-                    name="radio-buttons-group"
-                    onChange={e => setPersons(parseInt(e.target.value))}
-                  >
-                    <FormControlLabel value={1} control={<Radio />} label="1 Person" />
-                    <FormControlLabel value={2} control={<Radio />} label="2 Personen" />
-                    <FormControlLabel value={3} control={<Radio />} label="3 Personen" />
-                    <FormControlLabel value={4} control={<Radio />} label="4 Personen" />
-                    <FormControlLabel value={5} control={<Radio />} label="5 Personen" />
-                  </RadioGroup>
+                <RadioGroup
+                  aria-labelledby='demo-radio-buttons-group-label'
+                  value={persons}
+                  name='radio-buttons-group'
+                  onChange={(e) => setPersons(parseInt(e.target.value))}
+                >
+                  <FormControlLabel value={1} control={<Radio />} label='1 Person' />
+                  <FormControlLabel value={2} control={<Radio />} label='2 Personen' />
+                  <FormControlLabel value={3} control={<Radio />} label='3 Personen' />
+                  <FormControlLabel value={4} control={<Radio />} label='4 Personen' />
+                  <FormControlLabel value={5} control={<Radio />} label='5 Personen' />
+                </RadioGroup>
               </Stack>
             }
           />

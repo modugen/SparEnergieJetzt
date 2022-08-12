@@ -136,7 +136,7 @@ export function LandingPage(): ReactElement {
 
         <Typography color={red[500]} textAlign='center'>
           Bei der empfohlenen Einsparung von 20% kannst du bis zu{' '}
-          <b>{round(futureCost * 0.2, 0)}€</b> sparen
+          <b>{round(futureCost * 0.2, 0)}€</b> pro Heizperiode sparen
         </Typography>
 
         <Center>

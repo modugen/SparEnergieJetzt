@@ -49,12 +49,11 @@ const ResultCard = ({ result, savedValue }: Props) => {
                 color={theme.palette.grey[800]}
                 variant={isMidDownScreen ? 'body1' : 'h5'}
               >
-                <b>{'Spare bis zu: '}</b>
+                {'Spare bis zu: '}
                 <b
                   style={{
                     color: theme.palette.primary.main,
                     opacity: 0.9,
-                    fontSize: theme.spacing(3),
                   }}
                 >
                   {round(savedValue, 2)}€
@@ -67,11 +66,11 @@ const ResultCard = ({ result, savedValue }: Props) => {
               flexDirection='row'
             >
               <Typography
-                color={theme.palette.grey[800]}
+                color={theme.palette.grey[600]}
                 variant={isMidDownScreen ? 'body2' : 'h6'}
               >
                 {'Kostet nur '}
-                <b style={{ color: theme.palette.primary.main, opacity: 0.9 }}>65$</b>
+                <b style={{ color: theme.palette.primary.main, opacity: 0.7 }}>65$</b>
               </Typography>
             </Box>
             <Collapse

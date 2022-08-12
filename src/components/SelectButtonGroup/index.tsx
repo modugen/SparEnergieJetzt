@@ -10,9 +10,22 @@ interface Props {
 
 export function SelectButtonGroup({ config }: Props): ReactElement {
   return (
-    <Grid2 container spacing={4} justifyContent='center'>
+    <Grid2
+      container
+      spacing={{
+        xs: 3,
+        md: 4,
+      }}
+      justifyContent='center'
+    >
       {config.map((selectButtonConfig) => (
-        <Grid2 key={selectButtonConfig.text}>
+        <Grid2
+          key={selectButtonConfig.text}
+          xs={config.length >= 4 ? 6 : undefined}
+          md={12 / config.length}
+          display='flex'
+          justifyContent='center'
+        >
           <SelectButton {...selectButtonConfig} />
         </Grid2>
       ))}

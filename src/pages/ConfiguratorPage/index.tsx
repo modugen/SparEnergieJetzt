@@ -260,13 +260,13 @@ export function ConfiguratorPage(): ReactElement {
               <SelectButtonGroup
                 config={[
                   {
-                    text: 'Gasheizung',
+                    text: 'Gas',
                     img: gasHeatingImg,
                     selected: heatingType === Heizungsart.Gas,
                     onClick: () => setHeatingType(Heizungsart.Gas),
                   },
                   {
-                    text: 'Pelletheizung',
+                    text: 'Pellets',
                     img: pelletHeatingImg,
                     selected: heatingType === Heizungsart.Pellets,
                     onClick: () => setHeatingType(Heizungsart.Pellets),
@@ -278,7 +278,7 @@ export function ConfiguratorPage(): ReactElement {
                     onClick: () => setHeatingType(Heizungsart.Fernwaerme),
                   },
                   {
-                    text: 'Stromheizung',
+                    text: 'Strom',
                     img: electricityHeatingImg,
                     selected: heatingType === Heizungsart.Strom,
                     onClick: () => setHeatingType(Heizungsart.Strom),

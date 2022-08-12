@@ -1,4 +1,4 @@
-import { InputAdornment, OutlinedInput, Typography } from '@mui/material'
+import { InputAdornment, OutlinedInput, Stack, Typography } from '@mui/material'
 import { green } from '@mui/material/colors'
 import { Box, useTheme } from '@mui/system'
 import { isFunction } from 'lodash'
@@ -28,28 +28,52 @@ export function SelectButton({
   const theme = useTheme()
 
   return (
-    <Box
-      style={{
+    <Stack
+      direction='column'
+      spacing={1}
+      sx={{
         backgroundColor: selected ? green[100] : undefined,
         display: 'inline-block',
-        padding: theme.spacing(4),
-        boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25',
-        // boxShadow: 4,
+        padding: {
+          xs: theme.spacing(3),
+          md: theme.spacing(4),
+        },
+        boxShadow: 3,
         cursor: onClick ? 'pointer' : undefined,
-        width: 100,
+        width: {
+          xs: 50,
+          md: 100,
+        },
       }}
       onClick={onClick}
     >
       <Center>
-        <img
-          src={img}
-          style={{
-            height: 80,
+        <Box
+          sx={{
+            height: {
+              xs: 40,
+              md: 80,
+            },
+            width: {
+              xs: 60,
+              md: 100,
+            },
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
-        />
+        >
+          <img
+            src={img}
+            style={{
+              maxHeight: '100%',
+              maxWidth: '100%',
+            }}
+          />
+        </Box>
       </Center>
       <Box minHeight='3em' display='flex' alignItems='center' justifyContent='center' marginTop={1}>
-        <Typography textAlign='center' lineHeight='1.5em'>
+        <Typography textAlign='center' lineHeight='1.5em' fontSize={{ xs: '0.8em', md: '1em' }}>
           {text}
         </Typography>
       </Box>
@@ -63,7 +87,11 @@ export function SelectButton({
                 ? (e) => onChangeInputNumberValue(parseFloat(e.target.value))
                 : undefined
             }
-            endAdornment={<InputAdornment position='end'>{inputAdornment}</InputAdornment>}
+            endAdornment={
+              <InputAdornment position='end' sx={{ display: { xs: 'none', md: 'flex' } }}>
+                {inputAdornment}
+              </InputAdornment>
+            }
             aria-describedby='outlined-weight-helper-text'
             inputProps={{
               'aria-label': 'weight',
@@ -74,6 +102,6 @@ export function SelectButton({
           />
         </Box>
       )}
-    </Box>
+    </Stack>
   )
 }

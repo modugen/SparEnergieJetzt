@@ -292,7 +292,6 @@ export function calcThermostate(params: ConfiguratorParameters): number {
   return savings
 }
 
-
 export function calcReflexionsfolie(params: ConfiguratorParameters): number {
   let savingsCoefficient
   switch (params.bausubstanz) {

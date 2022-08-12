@@ -69,7 +69,7 @@ export function ResultPage(): ReactElement {
           </Typography>
         </Stack>
         <Stack spacing={4} flexDirection='column' display='flex' alignItems='center'>
-          {filter(results, result => result.calculation(config) > 0).map((result, index) => (
+          {filter(results, (result) => result.calculation(config) > 0).map((result, index) => (
             <ResultCard
               result={{ ...result }}
               savedValue={result.calculation(config)}

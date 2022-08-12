@@ -19,13 +19,18 @@ import pelletHeatingImg from '../../images/heating_type/pellet.png'
 import fernHeatingImg from '../../images/heating_type/fern.png'
 import electricityHeatingImg from '../../images/heating_type/electricity.png'
 import { Portal } from '../../components/header/Portal'
-import { RelativeWohnlage, Heizungsart } from '../../calc'
+import { RelativeWohnlage, Heizungsart, Lage } from '../../calc'
+import dachgeschossImg from '../../images/apartment_type/dachgeschoss.png'
+import mittelgeschossImg from '../../images/apartment_type/mittelgeschoss.png'
+import erdgeschossImg from '../../images/apartment_type/erdgeschoss.png'
+import bodenDachImg from '../../images/apartment_type/boden_dach.png'
 
 const stepToQuestionMap: Record<number, string> = {
   1: 'In welchem Zustand befindet sich dein Gebäude/Apartment?',
   2: 'Wie hoch ist die Deckenhöhe in deinen Zimmern?',
   3: 'An welcher Position befindet sich dein Gebäude/Apartment?',
   4: 'Wie viele Fenster hat dein Gebäude/Apartment?',
+  5: 'Wie sieht die Lage deines Apartments aus?'
 }
 
 export function ConfiguratorPage(): ReactElement {
@@ -46,6 +51,9 @@ export function ConfiguratorPage(): ReactElement {
     setMediumWindows,
     smallWindows,
     setSmallWindows,
+
+    location: apartmentLocation,
+    setLocation
   } = useConfiguratorStore()
 
   const page = useMemo(
@@ -53,7 +61,7 @@ export function ConfiguratorPage(): ReactElement {
     [location.pathname],
   )
 
-  const pages = 4
+  const pages = Object.keys(stepToQuestionMap).length
 
   return (
     <Container
@@ -208,6 +216,37 @@ export function ConfiguratorPage(): ReactElement {
                     img: electricityHeatingImg,
                     selected: heatingType === Heizungsart.Strom,
                     onClick: () => setHeatingType(Heizungsart.Strom),
+                  },
+                ]}
+              />
+            }
+          />
+          <Route
+            path='step-5'
+            element={
+              <SelectButtonGroup
+                config={[
+                  {
+                    text: 'Dachgeschoss',
+                    img: dachgeschossImg,
+                    selected: apartmentLocation === Lage.DG,
+                    onClick: () => setLocation(Lage.DG),
+                  },
+                  {
+                    text: 'Mittelgeschoss',
+                    img: mittelgeschossImg,
+                    selected: apartmentLocation === Lage.Zwischengeschoss,
+                    onClick: () => setLocation(Lage.Zwischengeschoss),
+                  },                  {
+                    text: 'Erdgeschoss',
+                    img: erdgeschossImg,
+                    selected: apartmentLocation === Lage.EG,
+                    onClick: () => setLocation(Lage.EG),
+                  },                  {
+                    text: 'Boden + Dach',
+                    img: bodenDachImg,
+                    selected: apartmentLocation === Lage.DG_EG,
+                    onClick: () => setLocation(Lage.DG_EG),
                   },
                 ]}
               />

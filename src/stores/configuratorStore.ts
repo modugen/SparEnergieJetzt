@@ -1,7 +1,7 @@
 import { cloneDeep } from 'lodash-es'
 import create from 'zustand'
 import { combine, persist } from 'zustand/middleware'
-import { Bausubstanz, RelativeWohnlage, Heizungsart } from '../calc'
+import { Bausubstanz, RelativeWohnlage, Heizungsart, Lage } from '../calc'
 
 interface ConfiguratorStoreState {
   squareMeters: number
@@ -14,6 +14,8 @@ interface ConfiguratorStoreState {
   smallWindows: number
 
   heatingType: Heizungsart
+
+  location: Lage
 }
 
 const initialState: ConfiguratorStoreState = {
@@ -27,6 +29,8 @@ const initialState: ConfiguratorStoreState = {
   smallWindows: 0,
 
   heatingType: Heizungsart.Gas,
+
+  location: Lage.DG
 }
 
 export const useConfiguratorStore = create(
@@ -42,6 +46,7 @@ export const useConfiguratorStore = create(
       setMediumWindows: (mediumWindows: number) => set({ mediumWindows }),
       setSmallWindows: (smallWindows: number) => set({ smallWindows }),
       setHeatingType: (heatingType: Heizungsart) => set({ heatingType }),
+      setLocation: (location: Lage) => set({ location })
     })),
     {
       name: 'configurator-storage',

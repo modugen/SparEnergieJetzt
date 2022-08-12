@@ -15,6 +15,7 @@ import {
   ConfiguratorParameters,
   calcSavingsDuschkopf,
   calcSavingsTimer,
+  calcSavingsThermoheld,
 } from '../../calc'
 
 export interface ResultProposal {
@@ -54,7 +55,7 @@ export const results: ResultProposal[] = [
     image: thermoheld,
     link: 'https://www.thermoheld.global/thermoheld-glas/',
     type: 'thermoheld',
-    calculation: () => 300,
+    calculation: calcSavingsThermoheld,
   },
   {
     title: 'Wassersparender Duschkopf',

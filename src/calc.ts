@@ -306,6 +306,10 @@ export function calcSavingsReflexionsfolie(params: ConfiguratorParameters): numb
   const savings = baseCost * savingsCoefficient
   return savings
 }
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function calcSavingsThermoheld(params: ConfiguratorParameters): number {
+  return 1
+}
 
 // warm water related savings
 

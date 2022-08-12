@@ -1,4 +1,3 @@
-
 export enum RelativeWohnlage {
   AmEck = 'AmEck',
   Innenliegend = 'Innenliegend',
@@ -317,4 +316,38 @@ export function calcEffectiveWarmWaterCost(params: ConfiguratorParameters): numb
   const energyCost = params.energieEinheitsKosten.get(params.heizungsart) as number
   const cost = (QW / heatingEfficiency) * energyCost * params.anzahlBewohner
   return cost
+}
+
+export function calcSavingsDuschkopf(params: ConfiguratorParameters): number{
+  const baseCost = calcEffectiveWarmWaterCost(params)
+  let savingsCoefficient
+  switch (params.bausubstanz) {
+    case Bausubstanz.Altbau:
+      savingsCoefficient = 0.3
+      break
+    case Bausubstanz.AltbauSaniert:
+      savingsCoefficient = 0.25
+      break
+    case Bausubstanz.Neubau:
+      savingsCoefficient = 0.0
+  } 
+  const savings = baseCost * savingsCoefficient
+  return savings
+}
+
+export function calcSavingsTimer(params: ConfiguratorParameters): number{
+  const baseCost = calcEffectiveWarmWaterCost(params)
+  let savingsCoefficient
+  switch (params.bausubstanz) {
+    case Bausubstanz.Altbau:
+      savingsCoefficient = 1 / 8
+      break
+    case Bausubstanz.AltbauSaniert:
+      savingsCoefficient = 1 / 8
+      break
+    case Bausubstanz.Neubau:
+      savingsCoefficient = 1 / 8
+  } 
+  const savings = baseCost * savingsCoefficient
+  return savings
 }

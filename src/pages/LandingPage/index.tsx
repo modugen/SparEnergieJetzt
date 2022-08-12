@@ -1,5 +1,5 @@
 import { Stack } from '@mui/system'
-import { Box, Button, InputAdornment, OutlinedInput, Typography } from '@mui/material'
+import { Box, Button, InputAdornment, OutlinedInput, Typography, Link as MuiLink } from '@mui/material'
 import React, { ReactElement, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import Grid2 from '@mui/material/Unstable_Grid2'
@@ -182,14 +182,12 @@ export function LandingPage(): ReactElement {
           gasbetriebene Heizungen mindestens viermal teuerer. Es ist so wichtig wie nie,
           energiesparend zu heizen. Heizkosten sparen bei steigenden Preisen bedeutet, dass der
           Verbrauch gesenkt werden muss. Mit dem SparEnergie Konfigurator findest du schnell heraus,
-          welche Sparmaßnahmen für dich am effektivsten sind. https://blog.sparenergie.jetzt
+          welche Sparmaßnahmen für dich am effektivsten sind. <MuiLink href='https://blog.sparenergie.jetzt'>https://blog.sparenergie.jetzt</MuiLink>
         </Typography>
         <Center>
-          <Link to='https://blog.sparenergie.jetzt' style={{ textDecoration: 'none' }}>
-            <Button variant='contained' size='large'>
-              Mehr Erfahren!
-            </Button>
-          </Link>
+          <Button variant='contained' size='large' href='https://blog.sparenergie.jetzt'>
+            Mehr Erfahren!
+          </Button>
         </Center>
         <Center>
           <Box sx={{ maxWidth: { sm: '100%', md: 1200 } }}>

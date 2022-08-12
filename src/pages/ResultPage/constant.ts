@@ -3,7 +3,6 @@ import heizungsburste from '../../assets/images/results/heizungsburste.png'
 import thermoheld from '../../assets/images/results/thermoheld.png'
 import wassersparender from '../../assets/images/results/wassersparender.png'
 import timer from '../../assets/images/results/timer.png'
-import leuchten from '../../assets/images/results/leuchten.png'
 import dichtbander from '../../assets/images/results/dichtbander.png'
 import thermovorhange from '../../assets/images/results/thermovorhange.png'
 import thermostat from '../../assets/images/results/thermostat.png'
@@ -14,6 +13,8 @@ import {
   calcSavingsThermovorhaenge,
   calcSavingsThermostate,
   ConfiguratorParameters,
+  calcSavingsDuschkopf,
+  calcSavingsTimer,
 } from '../../calc'
 
 export interface ResultProposal {
@@ -62,7 +63,7 @@ export const results: ResultProposal[] = [
     image: wassersparender,
     link: 'https://amzn.to/3cZlLiO',
     type: 'duschkopf',
-    calculation: () => 300,
+    calculation: calcSavingsDuschkopf,
   },
   {
     title: 'Timer',
@@ -71,16 +72,7 @@ export const results: ResultProposal[] = [
     image: timer,
     link: 'https://amzn.to/3Qb7ayX',
     type: 'timer',
-    calculation: () => 300,
-  },
-  {
-    title: 'Leuchten mit Bewegungsmelder',
-    description:
-      'Mit diesen Leuchten vergisst du nie wieder das Licht auszuschalten, denn das geschieht automatisch.',
-    image: leuchten,
-    link: 'https://amzn.to/3bpDiA0',
-    type: 'movementsensor',
-    calculation: () => 300,
+    calculation: calcSavingsTimer,
   },
   {
     title: 'Dichtbänder für Kastenfenster',

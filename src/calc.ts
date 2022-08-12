@@ -224,16 +224,71 @@ export function calcSavingsHeizkoerperbuerste(params: ConfiguratorParameters): n
 }
 
 export function calcSavingsThermovorhaenge(params: ConfiguratorParameters): number {
+  let savingsCoefficient
+  switch (params.bausubstanz) {
+    case Bausubstanz.Altbau:
+      savingsCoefficient = 0.1
+      break
+    case Bausubstanz.AltbauSaniert:
+      savingsCoefficient = 0.05
+      break
+    case Bausubstanz.Neubau:
+      savingsCoefficient = 0.0
+  }
   const wattHoursToKiloWattHours = 1 / 1000
   const heizgradstunden = 66000
   const HTMap = calcHT(params)
   const HTWIndows = HTMap.get(ComponentWithUValue.Window)
-  const savings =
+  const baseCost =
     HTWIndows *
-    0.1 *
     HEATING_ENERGY_SOURCE_EFFICIENCY_MAP.get(params.heizungsart) *
     params.energieEinheitsKosten.get(params.heizungsart) *
     wattHoursToKiloWattHours *
     heizgradstunden
+  const savings = baseCost * savingsCoefficient
+  return savings
+}
+
+export function calcSavingsDichtbaenderKastenfenster(params: ConfiguratorParameters): number {
+  let savingsCoefficient
+  switch (params.bausubstanz) {
+    case Bausubstanz.Altbau:
+      savingsCoefficient = 0.09
+      break
+    case Bausubstanz.AltbauSaniert:
+      savingsCoefficient = 0.045
+      break
+    case Bausubstanz.Neubau:
+      savingsCoefficient = 0.0
+  }
+  const wattHoursToKiloWattHours = 1 / 1000
+  const heizgradstunden = 66000
+  const HTMap = calcHT(params)
+  const HTWIndows = HTMap.get(ComponentWithUValue.Window)
+  const baseCost =
+    HTWIndows *
+    HEATING_ENERGY_SOURCE_EFFICIENCY_MAP.get(params.heizungsart) *
+    params.energieEinheitsKosten.get(params.heizungsart) *
+    wattHoursToKiloWattHours *
+    heizgradstunden
+  const savings = baseCost * savingsCoefficient
+  return savings
+}
+
+
+export function calcThermostate (params: ConfiguratorParameters): number {
+  let savingsCoefficient
+  switch (params.bausubstanz) {
+    case Bausubstanz.Altbau:
+      savingsCoefficient = 0.15
+      break
+    case Bausubstanz.AltbauSaniert:
+      savingsCoefficient = 0.15
+      break
+    case Bausubstanz.Neubau:
+      savingsCoefficient = 0.15
+  }
+  const baseCost = calcQH(params)
+  const savings = baseCost * savingsCoefficient
   return savings
 }

@@ -24,6 +24,9 @@ import dachgeschossImg from '../../images/apartment_type/dachgeschoss.png'
 import mittelgeschossImg from '../../images/apartment_type/mittelgeschoss.png'
 import erdgeschossImg from '../../images/apartment_type/erdgeschoss.png'
 import bodenDachImg from '../../images/apartment_type/boden_dach.png'
+import onePersonImg from '../../images/persons/1_person.png'
+import twoPersonsImg from '../../images/persons/2_persons.png'
+import fourPersonsImg from '../../images/persons/4_persons.png'
 
 const stepToQuestionMap: Record<number, string> = {
   1: 'In welchem Zustand befindet sich dein Gebäude/Apartment?',
@@ -266,19 +269,19 @@ export function ConfiguratorPage(): ReactElement {
                   config={[
                     {
                       text: '1 Person',
-                      img: dachgeschossImg,
+                      img: onePersonImg,
                       selected: persons === 1,
                       onClick: () => setPersons(1),
                     },
                     {
                       text: '2 Personen',
-                      img: mittelgeschossImg,
+                      img: twoPersonsImg,
                       selected: persons === 2,
                       onClick: () => setPersons(2),
                     },
                     {
                       text: '4 Personen',
-                      img: erdgeschossImg,
+                      img: fourPersonsImg,
                       selected: persons === 4,
                       onClick: () => setPersons(4),
                     },

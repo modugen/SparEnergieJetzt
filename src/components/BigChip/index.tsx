@@ -8,13 +8,12 @@ interface Props {
   style?: CSSProperties
 }
 
-export function BigChip({
-  children, 
-  style
-}: Props): ReactElement {
+export function BigChip({ children, style }: Props): ReactElement {
   return (
-    <Box padding={2} width={70} style={{backgroundColor: grey[200], ...style}} borderRadius={100}>
-      <Typography variant='h5' textAlign='center'>{children}</Typography>
+    <Box padding={2} width={70} style={{ backgroundColor: grey[200], ...style }} borderRadius={100}>
+      <Typography variant='h5' textAlign='center'>
+        {children}
+      </Typography>
     </Box>
   )
 }

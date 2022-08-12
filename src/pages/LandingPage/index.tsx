@@ -67,8 +67,8 @@ export function LandingPage(): ReactElement {
           </Grid2>
           <Grid2>
             <Typography variant='subtitle1' textAlign='center'>
-              Konfigurieren Sie Ihre Sparmaßnahmen passend zu Ihrem Gebäude und finden Sie heraus, wie
-              Sie effektiv Energie sparen können.
+              Konfigurieren Sie Ihre Sparmaßnahmen passend zu Ihrem Gebäude und finden Sie heraus,
+              wie Sie effektiv Energie sparen können.
             </Typography>
           </Grid2>
           <Grid2>
@@ -119,16 +119,14 @@ export function LandingPage(): ReactElement {
         <Grid2 container justifyContent='center' spacing={2}>
           <Grid2 spacing={2} direction='column'>
             <Grid2>
-              <Typography variant='h3' textAlign='center' display="block">
+              <Typography variant='h3' textAlign='center' display='block'>
                 Heizkosten Aktuell
               </Typography>
             </Grid2>
 
             <Grid2>
               <Center>
-                <BigChip>
-                  {`${currentCost}€`}
-                </BigChip>
+                <BigChip>{`${currentCost}€`}</BigChip>
               </Center>
             </Grid2>
             <Grid2>
@@ -145,9 +143,7 @@ export function LandingPage(): ReactElement {
             </Grid2>
             <Grid2>
               <Center>
-                <BigChip>
-                    {`${futureCost}€`}
-                  </BigChip>
+                <BigChip>{`${futureCost}€`}</BigChip>
               </Center>
             </Grid2>
             <Grid2>
@@ -165,7 +161,9 @@ export function LandingPage(): ReactElement {
 
         <Center>
           <Link to='/configurator/step-1' style={{ textDecoration: 'none' }}>
-            <Button variant='contained' size='large'>Jetzt Einsparungen ermitteln</Button>
+            <Button variant='contained' size='large'>
+              Jetzt Einsparungen ermitteln
+            </Button>
           </Link>
         </Center>
       </LandingPageSection>
@@ -191,7 +189,9 @@ export function LandingPage(): ReactElement {
       <LandingPageSection>
         <Center>
           <Link to='/configurator/step-1' style={{ textDecoration: 'none' }}>
-            <Button variant='contained' size='large'>Jetzt Einsparungen ermitteln</Button>
+            <Button variant='contained' size='large'>
+              Jetzt Einsparungen ermitteln
+            </Button>
           </Link>
         </Center>
 

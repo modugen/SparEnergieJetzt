@@ -42,13 +42,13 @@ export const results: ResultProposal[] = [
     winner: true,
     links: [
       {
-        link: 'https://amzn.to/3OWoMNU', 
-        provider: 'Amazon'
+        link: 'https://amzn.to/3OWoMNU',
+        provider: 'Amazon',
       },
       {
         link: 'https://www.google.com/search?q=Heizk%C3%B6rper+Reflektionsfolie&sxsrf=ALiCzsbIvtBTtK4DJZfRGKMc0QYD5HRWMQ:1660313326812&source=lnms&tbm=shop&sa=X&ved=2ahUKEwj7ob2QvcH5AhWOi_0HHU7PBdoQ_AUoAXoECAIQAw&biw=1440&bih=732&dpr=2',
-        provider: 'Google'
-      }
+        provider: 'Google',
+      },
     ],
     type: 'reflection',
     calculation: calcSavingsReflexionsfolie,
@@ -62,12 +62,12 @@ export const results: ResultProposal[] = [
     links: [
       {
         link: 'https://amzn.to/3Sme3PK',
-        provider: 'Amazon'
-      }, 
+        provider: 'Amazon',
+      },
       {
         link: 'https://www.google.com/search?q=Heizk%C3%B6rperb%C3%BCrste+google+shopping&sxsrf=ALiCzsZiIfTMam1JeJf0FCrXAIK-S9IkHA:1660289698749&source=lnms&tbm=shop&sa=X&ved=2ahUKEwiw_t6N5cD5AhX1i_0HHU-CCnkQ_AUoAXoECAEQAw&biw=1440&bih=789&dpr=2',
-        provider: 'Google', 
-      }
+        provider: 'Google',
+      },
     ],
     type: 'heizkoerperbuerste',
     calculation: calcSavingsHeizkoerperbuerste,
@@ -81,12 +81,12 @@ export const results: ResultProposal[] = [
     links: [
       {
         link: 'https://www.thermoheld.global/thermoheld-glas/',
-        provider: 'Thermoheld'
-      }, 
+        provider: 'Thermoheld',
+      },
       {
         link: 'https://www.hornbach.de/aktuelles/ethermoheld-so-geht-waerme-heute/',
-        provider: 'Hornbach'
-      }
+        provider: 'Hornbach',
+      },
     ],
     type: 'thermoheld',
     calculation: calcSavingsThermoheld,
@@ -101,13 +101,12 @@ export const results: ResultProposal[] = [
     links: [
       {
         link: 'https://amzn.to/3cZlLiO',
-        provider: 'Amazon'
+        provider: 'Amazon',
       },
       {
         link: 'https://www.google.com/search?q=Wassersparender+Duschkopf&sxsrf=ALiCzsYAQAYHFPXrtebRQSB5LzY11-hH0g:1660289732868&source=lnms&tbm=shop&sa=X&ved=2ahUKEwj-rYGe5cD5AhUfgv0HHYlNDWgQ_AUoAXoECAEQAw&biw=1440&bih=789&dpr=2',
-        provider: 'Google'
-      }
-      
+        provider: 'Google',
+      },
     ],
     type: 'duschkopf',
     calculation: calcSavingsDuschkopf,
@@ -121,12 +120,12 @@ export const results: ResultProposal[] = [
     links: [
       {
         link: 'https://amzn.to/3Qb7ayX',
-        provider: 'Amazon'
-      }, 
+        provider: 'Amazon',
+      },
       {
         link: 'https://www.google.com/search?q=Duschtimer&sxsrf=ALiCzsbgXeIXCgoncksFQK-qY-sZrXZDew:1660313228245&source=lnms&tbm=shop&sa=X&ved=2ahUKEwiBv73hvMH5AhU3xQIHHVtUD5IQ_AUoAXoECAIQAw&biw=1440&bih=732&dpr=2',
-        provider: 'Google'
-      }
+        provider: 'Google',
+      },
     ],
     type: 'timer',
     calculation: calcSavingsTimer,
@@ -140,12 +139,12 @@ export const results: ResultProposal[] = [
     links: [
       {
         link: 'https://amzn.to/3vulM4w',
-        provider: 'Amazon'
-      }, 
+        provider: 'Amazon',
+      },
       {
         link: 'https://www.google.com/search?q=Dichtb%C3%A4nder+f%C3%BCr+Kastenfenster&sxsrf=ALiCzsZwwxrOdEzHLt7zXCYKbL61kGe6cA:1660313349762&source=lnms&tbm=shop&sa=X&ved=2ahUKEwjRi7abvcH5AhXu_rsIHXIgAS0Q_AUoAXoECAEQAw&biw=1440&bih=732&dpr=2',
-        provider: 'Google'
-      }
+        provider: 'Google',
+      },
     ],
     type: 'dichtbaender',
     calculation: calcSavingsDichtbaenderKastenfenster,
@@ -159,12 +158,12 @@ export const results: ResultProposal[] = [
     links: [
       {
         link: 'https://amzn.to/3SmnM8C',
-        provider: 'Amazon'
-      }, 
+        provider: 'Amazon',
+      },
       {
         link: 'https://www.google.com/search?q=Thermovorh%C3%A4nge&source=lmns&tbm=shop&bih=789&biw=1440&hl=de&sa=X&ved=2ahUKEwij1sXP5cD5AhVOYxoKHbZ4CJkQ_AUoAXoECAEQAQ',
-        provider: 'Google'
-      }
+        provider: 'Google',
+      },
     ],
     type: 'thermovorhaenge',
     calculation: calcSavingsThermovorhaenge,
@@ -178,12 +177,12 @@ export const results: ResultProposal[] = [
     links: [
       {
         link: 'https://amzn.to/3oPxFOU',
-        provider: 'Amazon'
-      }, 
+        provider: 'Amazon',
+      },
       {
         link: 'https://www.google.com/search?q=heizk%C3%B6rperthermostat&sxsrf=ALiCzsaCD-ZJf3tVzwjP5Y_v-_ZoYMdrsA:1660289924112&source=lnms&tbm=shop&sa=X&ved=2ahUKEwjflJr55cD5AhXLX8AKHcFYCLIQ_AUoAXoECAEQAw&biw=1440&bih=789&dpr=2',
-        provider: 'Google'
-      }
+        provider: 'Google',
+      },
     ],
     type: 'hydraulischeThermostate',
     calculation: calcSavingsThermostate,

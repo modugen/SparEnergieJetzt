@@ -108,11 +108,11 @@ const ResultCard = ({ result, savedValue }: Props) => {
                 {!descriptionColsaped ? <ExpandMoreIcon /> : <ExpandLessIcon />}
               </IconButton>
             </Box>
-            {!isMidDownScreen && 
-            <Grid2>
-
-              <BuyButtons links={result.links} />
-            </Grid2>}
+            {!isMidDownScreen && (
+              <Grid2>
+                <BuyButtons links={result.links} />
+              </Grid2>
+            )}
           </Stack>
         </Grid>
       </Grid>

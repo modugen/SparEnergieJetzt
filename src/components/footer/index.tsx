@@ -4,6 +4,10 @@ import { Stack } from '@mui/system'
 
 const links = [
   {
+    title: 'Blog',
+    link: 'https://blog.sparenergie.jetzt',
+  },
+  {
     title: 'Über SparEnergie.jetzt',
     link: 'https://blog.sparenergie.jetzt/about',
   },
@@ -12,8 +16,8 @@ const links = [
     link: 'https://blog.sparenergie.jetzt/impressum',
   },
   {
-    title: 'Blog',
-    link: 'https://blog.sparenergie.jetzt',
+    title: 'Datenschutz',
+    link: 'https://www.blog.sparenergie.jetzt/datenschutz',
   },
 ]
 

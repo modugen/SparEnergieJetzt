@@ -3,6 +3,7 @@ import Box from '@mui/material/Box'
 import { Container } from '@mui/system'
 import { filter } from 'lodash-es'
 import React, { ReactElement } from 'react'
+import { ShareMenu } from '../../components/ShareMenu'
 import { useResultConfiguration } from '../../hooks/useResultConfiguration'
 import ResultCard from './component/resultCard'
 import { results } from './constant'
@@ -37,6 +38,7 @@ export function ResultPage(): ReactElement {
           ))}
         </Stack>
       </Container>
+      <ShareMenu />
     </Box>
   )
 }

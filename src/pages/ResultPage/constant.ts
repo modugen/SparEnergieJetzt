@@ -7,7 +7,14 @@ import leuchten from '../../assets/images/results/leuchten.png'
 import dichtbander from '../../assets/images/results/dichtbander.png'
 import thermovorhange from '../../assets/images/results/thermovorhange.png'
 import thermostat from '../../assets/images/results/thermostat.png'
-import { calcSavingsHeizkoerperbuerste, ConfiguratorParameters } from '../../calc'
+import {
+  calcReflexionsfolie,
+  calcSavingsDichtbaenderKastenfenster,
+  calcSavingsHeizkoerperbuerste,
+  calcSavingsThermovorhaenge,
+  calcThermostate,
+  ConfiguratorParameters,
+} from '../../calc'
 
 export interface ResultProposal {
   title: string
@@ -28,7 +35,7 @@ export const results: ResultProposal[] = [
     winner: true,
     link: 'https://amzn.to/3OWoMNU',
     type: 'reflection',
-    calculation: () => 300,
+    calculation: calcReflexionsfolie,
   },
   {
     title: 'Heizkörperbürste',
@@ -82,7 +89,7 @@ export const results: ResultProposal[] = [
     image: dichtbander,
     link: 'https://amzn.to/3vulM4w',
     type: 'dichtbaender',
-    calculation: () => 300,
+    calculation: calcSavingsDichtbaenderKastenfenster,
   },
   {
     title: 'Thermovorhänge',
@@ -91,7 +98,7 @@ export const results: ResultProposal[] = [
     image: thermovorhange,
     link: 'https://amzn.to/3SmnM8C',
     type: 'thermovorhaenge',
-    calculation: () => 300,
+    calculation: calcSavingsThermovorhaenge,
   },
   {
     title: 'Thermostat',
@@ -100,6 +107,6 @@ export const results: ResultProposal[] = [
     image: thermostat,
     link: 'https://amzn.to/3oPxFOU',
     type: 'hydraulischeThermostate',
-    calculation: () => 300,
+    calculation: calcThermostate,
   },
 ]

@@ -18,7 +18,7 @@ import { useConfiguratorStore } from '../../stores/configuratorStore'
 import { ShareMenu } from '../../components/ShareMenu'
 import { Bausubstanz, calcEffectiveHeatingCost, Heizungsart } from '../../calc'
 import { useResultConfiguration } from '../../hooks/useResultConfiguration'
-import { round } from 'lodash-es'
+import { isNaN, round } from 'lodash-es'
 import { BigChip } from '../../components/BigChip'
 
 export function LandingPage(): ReactElement {
@@ -76,14 +76,16 @@ export function LandingPage(): ReactElement {
               <OutlinedInput
                 value={squareMeters}
                 type='number'
-                onChange={(e) => setSquareMeters(parseFloat(e.target.value))}
+                onChange={(e) => setSquareMeters(isNaN(parseFloat(e.target.value)) ? 0 : parseFloat(e.target.value))}
                 endAdornment={<InputAdornment position='end'>m²</InputAdornment>}
                 aria-describedby='outlined-weight-helper-text'
                 inputProps={{
                   'aria-label': 'weight',
+                  min: 1
                 }}
                 size='small'
                 style={{ alignSelf: 'center' }}
+                onFocus={e => e.target.select()}
               />
             </Center>
           </Grid2>

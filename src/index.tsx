@@ -23,7 +23,7 @@ const AppWithProviders = () => (
 
 root.render(<AppWithProviders />)
 
-// if (root.) {
+// if (root.hasChildren()) {
 //   hydrate(<AppWithProviders />, rootElement)
 // } else {
 //   render(<AppWithProviders />, rootElement)

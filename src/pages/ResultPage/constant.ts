@@ -3,11 +3,19 @@ import heizungsburste from '../../assets/images/results/heizungsburste.png'
 import thermoheld from '../../assets/images/results/thermoheld.png'
 import wassersparender from '../../assets/images/results/wassersparender.png'
 import timer from '../../assets/images/results/timer.png'
-import leuchten from '../../assets/images/results/leuchten.png'
 import dichtbander from '../../assets/images/results/dichtbander.png'
 import thermovorhange from '../../assets/images/results/thermovorhange.png'
-import thermostat from '../../assets/images/results/bb.jpg'
-import { calcSavingsHeizkoerperbuerste, ConfiguratorParameters } from '../../calc'
+import thermostat from '../../assets/images/results/thermostat.png'
+import {
+  calcSavingsReflexionsfolie,
+  calcSavingsDichtbaenderKastenfenster,
+  calcSavingsHeizkoerperbuerste,
+  calcSavingsThermovorhaenge,
+  calcSavingsThermostate,
+  ConfiguratorParameters,
+  calcSavingsDuschkopf,
+  calcSavingsTimer,
+} from '../../calc'
 
 export interface ResultProposal {
   title: string
@@ -28,7 +36,7 @@ export const results: ResultProposal[] = [
     winner: true,
     link: 'https://amzn.to/3OWoMNU',
     type: 'reflection',
-    calculation: () => 300,
+    calculation: calcSavingsReflexionsfolie,
   },
   {
     title: 'Heizkörperbürste',
@@ -55,7 +63,7 @@ export const results: ResultProposal[] = [
     image: wassersparender,
     link: 'https://amzn.to/3cZlLiO',
     type: 'duschkopf',
-    calculation: () => 300,
+    calculation: calcSavingsDuschkopf,
   },
   {
     title: 'Timer',
@@ -64,16 +72,7 @@ export const results: ResultProposal[] = [
     image: timer,
     link: 'https://amzn.to/3Qb7ayX',
     type: 'timer',
-    calculation: () => 300,
-  },
-  {
-    title: 'Leuchten mit Bewegungsmelder',
-    description:
-      'Mit diesen Leuchten vergisst du nie wieder das Licht auszuschalten, denn das geschieht automatisch.',
-    image: leuchten,
-    link: 'https://amzn.to/3bpDiA0',
-    type: 'movementsensor',
-    calculation: () => 300,
+    calculation: calcSavingsTimer,
   },
   {
     title: 'Dichtbänder für Kastenfenster',
@@ -82,7 +81,7 @@ export const results: ResultProposal[] = [
     image: dichtbander,
     link: 'https://amzn.to/3vulM4w',
     type: 'dichtbaender',
-    calculation: () => 300,
+    calculation: calcSavingsDichtbaenderKastenfenster,
   },
   {
     title: 'Thermovorhänge',
@@ -91,7 +90,7 @@ export const results: ResultProposal[] = [
     image: thermovorhange,
     link: 'https://amzn.to/3SmnM8C',
     type: 'thermovorhaenge',
-    calculation: () => 300,
+    calculation: calcSavingsThermovorhaenge,
   },
   {
     title: 'Thermostat',
@@ -100,6 +99,6 @@ export const results: ResultProposal[] = [
     image: thermostat,
     link: 'https://amzn.to/3oPxFOU',
     type: 'hydraulischeThermostate',
-    calculation: () => 300,
+    calculation: calcSavingsThermostate,
   },
 ]

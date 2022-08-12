@@ -1,6 +1,6 @@
 import { Stack } from '@mui/system'
-import { Button, InputAdornment, OutlinedInput, Typography } from '@mui/material'
-import React, { ReactElement } from 'react'
+import { Button, Chip, InputAdornment, OutlinedInput, Typography } from '@mui/material'
+import React, { ReactElement, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import Grid2 from '@mui/material/Unstable_Grid2'
 import { red } from '@mui/material/colors'
@@ -16,14 +16,39 @@ import altbauSaniertImg from '../../images/building_type/altbau_saniert.png'
 import neubauImg from '../../images/building_type/neubau.png'
 import { useConfiguratorStore } from '../../stores/configuratorStore'
 import { ShareMenu } from '../../components/ShareMenu'
-import { Bausubstanz } from '../../calc'
+import { Bausubstanz, calcEffectiveHeatingCost, Heizungsart } from '../../calc'
+import { useResultConfiguration } from '../../hooks/useResultConfiguration'
+import { round } from 'lodash-es'
 
 export function LandingPage(): ReactElement {
   const { squareMeters, setSquareMeters, buildingType, setBuildingType } = useConfiguratorStore()
 
-  // TODO: calculate
-  const currentSavings = 100
-  const futureSavings = 200
+  const resultConfig = useResultConfiguration()
+
+  const currentCost = useMemo(
+    () =>
+      round(
+        calcEffectiveHeatingCost({
+          ...resultConfig,
+          heizungsart: Heizungsart.Gas,
+          energieEinheitsKosten: new Map<Heizungsart, number>([[Heizungsart.Gas, 0.06]]),
+        }),
+        0,
+      ),
+    [resultConfig],
+  )
+
+  const futureCost = useMemo(
+    () =>
+      round(
+        calcEffectiveHeatingCost({
+          ...resultConfig,
+          heizungsart: Heizungsart.Gas,
+        }),
+        0,
+      ),
+    [resultConfig],
+  )
 
   return (
     <Stack
@@ -87,50 +112,31 @@ export function LandingPage(): ReactElement {
         <Grid2 container justifyContent='center' spacing={2}>
           <Grid2>
             <Typography variant='h3' textAlign='center'>
-              Früher
+              Heizkosten Aktuell
             </Typography>
             <Center>
-              <OutlinedInput
-                value={currentSavings}
-                type='number'
-                endAdornment={<InputAdornment position='end'>€</InputAdornment>}
-                aria-describedby='outlined-weight-helper-text'
-                inputProps={{
-                  'aria-label': 'weight',
-                }}
-                size='small'
-                disabled
-              />
+              <Chip label={`${currentCost}€`} style={{ width: 65 }} />
             </Center>
-            <Typography variant='subtitle1'>
-              letzten Winter bezahltest du etwa 100€/Heizperiode
+            <Typography variant='subtitle1' textAlign='center'>
+              pro Heizperiode
             </Typography>
           </Grid2>
           <Grid2>
             <Typography variant='h3' textAlign='center'>
-              In Zukunft
+              Heizkosten In Zukunft
             </Typography>
             <Center>
-              <OutlinedInput
-                value={futureSavings}
-                type='number'
-                endAdornment={<InputAdornment position='end'>€</InputAdornment>}
-                aria-describedby='outlined-weight-helper-text'
-                inputProps={{
-                  'aria-label': 'weight',
-                }}
-                size='small'
-                disabled
-              />
+              <Chip label={`${futureCost}€`} style={{ width: 65 }} />
             </Center>
-            <Typography variant='subtitle1'>
-              nächsten Winter bezahlst du 100€/Heizperiode
+            <Typography variant='subtitle1' textAlign='center'>
+              pro Heizperiode
             </Typography>
           </Grid2>
         </Grid2>
 
         <Typography color={red[500]} textAlign='center'>
-          Du kannst bis zu <b>2000€</b> pro Heizperiode sparen
+          Bei der empfohlenen Einsparung von 20% kannst du bis zu{' '}
+          <b>{round(futureCost * 0.2, 0)}€</b> pro Heizperiode sparen
         </Typography>
 
         <Center>
@@ -145,7 +151,7 @@ export function LandingPage(): ReactElement {
           Warum jetzt?
         </Typography>
         <Center>
-          <img src={chartImg} style={{ maxWidth: '100%' }} />
+          <img src={chartImg} style={{ maxWidth: 1300 }} />
         </Center>
       </LandingPageSection>
 

@@ -10,7 +10,6 @@ import { Center } from '../../components/Center'
 
 // images
 import chartImg from '../../images/chart_placeholder.png'
-import jacqelineBrettImg from '../../images/jacqueline-brett.png'
 import altbauImg from '../../images/building_type/altbau.png'
 import altbauSaniertImg from '../../images/building_type/altbau_saniert.png'
 import neubauImg from '../../images/building_type/neubau.png'
@@ -194,18 +193,6 @@ export function LandingPage(): ReactElement {
             </Button>
           </Link>
         </Center>
-
-        <Grid2 container justifyContent='center' alignItems='center' spacing={4}>
-          <Grid2>
-            <Typography>
-              Jacqueline Brett sparte mit dem Kofigurator 700,32€ per Heizperiode bei
-              Investitionskosten von 280,00€
-            </Typography>
-          </Grid2>
-          <Grid2>
-            <img src={jacqelineBrettImg} style={{ borderRadius: 100 }} />
-          </Grid2>
-        </Grid2>
       </LandingPageSection>
       <ShareMenu />
     </Stack>

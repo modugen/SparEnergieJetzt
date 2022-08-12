@@ -60,11 +60,11 @@ export function LandingPage(): ReactElement {
       <LandingPageSection>
         <div>
           <Typography variant='h3' textAlign='center'>
-            Energiekrise sinnvoll bewältigen
+            Die Energiekrise sinnvoll bewältigen
           </Typography>
           <Typography variant='subtitle1' textAlign='center'>
-            Konfigurieren Sie sich jetzt Ihre Einsparmaßnahmen passend zu Ihrem Gebäuden und tun Sie
-            dabei der Umwelt und Ihrem Geldbeutel etwas Gutes!
+            Konfigurieren Sie Ihre Sparmaßnahmen passend zu Ihrem Gebäude und finden Sie heraus, wie
+            Sie effektiv Energie sparen können.
           </Typography>
           <Center>
             <OutlinedInput

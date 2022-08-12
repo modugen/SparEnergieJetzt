@@ -1,16 +1,15 @@
 import React from 'react'
 import { Box, Typography, useTheme } from '@mui/material'
 import { Stack } from '@mui/system'
-import { Link } from 'react-router-dom'
 
 const links = [
   {
     title: 'Impressum',
-    link: '',
+    link: '/',
   },
   {
     title: 'Datenschutz',
-    link: '',
+    link: '/',
   },
   {
     title: 'Newsletter',
@@ -18,7 +17,11 @@ const links = [
   },
   {
     title: 'kontakt',
-    link: '',
+    link: '/',
+  },
+  {
+    title: 'Blog',
+    link: 'https://blog.sparenergie.jetzt',
   },
 ]
 
@@ -39,13 +42,13 @@ const Footer = () => {
       </Typography>
       <Stack direction='row' spacing={2}>
         {links.map(({ link, title }, index) => (
-          <Link
+          <a
             style={{ color: theme.palette.common.white, textDecoration: 'none' }}
             key={index}
-            to={link}
+            href={link}
           >
-            {title}
-          </Link>
+            <Typography>{title}</Typography>
+          </a>
         ))}
       </Stack>
     </Box>

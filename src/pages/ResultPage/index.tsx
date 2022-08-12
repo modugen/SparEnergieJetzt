@@ -33,8 +33,6 @@ export function ResultPage(): ReactElement {
     deckenhoehe: storeyHeight,
     bausubstanz: buildingType,
     heizungsart: heatingType,
-    fensterflaecheRelativ: 0,
-    fensterflaecheAbsolut: 0,
     windows: [
       {
         areaPerWindow: 1.5,

@@ -291,3 +291,21 @@ export function calcThermostate(params: ConfiguratorParameters): number {
   const savings = baseCost * savingsCoefficient
   return savings
 }
+
+
+export function calcReflexionsfolie(params: ConfiguratorParameters): number {
+  let savingsCoefficient
+  switch (params.bausubstanz) {
+    case Bausubstanz.Altbau:
+      savingsCoefficient = 0.03
+      break
+    case Bausubstanz.AltbauSaniert:
+      savingsCoefficient = 0.015
+      break
+    case Bausubstanz.Neubau:
+      savingsCoefficient = 0.0
+  }
+  const baseCost = calcQH(params)
+  const savings = baseCost * savingsCoefficient
+  return savings
+}

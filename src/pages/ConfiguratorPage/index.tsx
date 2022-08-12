@@ -97,7 +97,7 @@ export function ConfiguratorPage(): ReactElement {
         }}
       >
         <Routes>
-        <Route
+          <Route
             path='step-1'
             element={
               <SelectButtonGroup
@@ -124,7 +124,7 @@ export function ConfiguratorPage(): ReactElement {
               />
             }
           />
-           <Route
+          <Route
             path='step-2'
             element={
               <SelectButtonGroup
@@ -202,7 +202,7 @@ export function ConfiguratorPage(): ReactElement {
               </Stack>
             }
           />
-         
+
           <Route
             path='step-4'
             element={

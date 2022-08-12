@@ -177,8 +177,15 @@ export function LandingPage(): ReactElement {
           gasbetriebene Heizungen mindestens viermal teuerer. Es ist so wichtig wie nie,
           energiesparend zu heizen. Heizkosten sparen bei steigenden Preisen bedeutet, dass der
           Verbrauch gesenkt werden muss. Mit dem SparEnergie Konfigurator findest du schnell heraus,
-          welche Sparmaßnahmen für dich am effektivsten sind.
+          welche Sparmaßnahmen für dich am effektivsten sind. https://blog.sparenergie.jetzt
         </Typography>
+        <Center>
+          <Link to='https://blog.sparenergie.jetzt' style={{ textDecoration: 'none' }}>
+            <Button variant='contained' size='large'>
+              Mehr Erfahren!
+            </Button>
+          </Link>
+        </Center>
         <Center>
           <Box sx={{ maxWidth: { sm: '100%', md: 1200 } }}>
             <img src={chartImg} style={{ maxWidth: '100%' }} />

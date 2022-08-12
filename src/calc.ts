@@ -199,7 +199,7 @@ function calcHTtotal(params: ConfiguratorParameters): number {
   return HTTotalFinal
 }
 
-function calcEffectiveHeatingCost(params: ConfiguratorParameters): number {
+export function calcEffectiveHeatingCost(params: ConfiguratorParameters): number {
   const HTtotal = calcHTtotal(params)
   const heatingCost =
     (HTtotal / (HEATING_ENERGY_SOURCE_EFFICIENCY_MAP.get(params.heizungsart) as number)) *

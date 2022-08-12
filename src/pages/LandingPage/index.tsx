@@ -1,6 +1,6 @@
 import { Stack } from '@mui/system'
 import { Button, InputAdornment, OutlinedInput, Typography } from '@mui/material'
-import React, { ReactElement } from 'react'
+import React, { ReactElement, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import Grid2 from '@mui/material/Unstable_Grid2'
 import { red } from '@mui/material/colors'
@@ -16,14 +16,26 @@ import altbauSaniertImg from '../../images/building_type/altbau_saniert.png'
 import neubauImg from '../../images/building_type/neubau.png'
 import { useConfiguratorStore } from '../../stores/configuratorStore'
 import { ShareMenu } from '../../components/ShareMenu'
-import { Bausubstanz } from '../../calc'
+import { Bausubstanz, calcEffectiveHeatingCost, Heizungsart } from '../../calc'
+import { useResultConfiguration } from '../../hooks/useResultConfiguration'
 
 export function LandingPage(): ReactElement {
   const { squareMeters, setSquareMeters, buildingType, setBuildingType } = useConfiguratorStore()
 
-  // TODO: calculate
-  const currentSavings = 100
-  const futureSavings = 200
+  const resultConfig = useResultConfiguration()
+
+  const currentSavings = useMemo(() => calcEffectiveHeatingCost({
+    ...resultConfig, 
+    heizungsart: Heizungsart.Gas,
+    energieEinheitsKosten: new Map<Heizungsart, number>([
+      [Heizungsart.Gas, 0.27]
+    ]), 
+  }), [resultConfig])
+
+  const futureSavings = useMemo(() => calcEffectiveHeatingCost({
+    ...resultConfig, 
+    heizungsart: Heizungsart.Gas,
+  }), [])
 
   return (
     <Stack

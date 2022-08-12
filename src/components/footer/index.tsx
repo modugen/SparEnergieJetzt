@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 const links = [
   {
-    title: 'Impressm',
+    title: 'Impressum',
     link: '',
   },
   {

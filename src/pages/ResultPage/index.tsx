@@ -1,54 +1,16 @@
 import { Stack, Typography, useTheme } from '@mui/material'
 import Box from '@mui/material/Box'
 import { Container } from '@mui/system'
+import { filter } from 'lodash-es'
 import React, { ReactElement } from 'react'
-import { DEFAULT_ENERGY_UNIT_COST, Lage } from '../../calc'
-import { useConfiguratorStore } from '../../stores/configuratorStore'
+import { useResultConfiguration } from '../../hooks/useResultConfiguration'
 import ResultCard from './component/resultCard'
 import { results } from './constant'
-
-// TODO: Add filter for results if saving is 0
 
 export function ResultPage(): ReactElement {
   const theme = useTheme()
 
-  const {
-    squareMeters,
-    buildingType,
-    storeyHeight,
-    apartmentPosition,
-
-    bigWindows,
-    mediumWindows,
-    smallWindows,
-
-    heatingType,
-  } = useConfiguratorStore()
-
-  const config = {
-    wohnflaeche: squareMeters,
-    relativeWohnlage: apartmentPosition,
-    // TODO: implement lage
-    lage: Lage.DG_EG,
-    deckenhoehe: storeyHeight,
-    bausubstanz: buildingType,
-    heizungsart: heatingType,
-    windows: [
-      {
-        areaPerWindow: 1.5,
-        NumberOfWindows: bigWindows,
-      },
-      {
-        areaPerWindow: 1,
-        NumberOfWindows: mediumWindows,
-      },
-      {
-        areaPerWindow: 0.5,
-        NumberOfWindows: smallWindows,
-      },
-    ],
-    energieEinheitsKosten: DEFAULT_ENERGY_UNIT_COST,
-  }
+  const config = useResultConfiguration()
 
   return (
     <Box sx={{ backgroundColor: theme.palette.grey[50], paddingBottom: 5, overflowX: 'hidden' }}>
@@ -66,7 +28,7 @@ export function ResultPage(): ReactElement {
           </Typography>
         </Stack>
         <Stack spacing={4} flexDirection='column' display='flex' alignItems='center'>
-          {results.map((result, index) => (
+          {filter(results, (result) => result.calculation(config) > 0).map((result, index) => (
             <ResultCard
               result={{ ...result }}
               savedValue={result.calculation(config)}

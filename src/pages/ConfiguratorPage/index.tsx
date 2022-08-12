@@ -19,13 +19,22 @@ import pelletHeatingImg from '../../images/heating_type/pellet.png'
 import fernHeatingImg from '../../images/heating_type/fern.png'
 import electricityHeatingImg from '../../images/heating_type/electricity.png'
 import { Portal } from '../../components/header/Portal'
-import { RelativeWohnlage, Heizungsart } from '../../calc'
+import { RelativeWohnlage, Heizungsart, Lage } from '../../calc'
+import dachgeschossImg from '../../images/apartment_type/dachgeschoss.png'
+import mittelgeschossImg from '../../images/apartment_type/mittelgeschoss.png'
+import erdgeschossImg from '../../images/apartment_type/erdgeschoss.png'
+import bodenDachImg from '../../images/apartment_type/boden_dach.png'
+import onePersonImg from '../../images/persons/1_person.png'
+import twoPersonsImg from '../../images/persons/2_persons.png'
+import fourPersonsImg from '../../images/persons/4_persons.png'
 
 const stepToQuestionMap: Record<number, string> = {
   1: 'In welchem Zustand befindet sich dein Gebäude/Apartment?',
   2: 'Wie hoch ist die Deckenhöhe in deinen Zimmern?',
   3: 'An welcher Position befindet sich dein Gebäude/Apartment?',
   4: 'Wie viele Fenster hat dein Gebäude/Apartment?',
+  5: 'Wie sieht die Lage deines Apartments aus?',
+  6: 'Wie viele Personen leben in dem Haushalt?',
 }
 
 export function ConfiguratorPage(): ReactElement {
@@ -46,6 +55,12 @@ export function ConfiguratorPage(): ReactElement {
     setMediumWindows,
     smallWindows,
     setSmallWindows,
+
+    location: apartmentLocation,
+    setLocation,
+
+    persons,
+    setPersons,
   } = useConfiguratorStore()
 
   const page = useMemo(
@@ -53,7 +68,7 @@ export function ConfiguratorPage(): ReactElement {
     [location.pathname],
   )
 
-  const pages = 4
+  const pages = Object.keys(stepToQuestionMap).length
 
   return (
     <Container
@@ -211,6 +226,85 @@ export function ConfiguratorPage(): ReactElement {
                   },
                 ]}
               />
+            }
+          />
+          <Route
+            path='step-5'
+            element={
+              <SelectButtonGroup
+                config={[
+                  {
+                    text: 'Dachgeschoss',
+                    img: dachgeschossImg,
+                    selected: apartmentLocation === Lage.DG,
+                    onClick: () => setLocation(Lage.DG),
+                  },
+                  {
+                    text: 'Mittelgeschoss',
+                    img: mittelgeschossImg,
+                    selected: apartmentLocation === Lage.Zwischengeschoss,
+                    onClick: () => setLocation(Lage.Zwischengeschoss),
+                  },
+                  {
+                    text: 'Erdgeschoss',
+                    img: erdgeschossImg,
+                    selected: apartmentLocation === Lage.EG,
+                    onClick: () => setLocation(Lage.EG),
+                  },
+                  {
+                    text: 'Boden + Dach',
+                    img: bodenDachImg,
+                    selected: apartmentLocation === Lage.DG_EG,
+                    onClick: () => setLocation(Lage.DG_EG),
+                  },
+                ]}
+              />
+            }
+          />
+          <Route
+            path='step-6'
+            element={
+              <Stack spacing={3}>
+                <SelectButtonGroup
+                  config={[
+                    {
+                      text: '1 Person',
+                      img: onePersonImg,
+                      selected: persons === 1,
+                      onClick: () => setPersons(1),
+                    },
+                    {
+                      text: '2 Personen',
+                      img: twoPersonsImg,
+                      selected: persons === 2,
+                      onClick: () => setPersons(2),
+                    },
+                    {
+                      text: '4 Personen',
+                      img: fourPersonsImg,
+                      selected: persons === 4,
+                      onClick: () => setPersons(4),
+                    },
+                  ]}
+                />
+                <Typography textAlign='center'>
+                  Oder gib die Anzahl der Personen individuell an!
+                </Typography>
+                <Center>
+                  <OutlinedInput
+                    value={persons}
+                    onChange={(e) => setPersons(parseInt(e.target.value))}
+                    type='number'
+                    endAdornment={<InputAdornment position='end'>Personen</InputAdornment>}
+                    aria-describedby='outlined-weight-helper-text'
+                    inputProps={{
+                      'aria-label': 'weight',
+                      min: 1,
+                    }}
+                    size='small'
+                  />
+                </Center>
+              </Stack>
             }
           />
         </Routes>

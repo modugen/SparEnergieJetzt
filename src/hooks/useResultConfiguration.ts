@@ -1,4 +1,4 @@
-import { ConfiguratorParameters, DEFAULT_ENERGY_UNIT_COST, Lage } from '../calc'
+import { ConfiguratorParameters, DEFAULT_ENERGY_UNIT_COST } from '../calc'
 import { useConfiguratorStore } from '../stores/configuratorStore'
 
 export function useResultConfiguration(): ConfiguratorParameters {
@@ -13,13 +13,16 @@ export function useResultConfiguration(): ConfiguratorParameters {
     smallWindows,
 
     heatingType,
+
+    location,
+
+    persons,
   } = useConfiguratorStore()
 
   return {
     wohnflaeche: squareMeters,
     relativeWohnlage: apartmentPosition,
-    // TODO: implement lage
-    lage: Lage.DG_EG,
+    lage: location,
     deckenhoehe: storeyHeight,
     bausubstanz: buildingType,
     heizungsart: heatingType,
@@ -38,5 +41,6 @@ export function useResultConfiguration(): ConfiguratorParameters {
       },
     ],
     energieEinheitsKosten: DEFAULT_ENERGY_UNIT_COST,
+    anzahlBewohner: persons,
   }
 }

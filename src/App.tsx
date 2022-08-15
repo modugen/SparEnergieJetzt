@@ -8,7 +8,7 @@ import Layout from './components/layout'
 import CookieConsent from 'react-cookie-consent'
 
 function App() {
-  const isReactSnap = navigator.userAgent === 'ReactSnap';
+  const isReactSnap = navigator.userAgent === 'ReactSnap'
 
   return (
     <Layout>
@@ -17,7 +17,7 @@ function App() {
         <Route path='configurator/*' element={<ConfiguratorPage />} />
         <Route path='results' element={<ResultPage />} />
       </Routes>
-      {!isReactSnap &&
+      {!isReactSnap && (
         <CookieConsent
           location='bottom'
           buttonText='Alle Akzeptieren'
@@ -37,7 +37,7 @@ function App() {
           Diese Website verwendet Cookies, um die Funktionalität bereitzustellen. Leider ist eine
           Nutzung ohne Cookies aktuell nicht möglich!
         </CookieConsent>
-      }
+      )}
     </Layout>
   )
 }

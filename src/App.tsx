@@ -5,51 +5,19 @@ import { LandingPage } from './pages/LandingPage'
 import { ConfiguratorPage } from './pages/ConfiguratorPage'
 import { ResultPage } from './pages/ResultPage'
 import Layout from './components/layout'
-import { useConfiguratorStore } from './stores/configuratorStore'
-import { ErrorBoundary } from 'react-error-boundary'
-import { Button, Card, CardActions, CardContent, Stack, Typography } from '@mui/material'
-import { grey } from '@mui/material/colors'
 import CookieConsent from 'react-cookie-consent'
 
 function App() {
-  const resetConfiguratorStore = useConfiguratorStore((state) => state.clear)
+  const isReactSnap = navigator.userAgent === 'ReactSnap'
 
   return (
-    <ErrorBoundary
-      FallbackComponent={() => (
-        <Stack
-          display='flex'
-          flexGrow={1}
-          justifyContent='center'
-          alignItems='center'
-          height='100vH'
-          style={{ backgroundColor: grey[200] }}
-        >
-          <Card sx={{ maxWidth: 345 }}>
-            <CardContent>
-              <Typography gutterBottom variant='h5' component='div'>
-                Fehler
-              </Typography>
-              <Typography variant='body2' color='text.secondary'>
-                Der Konfigurator ist in einen fehlerhaften Zustand gelangt. Bitte klicke unten, um
-                den Zustand zurückzusetzen
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button size='small' onClick={resetConfiguratorStore}>
-                Zurücksetzen
-              </Button>
-            </CardActions>
-          </Card>
-        </Stack>
-      )}
-    >
-      <Layout>
-        <Routes>
-          <Route path='/' element={<LandingPage />} />
-          <Route path='configurator/*' element={<ConfiguratorPage />} />
-          <Route path='results' element={<ResultPage />} />
-        </Routes>
+    <Layout>
+      <Routes>
+        <Route path='/' element={<LandingPage />} />
+        <Route path='configurator/*' element={<ConfiguratorPage />} />
+        <Route path='results' element={<ResultPage />} />
+      </Routes>
+      {!isReactSnap && (
         <CookieConsent
           location='bottom'
           buttonText='Alle Akzeptieren'
@@ -69,8 +37,8 @@ function App() {
           Diese Website verwendet Cookies, um die Funktionalität bereitzustellen. Leider ist eine
           Nutzung ohne Cookies aktuell nicht möglich!
         </CookieConsent>
-      </Layout>
-    </ErrorBoundary>
+      )}
+    </Layout>
   )
 }
 

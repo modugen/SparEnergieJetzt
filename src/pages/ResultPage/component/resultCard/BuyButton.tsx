@@ -1,7 +1,6 @@
-import { Button } from '@mui/material'
 import Grid2 from '@mui/material/Unstable_Grid2'
 import React from 'react'
-// import { BuyButton } from '../styled'
+import { BuyButton } from '../styled'
 
 const BuyButtons = ({
   links,
@@ -31,12 +30,9 @@ const BuyButtons = ({
     <Grid2 container spacing={1} display='flex' justifyContent='flex-end'>
       {links.map((link) => (
         <Grid2 key={link.provider}>
-          <Button onClick={() => gtagReportConversion(link.link as unknown as Location)}>
-            hello
-          </Button>
-          {/* <BuyButton variant='body1' href={link.link} onClick={() => gtagReportConversion(link.link as unknown as Location)}>
+          <BuyButton variant='body1' onClick={() => gtagReportConversion(link.link as unknown as Location)}>
             {link.provider}
-          </BuyButton> */}
+          </BuyButton>
         </Grid2>
       ))}
     </Grid2>

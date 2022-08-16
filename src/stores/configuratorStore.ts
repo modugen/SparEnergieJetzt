@@ -59,7 +59,7 @@ export const useConfiguratorStore = create(
     })),
     {
       name: 'configurator-storage',
-      version: 1.0
+      version: 1.0,
     },
   ),
 )

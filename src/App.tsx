@@ -6,9 +6,20 @@ import { ConfiguratorPage } from './pages/ConfiguratorPage'
 import { ResultPage } from './pages/ResultPage'
 import Layout from './components/layout'
 import CookieConsent from 'react-cookie-consent'
+import { initialState, useConfiguratorStore } from './stores/configuratorStore'
+import { useEffect } from 'react'
 
 function App() {
   const isReactSnap = navigator.userAgent === 'ReactSnap'
+
+  const storeVersion = useConfiguratorStore(state => state.version)
+  const clearStore = useConfiguratorStore(state => state.clear)
+
+  useEffect(() => {
+    if (storeVersion !== initialState.version){
+      clearStore()
+    }
+  }, [storeVersion])
 
   return (
     <Layout>

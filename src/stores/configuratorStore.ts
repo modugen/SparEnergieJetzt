@@ -1,6 +1,6 @@
 import { cloneDeep } from 'lodash-es'
 import create from 'zustand'
-import { combine } from 'zustand/middleware'
+import { combine, persist } from 'zustand/middleware'
 import { Bausubstanz, RelativeWohnlage, Heizungsart, Lage } from '../calc'
 
 interface ConfiguratorStoreState {
@@ -20,7 +20,7 @@ interface ConfiguratorStoreState {
   persons: number
 }
 
-const initialState: ConfiguratorStoreState = {
+export const initialState: ConfiguratorStoreState = {
   squareMeters: 100,
   buildingType: Bausubstanz.Altbau,
   storeyHeight: 2.8,
@@ -38,7 +38,7 @@ const initialState: ConfiguratorStoreState = {
 }
 
 export const useConfiguratorStore = create(
-  // persist(
+  persist(
     combine(cloneDeep(initialState), (set) => ({
       clear: () => set(cloneDeep(initialState)),
 
@@ -53,8 +53,9 @@ export const useConfiguratorStore = create(
       setLocation: (location: Lage) => set({ location }),
       setPersons: (persons: number) => set({ persons }),
     })),
-    // {
-    //   name: 'configurator-storage',
-    // },
-  // ),
+    {
+      name: 'configurator-storage',
+      version: 1.0,
+    },
+  ),
 )

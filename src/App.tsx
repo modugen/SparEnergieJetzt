@@ -23,8 +23,8 @@ function App() {
     if (cookieVal === 'true') {
       ReactGA.initialize('G-HBVRKMT6YZ', {
         gaOptions: {
-          siteSpeedSampleRate: 100
-        }
+          siteSpeedSampleRate: 100,
+        },
       })
       ReactGA.pageview(window.location.pathname + window.location.search)
       console.log('Google analytics initialized')

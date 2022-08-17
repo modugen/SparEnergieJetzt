@@ -6,9 +6,17 @@ import { ConfiguratorPage } from './pages/ConfiguratorPage'
 import { ResultPage } from './pages/ResultPage'
 import Layout from './components/layout'
 import CookieConsent from 'react-cookie-consent'
+import { useEffect } from 'react'
 
 function App() {
   const isReactSnap = navigator.userAgent === 'ReactSnap'
+
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    // eslint-disable-next-line camelcase
+    gtag('event', 'conversion', { send_to: 'AW-10949782711/c1xwCIanuNEDELfZoeUo' })
+  }, [])
 
   return (
     <Layout>

@@ -30,7 +30,10 @@ const BuyButtons = ({
     <Grid2 container spacing={1} display='flex' justifyContent='flex-end'>
       {links.map((link) => (
         <Grid2 key={link.provider}>
-          <BuyButton variant='body1' onClick={() => gtagReportConversion(link.link as unknown as Location)}>
+          <BuyButton
+            variant='body1'
+            onClick={() => gtagReportConversion(link.link as unknown as Location)}
+          >
             {link.provider}
           </BuyButton>
         </Grid2>

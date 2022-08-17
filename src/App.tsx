@@ -21,12 +21,9 @@ function App() {
   const initializeGa = () => {
     const cookieVal = getCookieConsentValue()
     if (cookieVal === 'true') {
-      ReactGA.initialize('G-HBVRKMT6YZ', { debug: true })
+      ReactGA.initialize('G-HBVRKMT6YZ')
       ReactGA.pageview(window.location.pathname + window.location.search)
-      console.log('google analytics initialized')
-    } else {
-      console.log('google analytics not initialized')
-      console.log(cookieVal)
+      console.log('Google analytics initialized')
     }
   }
 

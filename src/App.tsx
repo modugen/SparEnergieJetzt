@@ -5,7 +5,7 @@ import { LandingPage } from './pages/LandingPage'
 import { ConfiguratorPage } from './pages/ConfiguratorPage'
 import { ResultPage } from './pages/ResultPage'
 import Layout from './components/layout'
-import CookieConsent from 'react-cookie-consent'
+import CookieConsent, {getCookieConsentValue} from 'react-cookie-consent'
 import { useEffect } from 'react'
 
 function App() {
@@ -16,6 +16,18 @@ function App() {
     // @ts-ignore
     // eslint-disable-next-line camelcase
     gtag('event', 'conversion', { send_to: 'AW-10949782711/c1xwCIanuNEDELfZoeUo' })
+  }, [])
+
+  const initializeGa = () => {
+    const cookieVal = getCookieConsentValue()
+    if (cookieVal === 'true'){
+      ReactGA.initialize('G-HBVRKMT6YZ', {debug: true})
+      ReactGA.pageview(window.location.pathname + window.location.search)
+    }
+  }
+
+  useEffect(() => {
+    initializeGa()
   }, [])
 
   return (
@@ -37,10 +49,7 @@ function App() {
             backgroundColor: 'white',
           }}
           expires={150}
-          onAccept={() => {
-            ReactGA.initialize('G-HBVRKMT6YZ')
-            ReactGA.pageview(window.location.pathname + window.location.search)
-          }}
+          onAccept={initializeGa}
         >
           Diese Website verwendet Cookies, um die Funktionalität bereitzustellen. Leider ist eine
           Nutzung ohne Cookies aktuell nicht möglich!

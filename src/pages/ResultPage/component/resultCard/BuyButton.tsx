@@ -34,7 +34,7 @@ const BuyButtons = ({
             variant='body1'
             onClick={() => gtagReportConversion(link.link as unknown as Location)}
             sx={{
-              cursor: 'pointer'
+              cursor: 'pointer',
             }}
           >
             {link.provider}

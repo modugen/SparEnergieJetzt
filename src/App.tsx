@@ -5,7 +5,7 @@ import { LandingPage } from './pages/LandingPage'
 import { ConfiguratorPage } from './pages/ConfiguratorPage'
 import { ResultPage } from './pages/ResultPage'
 import Layout from './components/layout'
-import CookieConsent, {getCookieConsentValue} from 'react-cookie-consent'
+import CookieConsent, { getCookieConsentValue } from 'react-cookie-consent'
 import { useEffect } from 'react'
 
 function App() {
@@ -20,9 +20,12 @@ function App() {
 
   const initializeGa = () => {
     const cookieVal = getCookieConsentValue()
-    if (cookieVal === 'true'){
-      ReactGA.initialize('G-HBVRKMT6YZ', {debug: true})
+    if (cookieVal === 'true') {
+      ReactGA.initialize('G-HBVRKMT6YZ', { debug: true })
       ReactGA.pageview(window.location.pathname + window.location.search)
+      console.log('google analytics initialized')
+    } else {
+      console.log('google analytics not initialized')
     }
   }
 

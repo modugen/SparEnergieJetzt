@@ -26,6 +26,7 @@ function App() {
       console.log('google analytics initialized')
     } else {
       console.log('google analytics not initialized')
+      console.log(cookieVal)
     }
   }
 

@@ -16,7 +16,10 @@ function App() {
     if (cookieVal === 'true') {
       console.log('Cookies have been enabled')
       setCookiesConsented(true)
-    } else setCookiesConsented(false)
+    } else {
+      console.log('Cookies are disabled')
+      setCookiesConsented(false)
+    }
   }
 
   useEffect(() => {
@@ -25,10 +28,11 @@ function App() {
 
   return (
     <Layout>
-      {cookiesConsented &&
+      {cookiesConsented && (
         <Helmet>
-          <script async src="https://www.googletagmanager.com/gtag/js?id=G-HBVRKMT6YZ"></script>
-          <script>{`
+          <script async src='https://www.googletagmanager.com/gtag/js?id=G-HBVRKMT6YZ'></script>
+          <script>
+            {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
@@ -37,7 +41,7 @@ function App() {
             `}
           </script>
         </Helmet>
-      }
+      )}
       <Routes>
         <Route path='/' element={<LandingPage />} />
         <Route path='configurator/*' element={<ConfiguratorPage />} />

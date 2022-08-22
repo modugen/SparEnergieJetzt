@@ -4,9 +4,7 @@ import { LandingPage } from './pages/LandingPage'
 import { ConfiguratorPage } from './pages/ConfiguratorPage'
 import { ResultPage } from './pages/ResultPage'
 import Layout from './components/layout'
-import CookieConsent, {
-  getCookieConsentValue,
-} from 'react-cookie-consent'
+import CookieConsent, { getCookieConsentValue } from 'react-cookie-consent'
 import { useEffect, useState } from 'react'
 
 function App() {

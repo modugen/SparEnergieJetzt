@@ -6,10 +6,11 @@ import { ResultPage } from './pages/ResultPage'
 import Layout from './components/layout'
 import CookieConsent, { getCookieConsentValue } from 'react-cookie-consent'
 import { useEffect, useState } from 'react'
+import { Helmet } from 'react-helmet'
 
 function App() {
   const isReactSnap = navigator.userAgent === 'ReactSnap'
-  const [, setCookiesConsented] = useState(false)
+  const [cookiesConsented, setCookiesConsented] = useState(false)
   const getAndSetCookiesConstented = () => {
     const cookieVal = getCookieConsentValue()
     if (cookieVal === 'true') {
@@ -24,6 +25,19 @@ function App() {
 
   return (
     <Layout>
+      {cookiesConsented &&
+        <Helmet>
+          <script async src="https://www.googletagmanager.com/gtag/js?id=G-HBVRKMT6YZ"></script>
+          <script>{`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-HBVRKMT6YZ');
+            `}
+          </script>
+        </Helmet>
+      }
       <Routes>
         <Route path='/' element={<LandingPage />} />
         <Route path='configurator/*' element={<ConfiguratorPage />} />

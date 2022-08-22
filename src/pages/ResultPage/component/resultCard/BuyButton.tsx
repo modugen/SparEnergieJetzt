@@ -13,9 +13,7 @@ const BuyButtons = ({
   const gtagReportConversion = (url: (string | Location) & Location) => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    gtag('event', 'conversion', {
-      // eslint-disable-next-line camelcase
-      send_to: 'AW-10949782711/YHtpCJ3K6tEDELfZoeUo',
+    gtag('event', 'click_external_buy_link', {
       // eslint-disable-next-line camelcase
       event_callback: () => {
         if (typeof url != 'undefined') {

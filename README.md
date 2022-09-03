@@ -12,6 +12,7 @@ Any cleanups, restructuring and modularisation is welcome. Additionally there's 
 
 ## Next Steps
 
+* Introduce UI and calculation tests and add Github Action with test suite
 * Introduce Translations using [react-i18next](https://react.i18next.com/)
 * Add products (see below)
 * Add additional configuration options 

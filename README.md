@@ -30,6 +30,8 @@ Any cleanups, restructuring and modularisation is welcome. Additionally there's 
 * react-snap for server-side prerendering
 * zustand for the configurator store 
 * MUI for UI elements
+* The app is deployed on each commit to `main` via AWS Amplify.
+	* Contact info@modugen.de if there's questions regarding this.
 
 # Development
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

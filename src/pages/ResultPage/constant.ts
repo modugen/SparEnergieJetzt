@@ -96,7 +96,7 @@ export const results: ResultProposal[] = [
   {
     title: 'Wassersparender Duschkopf Crometta von Hansgrohe',
     description:
-      'Mit dem richtigen Duschkopf lassen sich über das ganze Jahr große mengen Warmwasser einsparen. Der Duschkopf begrenzt dabei die maximale Durchlaufmenge an Wasser pro Minute (l/min). Ohne Duschkomfort zu verlieren können so leicht bis zu 33% an Warmwasser gespart werden. Wir empfehlen den Duschkopf "Crometta von Hansgrohe" mit 6 Liter pro Minute durchlauf.',
+      'Mit dem richtigen Duschkopf lassen sich über das ganze Jahr große mengen Warmwasser einsparen. Der Duschkopf begrenzt dabei die maximale Durchlaufmenge an Wasser pro Minute (l/min). Ohne Duschkomfort zu verlieren können so leicht bis zu 33% an Warmwasser gespart werden. Wir empfehlen den Duschkopf "Crometta von Hansgrohe" mit 6 Liter pro Minute Durchlauf.',
     image: wassersparender,
     links: [
       {

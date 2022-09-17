@@ -1,3 +1,9 @@
+# Changelog
+
+- 2022-09-17: Use correct link for shower head [(hansgrohe Crometta)](https://amzn.eu/d/2qi6eyZ) and slightly update text
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

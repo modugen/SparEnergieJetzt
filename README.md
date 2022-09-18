@@ -1,3 +1,4 @@
+
 # SparEnergie.Jetzt Konfigurator
 
 [Live Version](https://sparenergie.jetzt)
@@ -62,4 +63,9 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+# Changelog
+
+- 2022-09-17: Use correct link for shower head [(hansgrohe Crometta)](https://amzn.eu/d/2qi6eyZ) and slightly update text
+
 

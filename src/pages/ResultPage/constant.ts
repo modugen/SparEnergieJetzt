@@ -122,7 +122,7 @@ export const results: ResultProposal[] = [
   {
     title: 'Kälter oder ganz kalt duschen',
     description:
-      'Am meisten Energie kannst du einsparen, indem du kalt duscht. Wir schätzen, dass du damit bis zu 100% deiner Warmwasserkosten einsparen kannst ;-). Du schlägst sogar zwei Fliegen mit einer Klappe, denn du wirst auch sicher schneller duschen, wenn du kalt duscht. Auch wenn es mentale Überwindung kostest - spring ins kalte Wasser!',
+      'Am meisten Energie kannst du einsparen, indem du kalt duscht. Wir schätzen, dass du damit bis zu 100% deiner Warmwasserkosten einsparen kannst ;-). Du schlägst sogar zwei Fliegen mit einer Klappe, denn du wirst auch sicher kürzer duschen, wenn du kalt duscht, und damit weniger Wasser verbrauchen. Auch wenn es mentale Überwindung kostest - spring ins kalte Wasser!',
     image: kaltDuschen,
     links: [
       {

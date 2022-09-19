@@ -358,7 +358,7 @@ export function calcSavingsTimer(params: ConfiguratorParameters): number {
   return savings
 }
 
-export function calvSavingsColdShower(params: ConfiguratorParameters): number {
+export function calcSavingsColdShower(params: ConfiguratorParameters): number {
   const baseCost = calcEffectiveWarmWaterCost(params)
   const averageShowerTime = 8
   let savingsCoefficient

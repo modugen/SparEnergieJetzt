@@ -67,5 +67,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 # Changelog
 
 - 2022-09-17: Use correct link for shower head [(hansgrohe Crometta)](https://amzn.eu/d/2qi6eyZ) and slightly update text
+- 2022-09-19: Add cold shower as result 
+
 
 

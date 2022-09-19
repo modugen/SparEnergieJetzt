@@ -6,6 +6,8 @@ import timer from '../../assets/images/results/timer Cropped.jpg'
 import dichtbander from '../../assets/images/results/dichtbander.png'
 import thermovorhange from '../../assets/images/results/thermovorhang.png'
 import thermostat from '../../assets/images/results/thermostate Cropped.jpg'
+import kaltDuschen from '../../assets/images/results/kaltDuschen.png'
+
 import {
   calcSavingsReflexionsfolie,
   calcSavingsDichtbaenderKastenfenster,
@@ -16,6 +18,7 @@ import {
   calcSavingsDuschkopf,
   calcSavingsTimer,
   calcSavingsThermoheld,
+  calcSavingsColdShower,
 } from '../../calc'
 
 export interface ResultProposal {
@@ -115,6 +118,21 @@ export const results: ResultProposal[] = [
     type: 'duschkopf',
     calculation: calcSavingsDuschkopf,
     cost: 20,
+  },
+  {
+    title: 'Kälter oder ganz kalt duschen',
+    description:
+      'Am meisten Energie kannst du einsparen, indem du kalt duscht. Wir schätzen, dass du damit bis zu 100% deiner Warmwasserkosten einsparen kannst ;-). Du schlägst sogar zwei Fliegen mit einer Klappe, denn du wirst auch sicher schneller duschen, wenn du kalt duscht. Auch wenn es mentale Überwindung kostest - spring ins kalte Wasser!',
+    image: kaltDuschen,
+    links: [
+      {
+        link: 'https://docs.google.com/presentation/d/10A2ax4ydBqMSbrEWNTQA8vuHeDKODlggO55Yvc6_A4E/edit#slide=id.g14b43ccf185_0_33',
+        provider: 'Beispielrechnung',
+      },
+    ],
+    type: 'kaltDuschen',
+    calculation: calcSavingsColdShower,
+    cost: 0,
   },
   {
     title: 'Timer',

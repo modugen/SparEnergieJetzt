@@ -360,18 +360,6 @@ export function calcSavingsTimer(params: ConfiguratorParameters): number {
 
 export function calcSavingsColdShower(params: ConfiguratorParameters): number {
   const baseCost = calcEffectiveWarmWaterCost(params)
-  const averageShowerTime = 8
-  let savingsCoefficient
-  switch (params.bausubstanz) {
-    case Bausubstanz.Altbau:
-      savingsCoefficient = averageShowerTime / averageShowerTime
-      break
-    case Bausubstanz.AltbauSaniert:
-      savingsCoefficient = averageShowerTime / averageShowerTime
-      break
-    case Bausubstanz.Neubau:
-      savingsCoefficient = averageShowerTime / averageShowerTime
-  }
-  const savings = baseCost * savingsCoefficient
+  const savings = baseCost
   return savings
 }

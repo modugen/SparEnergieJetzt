@@ -107,6 +107,10 @@ export const results: ResultProposal[] = [
         link: 'https://www.google.com/search?q=Wassersparender+Duschkopf&sxsrf=ALiCzsYAQAYHFPXrtebRQSB5LzY11-hH0g:1660289732868&source=lnms&tbm=shop&sa=X&ved=2ahUKEwj-rYGe5cD5AhUfgv0HHYlNDWgQ_AUoAXoECAEQAw&biw=1440&bih=789&dpr=2',
         provider: 'Google',
       },
+      {
+        link: 'https://docs.google.com/presentation/d/10A2ax4ydBqMSbrEWNTQA8vuHeDKODlggO55Yvc6_A4E/edit#slide=id.g14b43ccf185_0_0',
+        provider: 'Beispielrechnung',
+      },
     ],
     type: 'duschkopf',
     calculation: calcSavingsDuschkopf,

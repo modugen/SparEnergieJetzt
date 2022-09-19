@@ -1,5 +1,40 @@
-# Getting Started with Create React App
 
+# SparEnergie.Jetzt Konfigurator
+
+[Live Version](https://sparenergie.jetzt)
+
+__German__: 
+Hier liegt der vollständige source code des Sparenergie Konfigurators. Wir hoffen mit diesem Tool einen Beitrag zur Energiekrise zu leisten. Um die bestmöglichen Vorschläge zur Verfügung stellen zu können, haben wir uns entschieden den code öffentlich zu stellen, sodass weitere Beiträge möglich sind!
+
+# Contributing
+We are encouraging contributions to this tool, since we are convinced that it can grow to help more and more people save energy in a meaningful way. 
+This code was written in a 3 day company internal hackathon. Hence, don't expect architectural prowess ;) 
+Any cleanups, restructuring and modularisation is welcome. Additionally there's a few bigger steps that would help the tool.
+
+## Next Steps
+
+* Introduce UI and calculation tests and add Github Action with test suite
+* Introduce Translations using [react-i18next](https://react.i18next.com/)
+* Add products (see below)
+* Add additional configuration options 
+	* Different heating types
+	* more house types
+	* ...
+* Improve Cookie handling
+
+## Introducing new Products
+* The calculations for each product are written in `/src/calc.ts` 
+* The products are listed in `src/pages/ResultPage/constants.ts` 
+* The logic of the calculation follows a similar pattern for all products. This is explained here: **TBA**.
+
+## Tooling
+* react-snap for server-side prerendering
+* zustand for the configurator store 
+* MUI for UI elements
+* The app is deployed on each commit to `main` via AWS Amplify.
+	* Contact info@modugen.de if there's questions regarding this.
+
+# Development
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -29,18 +64,8 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
+# Changelog
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- 2022-09-17: Use correct link for shower head [(hansgrohe Crometta)](https://amzn.eu/d/2qi6eyZ) and slightly update text
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).

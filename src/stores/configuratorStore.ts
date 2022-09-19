@@ -1,6 +1,6 @@
 import { cloneDeep } from 'lodash-es'
 import create from 'zustand'
-import { combine, persist } from 'zustand/middleware'
+import { combine } from 'zustand/middleware'
 import { Bausubstanz, RelativeWohnlage, Heizungsart, Lage } from '../calc'
 
 interface ConfiguratorStoreState {
@@ -38,24 +38,18 @@ export const initialState: ConfiguratorStoreState = {
 }
 
 export const useConfiguratorStore = create(
-  persist(
-    combine(cloneDeep(initialState), (set) => ({
-      clear: () => set(cloneDeep(initialState)),
+  combine(cloneDeep(initialState), (set) => ({
+    clear: () => set(cloneDeep(initialState)),
 
-      setSquareMeters: (squareMeters: number) => set({ squareMeters }),
-      setStoreyHeight: (storeyHeight: number) => set({ storeyHeight }),
-      setBuildingType: (buildingType: Bausubstanz) => set({ buildingType }),
-      setApartmentPosition: (apartmentPosition: RelativeWohnlage) => set({ apartmentPosition }),
-      setBigWindows: (bigWindows: number) => set({ bigWindows }),
-      setMediumWindows: (mediumWindows: number) => set({ mediumWindows }),
-      setSmallWindows: (smallWindows: number) => set({ smallWindows }),
-      setHeatingType: (heatingType: Heizungsart) => set({ heatingType }),
-      setLocation: (location: Lage) => set({ location }),
-      setPersons: (persons: number) => set({ persons }),
-    })),
-    {
-      name: 'configurator-storage',
-      version: 1.0,
-    },
-  ),
+    setSquareMeters: (squareMeters: number) => set({ squareMeters }),
+    setStoreyHeight: (storeyHeight: number) => set({ storeyHeight }),
+    setBuildingType: (buildingType: Bausubstanz) => set({ buildingType }),
+    setApartmentPosition: (apartmentPosition: RelativeWohnlage) => set({ apartmentPosition }),
+    setBigWindows: (bigWindows: number) => set({ bigWindows }),
+    setMediumWindows: (mediumWindows: number) => set({ mediumWindows }),
+    setSmallWindows: (smallWindows: number) => set({ smallWindows }),
+    setHeatingType: (heatingType: Heizungsart) => set({ heatingType }),
+    setLocation: (location: Lage) => set({ location }),
+    setPersons: (persons: number) => set({ persons }),
+  })),
 )

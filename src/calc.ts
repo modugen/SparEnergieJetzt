@@ -357,3 +357,9 @@ export function calcSavingsTimer(params: ConfiguratorParameters): number {
   const savings = baseCost * savingsCoefficient
   return savings
 }
+
+export function calcSavingsColdShower(params: ConfiguratorParameters): number {
+  const baseCost = calcEffectiveWarmWaterCost(params)
+  const savings = baseCost
+  return savings
+}

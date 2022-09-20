@@ -67,5 +67,5 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 # Changelog
 
 - 2022-09-17: Use correct link for shower head [(hansgrohe Crometta)](https://amzn.eu/d/2qi6eyZ) and slightly update text
-
+- 2022-09-19: Add link to [slide deck with example calculations](https://docs.google.com/presentation/d/10A2ax4ydBqMSbrEWNTQA8vuHeDKODlggO55Yvc6_A4E/edit#slide=id.p)
 

@@ -107,6 +107,10 @@ export const results: ResultProposal[] = [
         link: 'https://www.google.com/search?q=Wassersparender+Duschkopf&sxsrf=ALiCzsYAQAYHFPXrtebRQSB5LzY11-hH0g:1660289732868&source=lnms&tbm=shop&sa=X&ved=2ahUKEwj-rYGe5cD5AhUfgv0HHYlNDWgQ_AUoAXoECAEQAw&biw=1440&bih=789&dpr=2',
         provider: 'Google',
       },
+      {
+        link: 'https://docs.google.com/presentation/d/10A2ax4ydBqMSbrEWNTQA8vuHeDKODlggO55Yvc6_A4E/edit#slide=id.g14b43ccf185_0_0',
+        provider: 'Beispielrechnung',
+      },
     ],
     type: 'duschkopf',
     calculation: calcSavingsDuschkopf,
@@ -125,6 +129,10 @@ export const results: ResultProposal[] = [
       {
         link: 'https://www.google.com/search?q=Duschtimer&sxsrf=ALiCzsbgXeIXCgoncksFQK-qY-sZrXZDew:1660313228245&source=lnms&tbm=shop&sa=X&ved=2ahUKEwiBv73hvMH5AhU3xQIHHVtUD5IQ_AUoAXoECAIQAw&biw=1440&bih=732&dpr=2',
         provider: 'Google',
+      },
+      {
+        link: 'https://docs.google.com/presentation/d/10A2ax4ydBqMSbrEWNTQA8vuHeDKODlggO55Yvc6_A4E/edit#slide=id.g14b3e94ddda_0_0',
+        provider: 'Beispielrechnung',
       },
     ],
     type: 'timer',
